@@ -49,7 +49,7 @@
 
 <style>
 /* ============================================================
-   StarWars Zero Company Wiki 鈥?design tokens
+   StarWars Zero Company Wiki —design tokens
    Subject: Clone Wars covert mercenary ops console at "the Den".
    Faction-coded color is INFORMATION, not decoration:
      teal  = allied / interactive UI
@@ -65,7 +65,7 @@
   --line:#1E2A36;          /* steel hairline */
   --line-2:#2A3A49;
 
-  --teal:#34E0C4;          /* Republic targeting holo 鈥?allied/interactive */
+  --teal:#34E0C4;          /* Republic targeting holo —allied/interactive */
   --teal-dim:#1c8d7c;
   --gold:#E9B84A;          /* Advantage / command / S-tier */
   --gold-dim:#8a6e22;
@@ -126,30 +126,40 @@ button{font-family:inherit}
   backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
 }
-.topbar-inner{display:flex;align-items:center;gap:18px;height:60px}
-.brand{display:flex;align-items:center;gap:11px;cursor:pointer;flex-shrink:0}
+.topbar-inner{
+  display:grid;
+  grid-template-columns:minmax(300px,auto) minmax(0,1fr) auto;
+  grid-template-areas:"brand nav status";
+  align-items:center;
+  gap:8px 18px;
+  min-height:64px;
+  padding-top:8px;
+  padding-bottom:8px;
+}
+.brand{grid-area:brand;display:flex;align-items:center;gap:11px;cursor:pointer;min-width:0}
 .cog{width:26px;height:26px;flex-shrink:0}
 .cog .rot{transform-origin:50% 50%;animation:spin 26s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.brand b{font-family:var(--fd);font-weight:800;letter-spacing:.04em;font-size:18px;color:var(--text)}
+.brand b{font-family:var(--fd);font-weight:800;letter-spacing:.02em;font-size:clamp(17px,1.6vw,22px);line-height:1.05;color:var(--text)}
 .brand span{font-family:var(--fm);font-size:9.5px;letter-spacing:.24em;color:var(--faint);display:block;margin-top:-2px}
 
-.nav{display:flex;gap:2px;margin-left:6px;flex-wrap:wrap}
+.nav{grid-area:nav;display:flex;gap:2px 4px;margin-left:0;flex-wrap:wrap;justify-content:center;min-width:0}
 .nav a{
-  font-family:var(--fd);font-weight:600;font-size:13px;letter-spacing:.05em;
-  color:var(--muted);padding:8px 11px;border-radius:3px;text-decoration:none;
+  font-family:var(--fd);font-weight:600;font-size:clamp(11px,1vw,13px);letter-spacing:.04em;
+  color:var(--muted);padding:7px 9px;border-radius:3px;text-decoration:none;
   position:relative;transition:color .15s,background .15s;
+  white-space:nowrap;
 }
 .nav a:hover{color:var(--text);background:rgba(255,255,255,.03)}
 .nav a.active{color:var(--teal)}
 .nav a.active::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;height:2px;background:var(--teal);box-shadow:0 0 8px var(--teal)}
 
-.tminus{margin-left:auto;display:flex;align-items:center;gap:9px;font-family:var(--fm);font-size:11px;color:var(--muted);flex-shrink:0}
+.tminus{grid-area:status;margin-left:0;display:flex;align-items:center;gap:9px;font-family:var(--fm);font-size:11px;color:var(--muted);white-space:nowrap;justify-self:end}
 .tminus .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.35}}
 .tminus b{color:var(--gold);font-weight:600}
 
-.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line-2);color:var(--text);border-radius:4px;padding:7px 10px;font-family:var(--fm);font-size:12px;cursor:pointer}
+.burger{grid-area:status;display:none;margin-left:auto;background:none;border:1px solid var(--line-2);color:var(--text);border-radius:4px;padding:7px 10px;font-family:var(--fm);font-size:12px;cursor:pointer}
 
 /* ============================ VIEWS ============================ */
 .view{display:none;padding:42px 0 90px;animation:fadein .35s ease}
@@ -366,6 +376,16 @@ footer a:hover{color:var(--teal)}
 .disclaimer{font-family:var(--fm);font-size:11px;color:var(--faint);margin-top:26px;border-top:1px solid var(--line);padding-top:18px;line-height:1.7}
 
 /* ============================ RESPONSIVE ============================ */
+@media(max-width:1180px){
+  .topbar-inner{
+    grid-template-columns:1fr auto;
+    grid-template-areas:
+      "brand status"
+      "nav nav";
+  }
+  .nav{justify-content:flex-start;padding-left:37px}
+  .tminus{align-self:start;padding-top:4px}
+}
 @media(max-width:920px){
   .dossier{grid-template-columns:1fr}
   .muster{grid-template-columns:1fr}
@@ -377,7 +397,13 @@ footer a:hover{color:var(--teal)}
 @media(max-width:680px){
   .nav,.tminus{display:none}
   .burger{display:block}
-  .topbar.open .nav{display:flex;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:var(--void);border-bottom:1px solid var(--line);padding:10px 18px}
+  .topbar-inner{
+    grid-template-columns:1fr auto;
+    grid-template-areas:"brand status";
+  }
+  .brand b{font-size:16px}
+  .brand span{font-size:8px;letter-spacing:.18em}
+  .topbar.open .nav{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--void);border-bottom:1px solid var(--line);padding:10px 18px}
   .topbar.open .nav a{padding:11px 4px}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .g4,.g3,.g2,.split,.slots{grid-template-columns:1fr}
@@ -419,7 +445,7 @@ footer a:hover{color:var(--teal)}
       <a href="/guides/">Guides</a>
       <a data-route="muster" onclick="go('muster')">Muster Board</a>
     </nav>
-    <div class="tminus" id="tminus"><span class="dot"></span>T鈥慚INUS <b id="tdays">鈥?/b> TO DEPLOYMENT</div>
+    <div class="tminus" id="tminus"><span class="dot"></span>T-MINUS <b id="tdays">—</b> TO DEPLOYMENT</div>
     <button class="burger" onclick="document.getElementById('topbar').classList.toggle('open')">MENU</button>
   </div>
 </header>
@@ -432,14 +458,14 @@ footer a:hover{color:var(--teal)}
     <div class="terminal brk">
       <div class="term-bar">
         <span class="led"></span> CONNECTION SECURE
-        <span class="right">THE DEN 路 RING OF KAFRENE 路 CLASSIFIED</span>
+        <span class="right">THE DEN · RING OF KAFRENE · CLASSIFIED</span>
       </div>
       <h1>Run the war from <span class="hl">the terminal.</span></h1>
-      <p class="sub">Operative dossiers, class rankings, loadouts, operation walkthroughs and a live squad-synergy board for <b>Star Wars Zero Company</b> 鈥?the XCOM-style Clone Wars tactics game from Bit Reactor &amp; Respawn.</p>
+      <p class="sub">Operative dossiers, class rankings, loadouts, operation walkthroughs and a live squad-synergy board for <b>Star Wars Zero Company</b> —the XCOM-style Clone Wars tactics game from Bit Reactor &amp; Respawn.</p>
 
       <div class="cmd brk">
         <span class="prompt">&gt;</span>
-        <input id="search" type="text" placeholder="query operatives, loadouts, operations, hostiles鈥? autocomplete="off" aria-label="Search the database" />
+        <input id="search" type="text" placeholder="query operatives, loadouts, operations, hostiles..." autocomplete="off" aria-label="Search the database" />
         <button onclick="runSearch()">Search</button>
       </div>
       <div class="search-results" id="searchResults"></div>
@@ -460,7 +486,7 @@ footer a:hover{color:var(--teal)}
   <div class="grid g3">
     <div class="card brk" onclick="go('tier')"><div class="tag">Rankings</div><h3>Class Tier List</h3><p>Every standard &amp; exotic specialization, ranked S鈫扖 for the launch meta with role notes.</p></div>
     <div class="card brk" onclick="go('builds')"><div class="tag">Loadouts</div><h3>Build Guides</h3><p>Focus-tree priorities, weapon spec, secondary pairing, squad synergy and endgame rating.</p></div>
-    <div class="card brk" onclick="go('muster')"><div class="tag">Tool 路 Exclusive</div><h3>Muster Board</h3><p>Drop in four operatives, read live attribute coverage and auto-detected bond synergies.</p></div>
+    <div class="card brk" onclick="go('muster')"><div class="tag">Tool · Exclusive</div><h3>Muster Board</h3><p>Drop in four operatives, read live attribute coverage and auto-detected bond synergies.</p></div>
     <div class="card brk" onclick="go('ops')"><div class="tag">Walkthroughs</div><h3>Operations</h3><p>Objectives, hostile roster, recommended squad and turn-by-turn routes for each mission.</p></div>
     <div class="card brk" onclick="go('hostiles')"><div class="tag">Threat data</div><h3>Hostile Database</h3><p>HP, resistances, weak points and the fastest counter for every Separatist unit.</p></div>
     <div class="card brk" onclick="go('operatives')"><div class="tag">Wiki</div><h3>Operative Index</h3><p>Full dossiers: stats, signature ability, focus tree, recommended build and squad.</p></div>
@@ -488,7 +514,7 @@ footer a:hover{color:var(--teal)}
   <h1 class="page">Class Tier List</h1>
   <p class="lead">Launch-window ranking of all twelve specializations by ceiling, flexibility and squad value. Exotic classes are locked to one story operative each. Select any class to open its profile.</p>
   <div id="tierList"></div>
-  <p class="muted mono" style="font-size:11.5px;margin-top:14px">Assessment basis: PC Gamer hands-on (Mar 2026) + Summer Game Fest 2026 gameplay. Confidence: medium 鈥?full meta is pre-launch and subject to balancing.</p>
+  <p class="muted mono" style="font-size:11.5px;margin-top:14px">Assessment basis: PC Gamer hands-on (Mar 2026) + Summer Game Fest 2026 gameplay. Confidence: medium —full meta is pre-launch and subject to balancing.</p>
 </section>
 
 <!-- ================= BUILDS INDEX ================= -->
@@ -550,12 +576,12 @@ footer a:hover{color:var(--teal)}
     <aside class="readout brk">
       <div class="rating-line">
         <span class="lbl">Squad rating</span>
-        <span class="grade" id="squadGrade" style="color:var(--faint)">鈥?/span>
+        <span class="grade" id="squadGrade" style="color:var(--faint)">—</span>
       </div>
       <div class="radar-box">
         <svg id="radar" width="280" height="240" viewBox="0 0 280 240" aria-label="Squad attribute radar"></svg>
       </div>
-      <div class="radar-legend"><span><i></i>Attack 路 Defense 路 Support 路 Mobility 路 Control</span></div>
+      <div class="radar-legend"><span><i></i>Attack · Defense · Support · Mobility · Control</span></div>
       <div id="synergies" style="margin-top:16px">
         <div class="synline warn"><span class="ic">!</span><span>Empty board. Add operatives to read coverage.</span></div>
       </div>
@@ -616,16 +642,16 @@ footer a:hover{color:var(--teal)}
 
 <script>
 /* ===========================================================
-   DATA 鈥?grounded in confirmed Zero Company reveals.
+   DATA —grounded in confirmed Zero Company reveals.
    Stats/ratings are plausible pre-launch placeholders, easily
    swapped for verified values at launch.
    =========================================================== */
 
-// 5-axis squad vector: [attack, defense, support, mobility, control] 0鈥?00
+// 5-axis squad vector: [attack, defense, support, mobility, control] 0-100
 const OPS = {
-  hawks:{ name:"Hawks", glyph:"H", gold:true, cls:"Commander 路 Soldier base", classification:"Protagonist 鈥?mandatory in story missions", species:"Custom (6 species)", weapon:"Rifle", tier:"S",
+  hawks:{ name:"Hawks", glyph:"H", gold:true, cls:"Commander · Soldier base", classification:"Protagonist —mandatory in story missions", species:"Custom (6 species)", weapon:"Rifle", tier:"S",
     role:"Force multiplier / flexible lead",
-    sig:"Tactical Reset 鈥?spend Advantage to refresh an ally's Action Points.",
+    sig:"Tactical Reset —spend Advantage to refresh an ally's Action Points.",
     blurb:"A disgraced Republic captain running covert work for the highest bidder. Hawks bends the action economy: a well-timed AP refresh turns one operative into two turns of output.",
     bars:{Health:70,Armor:62,Mobility:66,Aim:72,Tech:55},
     vec:[68,64,82,66,74],
@@ -634,26 +660,26 @@ const OPS = {
 
   trick:{ name:"Trick", glyph:"T", cls:"Soldier", classification:"Authored", species:"Clone", weapon:"Rifle", tier:"A",
     role:"Dependable frontline anchor",
-    sig:"Old War Buddies 鈥?bonus cohesion and shared cover bonus when deployed with Hawks.",
-    blurb:"Hawks' clone-war buddy and consigliere. Steady, versatile, and the emotional spine of the crew 鈥?but carries an unresolved grudge with Luco Bronc from Umbara.",
+    sig:"Old War Buddies —bonus cohesion and shared cover bonus when deployed with Hawks.",
+    blurb:"Hawks' clone-war buddy and consigliere. Steady, versatile, and the emotional spine of the crew —but carries an unresolved grudge with Luco Bronc from Umbara.",
     bars:{Health:74,Armor:66,Mobility:58,Aim:68,Tech:50},
     vec:[64,70,60,56,52],
     focus:[{t:"Tier 1",h:"Suppressing Fire",p:"Pin a target: it loses 1 AP next turn."},{t:"Tier 2",h:"Hold the Line",rec:true,p:"Adjacent allies gain defense while Trick is in cover."},{t:"Tier 3",h:"Veteran",p:"First Injury each mission is ignored."}],
     build:null, squad:["hawks","kabb","custom_medic"], ops:["umbara"] },
 
-  cly:{ name:"Cly Kullervo", glyph:"C", gold:true, cls:"Mandalorian Warrior 路 exotic", classification:"Exotic 鈥?locked (can respec to Sharpshooter)", species:"Human (Mandalorian)", weapon:"Repeater / Longarm", tier:"S",
+  cly:{ name:"Cly Kullervo", glyph:"C", gold:true, cls:"Mandalorian Warrior · exotic", classification:"Exotic —locked (can respec to Sharpshooter)", species:"Human (Mandalorian)", weapon:"Repeater / Longarm", tier:"S",
     role:"Vertical flanker / mobile burst",
-    sig:"Jetpack 鈥?reposition across the map to vantage points or flanks, ignoring terrain. Persists through respec.",
+    sig:"Jetpack —reposition across the map to vantage points or flanks, ignoring terrain. Persists through respec.",
     blurb:"A Mandalorian warrior whose jetpack rewrites the map's geometry. Drop onto a rooftop, flank an entrenched line, or chase a fleeing target the rest of the squad can't reach.",
     bars:{Health:64,Armor:60,Mobility:92,Aim:78,Tech:48},
     vec:[80,56,40,94,62],
     focus:[{t:"Tier 1",h:"Thrusters",p:"Jetpack costs 1 AP instead of 2."},{t:"Tier 2",h:"High Ground",rec:true,p:"+aim and +crit on the turn she gains elevation."},{t:"Tier 3",h:"Strafing Run",p:"Jetpack move can pass over a line of enemies for splash damage."}],
     build:"vantage", squad:["luco","custom_scout","hawks"], ops:["ryloth"] },
 
-  telrea:{ name:"Tel鈥慠ea Vokoss", glyph:"V", gold:true, cls:"Jedi Padawan 路 exotic", classification:"Exotic 鈥?locked", species:"Jedi", weapon:"Lightsaber (melee)", tier:"S",
+  telrea:{ name:"Tel'Rea Vokoss", glyph:"V", gold:true, cls:"Jedi Padawan · exotic", classification:"Exotic —locked", species:"Jedi", weapon:"Lightsaber (melee)", tier:"S",
     role:"Crowd control / disruption",
-    sig:"Shockwave 鈥?spend 6 Advantage to damage and push back all nearby enemies. Unique to her.",
-    blurb:"The squad's Jedi. Closes distance, scatters a clustered enemy line and reshapes a bad turn into a survivable one. High-risk in the open 鈥?she wants to be inside the fight.",
+    sig:"Shockwave —spend 6 Advantage to damage and push back all nearby enemies. Unique to her.",
+    blurb:"The squad's Jedi. Closes distance, scatters a clustered enemy line and reshapes a bad turn into a survivable one. High-risk in the open —she wants to be inside the fight.",
     bars:{Health:72,Armor:50,Mobility:84,Aim:60,Tech:46},
     vec:[78,52,46,86,90],
     focus:[{t:"Tier 1",h:"Saber Throw",p:"Ranged opener that ignores cover."},{t:"Tier 2",h:"Deflection",rec:true,p:"Chance to negate ranged hits while she has AP remaining."},{t:"Tier 3",h:"Force Surge",p:"Shockwave also strips 1 AP from pushed enemies."}],
@@ -661,8 +687,8 @@ const OPS = {
 
   luco:{ name:"Luco Bronc", glyph:"L", cls:"Sharpshooter", classification:"Authored (respec to any standard class)", species:"Umbaran", weapon:"Longarm", tier:"A",
     role:"Long-range elimination",
-    sig:"Cold Read 鈥?first shot each turn against a full-health target deals bonus damage.",
-    blurb:"An Umbaran marksman with a bitter history against clone forces 鈥?and Trick in particular. From a vantage point, Luco deletes high-value targets before they act.",
+    sig:"Cold Read —first shot each turn against a full-health target deals bonus damage.",
+    blurb:"An Umbaran marksman with a bitter history against clone forces —and Trick in particular. From a vantage point, Luco deletes high-value targets before they act.",
     bars:{Health:54,Armor:42,Mobility:62,Aim:94,Tech:52},
     vec:[90,38,30,58,56],
     focus:[{t:"Tier 1",h:"Steady",p:"No aim penalty at long range."},{t:"Tier 2",h:"Headhunter",rec:true,p:"+crit vs targets flagged or out of cover."},{t:"Tier 3",h:"Kill Chain",p:"A kill grants a partial AP refund."}],
@@ -670,7 +696,7 @@ const OPS = {
 
   kabb:{ name:'Kabb "Uppercut"', glyph:"K", cls:"Heavy / brawler", classification:"Authored", species:"Felshi", weapon:"Repeater", tier:"B",
     role:"Frontline tank / bruiser",
-    sig:"Cybernetic Arm 鈥?powerful melee that staggers; shrugs off the first hit of each enemy turn.",
+    sig:"Cybernetic Arm —powerful melee that staggers; shrugs off the first hit of each enemy turn.",
     blurb:"A former prizefighter and crook with a cybernetic arm and a distinctive rhyming patter. Wade in, soak fire, and crack armor up close while the squad works the angles.",
     bars:{Health:90,Armor:84,Mobility:48,Aim:58,Tech:40},
     vec:[60,90,34,42,48],
@@ -679,7 +705,7 @@ const OPS = {
 
   jae:{ name:"Jae", glyph:"J", cls:"Scoundrel", classification:"Authored", species:"Human", weapon:"Pistol", tier:"A",
     role:"Wildcard support / finisher",
-    sig:"Mysterious Stranger 鈥?a chance each enemy turn to fire a free assist shot that finishes a weakened target.",
+    sig:"Mysterious Stranger —a chance each enemy turn to fire a free assist shot that finishes a weakened target.",
     blurb:"A wildcard who turns the odds in your favor when you least expect it. Pairs cheap utility with an unpredictable assist that closes out hurt enemies for free.",
     bars:{Health:60,Armor:48,Mobility:72,Aim:70,Tech:64},
     vec:[66,46,64,72,70],
@@ -689,13 +715,13 @@ const OPS = {
 
 // Custom-class archetypes for the Muster Board (your own recruits, missing classes)
 const CUSTOM = {
-  custom_medic:{ name:"Custom 路 Medic", glyph:"+", cls:"Medic", role:"Sustain / buffs", tier:"A",
-    sig:"Combat Stim 鈥?heal and grant an ally a temporary damage buff.", vec:[34,52,94,50,46] },
-  custom_gun:{ name:"Custom 路 Gunslinger", glyph:"+", cls:"Gunslinger", role:"Multi-target / chain finisher", tier:"S",
-    sig:"A kill refreshes Action Points 鈥?chain finishing blows across a turn.", vec:[86,40,42,70,50] },
-  custom_scout:{ name:"Custom 路 Scout", glyph:"+", cls:"Scout", role:"Recon / overwatch", tier:"B",
+  custom_medic:{ name:"Custom · Medic", glyph:"+", cls:"Medic", role:"Sustain / buffs", tier:"A",
+    sig:"Combat Stim —heal and grant an ally a temporary damage buff.", vec:[34,52,94,50,46] },
+  custom_gun:{ name:"Custom · Gunslinger", glyph:"+", cls:"Gunslinger", role:"Multi-target / chain finisher", tier:"S",
+    sig:"A kill refreshes Action Points —chain finishing blows across a turn.", vec:[86,40,42,70,50] },
+  custom_scout:{ name:"Custom · Scout", glyph:"+", cls:"Scout", role:"Recon / overwatch", tier:"B",
     sig:"Reveal hidden enemies and set efficient overwatch lanes.", vec:[50,54,56,76,78] },
-  custom_astro:{ name:"Custom 路 Astromech", glyph:"+", cls:"Astromech 路 exotic", role:"Support / explosives", tier:"B",
+  custom_astro:{ name:"Custom · Astromech", glyph:"+", cls:"Astromech · exotic", role:"Support / explosives", tier:"B",
     sig:"Support utility plus fitted grenades or a flamethrower.", vec:[52,58,80,48,66] },
 };
 
@@ -704,54 +730,54 @@ const ALL = Object.assign({}, OPS, CUSTOM);
 const CLASSES = [
   {id:"assault",n:"Assault",w:"Rifle",tier:"S",role:"Frontline flanker",ult:"Multishot barrage",std:"Move-and-fire flank attack",pas:"Bonus damage vs flanked targets",note:"Top opener: strip cover and punish out-of-position enemies."},
   {id:"sharpshooter",n:"Sharpshooter",w:"Longarm",tier:"S",role:"Long-range single target",ult:"Guaranteed high-damage shot",std:"Aimed elimination from vantage",pas:"Aim bonus from elevation",note:"Deletes priority targets; wants Assault/Scoundrel to set up the kill."},
-  {id:"gunslinger",n:"Gunslinger",w:"Pistol / Repeater",tier:"S",role:"Multi-target chainer",ult:"Rapid multi-target burst",std:"Kill refreshes AP 鈥?chain finishers",pas:"Extra shots on low-HP targets",note:"Highest skill ceiling: snowballs a turn once kills start landing."},
-  {id:"medic",n:"Medic",w:"Pistol",tier:"A",role:"Sustain / buffs",ult:"Squad-wide stabilize",std:"Combat Stim: heal + damage buff",pas:"Reduces Injury chance on allies",note:"Quietly essential 鈥?counters permadeath pressure. Combat Stim + Gunslinger spikes damage."},
+  {id:"gunslinger",n:"Gunslinger",w:"Pistol / Repeater",tier:"S",role:"Multi-target chainer",ult:"Rapid multi-target burst",std:"Kill refreshes AP —chain finishers",pas:"Extra shots on low-HP targets",note:"Highest skill ceiling: snowballs a turn once kills start landing."},
+  {id:"medic",n:"Medic",w:"Pistol",tier:"A",role:"Sustain / buffs",ult:"Squad-wide stabilize",std:"Combat Stim: heal + damage buff",pas:"Reduces Injury chance on allies",note:"Quietly essential —counters permadeath pressure. Combat Stim + Gunslinger spikes damage."},
   {id:"heavy",n:"Heavy",w:"Repeater",tier:"A",role:"Tank / area damage",ult:"AoE rocket launcher",std:"Suppress and hold ground",pas:"Flat damage reduction",note:"Anchors the frontline so squishier specialists work safely."},
-  {id:"scoundrel",n:"Scoundrel",w:"Pistol",tier:"A",role:"Opportunist",ult:"Big-payoff gamble",std:"Identify Weakness 鈫?guaranteed crit setup",pas:"Bonus from unpredictable plays",note:"Force-multiplies a Sharpshooter; thrives in messy fights."},
+  {id:"scoundrel",n:"Scoundrel",w:"Pistol",tier:"A",role:"Opportunist",ult:"Big-payoff gamble",std:"Identify Weakness →guaranteed crit setup",pas:"Bonus from unpredictable plays",note:"Force-multiplies a Sharpshooter; thrives in messy fights."},
   {id:"scout",n:"Scout",w:"Rifle",tier:"B",role:"Recon",ult:"Map-wide reveal",std:"Scout ahead, set overwatch",pas:"Detection + first-strike bonus",note:"Information and lane control; weaker solo damage."},
-  {id:"soldier",n:"Soldier",w:"Rifle",tier:"B",role:"Generalist",ult:"Focused fire",std:"Versatile close-to-mid attacks",pas:"Reliable all-rounder",note:"No glaring weakness, no standout strength 鈥?safe, flexible filler."},
-  {id:"astromech",n:"Astromech",w:"Utility",tier:"B",role:"Support droid 路 exotic",ult:"Deployable device",std:"Heal/utility + grenades/flamethrower",pas:"Customizable chassis",note:"Surprisingly potent; an all-astromech squad is a real challenge run."},
-  {id:"mando",n:"Mandalorian Warrior",w:"Repeater",tier:"S",role:"Mobile burst 路 exotic (Cly)",ult:"Aerial strike",std:"Jetpack reposition",pas:"Elevation bonuses",note:"Locked to Cly Kullervo; map mobility no other class matches."},
-  {id:"jedi",n:"Jedi Padawan",w:"Lightsaber",tier:"S",role:"Control 路 exotic (Tel鈥慠ea)",ult:"Shockwave (6 Advantage AoE push)",std:"Saber melee + deflection",pas:"Force mobility",note:"Locked to Tel鈥慠ea Vokoss; best raw crowd control in the game."},
-  {id:"secret",n:"Secret Special Class",w:"Unknown",tier:"?",role:"Unrevealed 路 exotic",ult:"鈥?,std:"鈥?,pas:"鈥?,note:"Confirmed to exist; details withheld pre-launch."},
+  {id:"soldier",n:"Soldier",w:"Rifle",tier:"B",role:"Generalist",ult:"Focused fire",std:"Versatile close-to-mid attacks",pas:"Reliable all-rounder",note:"No glaring weakness, no standout strength —safe, flexible filler."},
+  {id:"astromech",n:"Astromech",w:"Utility",tier:"B",role:"Support droid · exotic",ult:"Deployable device",std:"Heal/utility + grenades/flamethrower",pas:"Customizable chassis",note:"Surprisingly potent; an all-astromech squad is a real challenge run."},
+  {id:"mando",n:"Mandalorian Warrior",w:"Repeater",tier:"S",role:"Mobile burst · exotic (Cly)",ult:"Aerial strike",std:"Jetpack reposition",pas:"Elevation bonuses",note:"Locked to Cly Kullervo; map mobility no other class matches."},
+  {id:"jedi",n:"Jedi Padawan",w:"Lightsaber",tier:"S",role:"Control · exotic (Tel'Rea)",ult:"Shockwave (6 Advantage AoE push)",std:"Saber melee + deflection",pas:"Force mobility",note:"Locked to Tel'Rea Vokoss; best raw crowd control in the game."},
+  {id:"secret",n:"Secret Special Class",w:"Unknown",tier:"?",role:"Unrevealed · exotic",ult:"?",std:"?",pas:"?",note:"Confirmed to exist; details withheld pre-launch."},
 ];
 
 const BUILDS = {
   vantage:{ name:"Vantage Overwatch", for:"Sharpshooter (Luco / Cly-respec)", tier:"S", rating:"S", line:"Long-range control",
     overview:"A patient elimination build: hold high ground, delete one priority target per turn, and let overwatch punish anything that moves. The squad exists to expose targets so the marksman lands kills.",
-    focus:["<b>Steady</b> 鈫?<b>Headhunter</b> 鈫?<b>Kill Chain</b>: remove range penalties first, then convert exposed targets into crits and AP refunds."],
-    weapon:"Longarm 鈥?maximum single-target damage and range.",
-    secondary:"Scout 鈥?adds reveal and stronger overwatch lanes once the secondary spec unlocks.",
+    focus:["<b>Steady</b> →<b>Headhunter</b> →<b>Kill Chain</b>: remove range penalties first, then convert exposed targets into crits and AP refunds."],
+    weapon:"Longarm —maximum single-target damage and range.",
+    secondary:"Scout —adds reveal and stronger overwatch lanes once the secondary spec unlocks.",
     synergy:"Bring an <b>Assault</b> to strip cover and a <b>Scoundrel</b> (Identify Weakness) to guarantee the crit. Cly on jetpack secures the vantage point turn one.",
     strengths:["Highest reliable single-target damage","Punishes enemy movement through overwatch","Scales with elevation-heavy maps"],
     weaknesses:["Weak once enemies close the distance","Low personal durability","Dead turns if no clean line of sight"] },
 
   command:{ name:"Command Multiplier", for:"Hawks (Soldier base)", tier:"S", rating:"S", line:"Action-economy engine",
-    overview:"Hawks doesn't out-damage the squad 鈥?he doubles its best member. Build around feeding AP refreshes to your highest-output operative and keeping Hawks safe enough to do it every turn.",
-    focus:["<b>Field Command</b> 鈫?<b>Press the Advantage</b> 鈫?<b>No One Left</b>: cheaper, longer-range refreshes that also buff damage, with a free Rally as insurance."],
-    weapon:"Rifle 鈥?flexible mid-range so Hawks contributes between refreshes.",
-    secondary:"Scout or Medic 鈥?utility that keeps him useful when Advantage is dry.",
+    overview:"Hawks doesn't out-damage the squad —he doubles its best member. Build around feeding AP refreshes to your highest-output operative and keeping Hawks safe enough to do it every turn.",
+    focus:["<b>Field Command</b> →<b>Press the Advantage</b> →<b>No One Left</b>: cheaper, longer-range refreshes that also buff damage, with a free Rally as insurance."],
+    weapon:"Rifle —flexible mid-range so Hawks contributes between refreshes.",
+    secondary:"Scout or Medic —utility that keeps him useful when Advantage is dry.",
     synergy:"Pair with a <b>Gunslinger</b> or <b>Sharpshooter</b>: refresh their AP after a kill and chain a second elimination. The single strongest tempo play in the game.",
-    strengths:["Turns one carry into two turns of output","Flexible 鈥?fits any composition","Free Rally mitigates permadeath risk"],
-    weaknesses:["Advantage-hungry; competes with ultimates","Low solo damage ceiling","Mandatory in story missions 鈥?can't bench him"] },
+    strengths:["Turns one carry into two turns of output","Flexible —fits any composition","Free Rally mitigates permadeath risk"],
+    weaknesses:["Advantage-hungry; competes with ultimates","Low solo damage ceiling","Mandatory in story missions —can't bench him"] },
 
-  saber:{ name:"Saber Control", for:"Tel鈥慠ea Vokoss (Jedi Padawan)", tier:"S", rating:"A+", line:"Disruption / melee",
+  saber:{ name:"Saber Control", for:"Tel'Rea Vokoss (Jedi Padawan)", tier:"S", rating:"A+", line:"Disruption / melee",
     overview:"A reset button on a clustered enemy line. Dive in, Shockwave the cluster to scatter and damage it, then clean up with deflection keeping her alive in the open.",
-    focus:["<b>Saber Throw</b> 鈫?<b>Deflection</b> 鈫?<b>Force Surge</b>: ranged opener, survivability while she has AP, then Shockwave that also strips enemy AP."],
-    weapon:"Lightsaber 鈥?melee; she's an entry tool, not a sniper.",
+    focus:["<b>Saber Throw</b> →<b>Deflection</b> →<b>Force Surge</b>: ranged opener, survivability while she has AP, then Shockwave that also strips enemy AP."],
+    weapon:"Lightsaber —melee; she's an entry tool, not a sniper.",
     secondary:"Locked exotic kit; lean into mobility talents.",
     synergy:"Best with a <b>Sharpshooter</b> to delete the scattered survivors and a <b>Medic</b> to top her up after the dive.",
     strengths:["Best AoE crowd control in the game","High mobility entry","Shockwave denies enemy actions"],
-    weaknesses:["Fragile in the open without Deflection up","Advantage-hungry ultimate","Single operative 鈥?not a repeatable archetype"] },
+    weaknesses:["Fragile in the open without Deflection up","Advantage-hungry ultimate","Single operative —not a repeatable archetype"] },
 
   anvil:{ name:"Anvil Heavy", for:'Kabb / custom Heavy', tier:"A", rating:"A", line:"Frontline tank",
     overview:"The wall the rest of the squad hides behind. Taunt enemies onto Kabb, eat the damage with plating, and let your damage dealers work from safety. Melee finishers refund AP for repeat swings.",
-    focus:["<b>Plating</b> 鈫?<b>Bulwark</b> 鈫?<b>Knockout</b>: stack damage reduction, force enemies to attack you, then snowball melee kills."],
-    weapon:"Repeater 鈥?area suppression between melee engages.",
-    secondary:"Soldier 鈥?extra durability and flexible mid-range tools.",
+    focus:["<b>Plating</b> →<b>Bulwark</b> →<b>Knockout</b>: stack damage reduction, force enemies to attack you, then snowball melee kills."],
+    weapon:"Repeater —area suppression between melee engages.",
+    secondary:"Soldier —extra durability and flexible mid-range tools.",
     synergy:"Requires a <b>Medic</b> behind him (sustained anvil) and pairs with <b>Gunslinger</b> finishers on the enemies he's pinned.",
     strengths:["Soaks enemy focus, protects the squad","Controls enemy targeting via taunt","Strong melee burst on staggered targets"],
-    weaknesses:["Low mobility 鈥?slow to reposition","Limited range output","Falls behind without healing support"] },
+    weaknesses:["Low mobility —slow to reposition","Limited range output","Falls behind without healing support"] },
 };
 
 const MISSIONS = {
@@ -760,38 +786,38 @@ const MISSIONS = {
     objectives:[{t:"Secure the docking ring",crit:true},{t:"Eliminate all hostiles",crit:true},{t:"Reach the extraction point within the turn limit",crit:false}],
     hostiles:["b1","b2"],
     squad:["hawks","trick","kabb","luco"],
-    walk:["<b>Advance in cover.</b> Move along the left containers 鈥?never end a turn in the open against the B1 line.","<b>Bait the Overwatch.</b> Send Kabb forward to draw fire, then flank with Trick for guaranteed hits.","<b>Hold the choke.</b> Set Luco on the gantry for a long sightline and let Overwatch thin reinforcements.","<b>Clear and extract.</b> Mop up stragglers, then move the full squad to extraction before the timer expires."],
+    walk:["<b>Advance in cover.</b> Move along the left containers —never end a turn in the open against the B1 line.","<b>Bait the Overwatch.</b> Send Kabb forward to draw fire, then flank with Trick for guaranteed hits.","<b>Hold the choke.</b> Set Luco on the gantry for a long sightline and let Overwatch thin reinforcements.","<b>Clear and extract.</b> Mop up stragglers, then move the full squad to extraction before the timer expires."],
     rewards:["Credits","First squad Bond progress","Tutorial Focus Points"] },
 
   umbara:{ name:"Shadow Over Umbara", crit:true, planet:"Umbara", diff:"Mid-campaign",
-    overview:"A low-visibility op on the shadow planet where Trick and Luco's history comes to a head. Tight sightlines reward control and punish overextension 鈥?manage the friction or it costs you mid-fight.",
+    overview:"A low-visibility op on the shadow planet where Trick and Luco's history comes to a head. Tight sightlines reward control and punish overextension —manage the friction or it costs you mid-fight.",
     objectives:[{t:"Disable the Umbaran sensor array",crit:true},{t:"Extract the informant alive",crit:true},{t:"Resolve the Trick / Luco confrontation",crit:false}],
     hostiles:["b2","droideka","commando"],
     squad:["hawks","telrea","luco","custom_medic"],
-    walk:["<b>Lead with control.</b> Open with Tel鈥慠ea's Shockwave to scatter the first entrenched cluster.","<b>Mind the grudge.</b> Deploying Trick and Luco together risks a friction penalty 鈥?bring one, or accept the trade and keep them apart on the map.","<b>Drop the Droideka shields.</b> Hit destroyers with ion / sustained fire to collapse the shield, then focus them down before they redeploy.","<b>Cover the informant.</b> Escort to extraction under smoke; never leave them adjacent to a Commando Droid."],
+    walk:["<b>Lead with control.</b> Open with Tel'Rea's Shockwave to scatter the first entrenched cluster.","<b>Mind the grudge.</b> Deploying Trick and Luco together risks a friction penalty —bring one, or accept the trade and keep them apart on the map.","<b>Drop the Droideka shields.</b> Hit destroyers with ion / sustained fire to collapse the shield, then focus them down before they redeploy.","<b>Cover the informant.</b> Escort to extraction under smoke; never leave them adjacent to a Commando Droid."],
     rewards:["High Credits","Major Bond / Dilemma outcome","Rare equipment"] },
 
-  ryloth:{ name:"Ryloth Extraction", crit:false, planet:"Ryloth", diff:"Side op 路 time-limited",
-    overview:"An optional smash-and-grab on Ryloth. Generous Advantage economy makes it a clean playground for an aggressive, mobility-first squad 鈥?but it vanishes from the galaxy map if you wait too long.",
+  ryloth:{ name:"Ryloth Extraction", crit:false, planet:"Ryloth", diff:"Side op · time-limited",
+    overview:"An optional smash-and-grab on Ryloth. Generous Advantage economy makes it a clean playground for an aggressive, mobility-first squad —but it vanishes from the galaxy map if you wait too long.",
     objectives:[{t:"Raid the supply cache",crit:false},{t:"Exfiltrate before reinforcements arrive",crit:false}],
     hostiles:["b1","commando"],
     squad:["cly","jae","luco","custom_gun"],
-    walk:["<b>Hit fast.</b> Jetpack Cly onto the cache roof turn one for an immediate flank.","<b>Snowball with Jae.</b> Identify Weakness into a Gunslinger chain clears the courtyard quickly.","<b>Don't linger.</b> Grab the cache and exfil 鈥?reinforcements scale the longer you stay."],
+    walk:["<b>Hit fast.</b> Jetpack Cly onto the cache roof turn one for an immediate flank.","<b>Snowball with Jae.</b> Identify Weakness into a Gunslinger chain clears the courtyard quickly.","<b>Don't linger.</b> Grab the cache and exfil —reinforcements scale the longer you stay."],
     rewards:["Bonus Credits","Advantage-boosting gear","Cosmetic recolor"] },
 };
 
 const HOSTILES = {
   b1:{ name:"B1 Battle Droid", threat:"C", hp:30, role:"Line infantry / fodder",
-    weak:"Everything 鈥?minimal armor; dies to a single solid hit.", resist:"None.",
+    weak:"Everything —minimal armor; dies to a single solid hit.", resist:"None.",
     counter:"Don't overspend. Clear with cheap attacks or Overwatch and save ultimates/Advantage for real threats. Numbers are the only danger." },
   b2:{ name:"B2 Super Battle Droid", threat:"B", hp:65, role:"Armored assault droid",
-    weak:"Flanking, explosives, Heavy fire 鈥?armor falls off fast once exposed.", resist:"Light blaster fire from the front (chip damage).",
+    weak:"Flanking, explosives, Heavy fire —armor falls off fast once exposed.", resist:"Light blaster fire from the front (chip damage).",
     counter:"Strip its cover or flank it, then commit Assault/Heavy damage. Don't trade pistol shots into its front plate." },
   droideka:{ name:"Droideka (Destroyer Droid)", threat:"S", hp:90, role:"Shielded heavy",
-    weak:"Ion effects and sustained fire collapse the deflector shield; it's fragile underneath.", resist:"Ranged damage while shielded 鈥?most shots are wasted on a full shield.",
-    counter:"Phase one: drop the shield with ion / concentrated fire (or hit it before it deploys). Phase two: flank and burst it down immediately 鈥?it re-shields if given a turn. A classic Sharpshooter + Assault setup." },
+    weak:"Ion effects and sustained fire collapse the deflector shield; it's fragile underneath.", resist:"Ranged damage while shielded —most shots are wasted on a full shield.",
+    counter:"Phase one: drop the shield with ion / concentrated fire (or hit it before it deploys). Phase two: flank and burst it down immediately —it re-shields if given a turn. A classic Sharpshooter + Assault setup." },
   commando:{ name:"Commando Droid", threat:"A", hp:55, role:"Agile skirmisher / melee",
-    weak:"Crowd control and Overwatch 鈥?it wants to close distance; deny the approach.", resist:"Evasive against single long-range shots while moving.",
+    weak:"Crowd control and Overwatch —it wants to close distance; deny the approach.", resist:"Evasive against single long-range shots while moving.",
     counter:"Lock it down with control (Shockwave / stagger) or wall it off with Overwatch, then focus fire before it reaches your backline." },
 };
 
@@ -806,15 +832,15 @@ function renderHome(){
   const feat=["hawks","cly","telrea","luco"];
   $("homeOps").innerHTML = feat.map(id=>{const o=OPS[id];return `
     <div class="card op-card brk" onclick="openOp('${id}')">
-      <div class="op-top">${sigil(o)}<div><div class="tag">${o.tier==='S'?'S鈥慣IER':o.classification.split('鈥?)[0]}</div><h3 style="margin:4px 0 0">${o.name}</h3><div class="role">${o.role}</div></div></div>
-      <div class="meta"><span class="tierbadge t-${o.tier}">${o.tier}</span><span class="pill teal">${o.cls.split('路')[0].trim()}</span></div>
+      <div class="op-top">${sigil(o)}<div><div class="tag">${o.tier==='S'?'S-TIER':o.classification.split('—')[0]}</div><h3 style="margin:4px 0 0">${o.name}</h3><div class="role">${o.role}</div></div></div>
+      <div class="meta"><span class="tierbadge t-${o.tier}">${o.tier}</span><span class="pill teal">${o.cls.split('·')[0].trim()}</span></div>
     </div>`;}).join("");
 }
 function renderOpIndex(){
   $("opIndex").innerHTML = Object.keys(OPS).map(id=>{const o=OPS[id];return `
     <div class="card op-card brk" onclick="openOp('${id}')">
       <div class="op-top">${sigil(o)}<div><h3 style="margin:0">${o.name}</h3><div class="role">${o.role}</div></div><span class="tierbadge t-${o.tier}" style="margin-left:auto">${o.tier}</span></div>
-      <p style="margin-top:12px">${o.blurb.slice(0,96)}鈥?/p>
+      <p style="margin-top:12px">${o.blurb.slice(0,96)}...</p>
       <div class="meta"><span class="pill">${o.species}</span><span class="pill">${o.weapon}</span></div>
     </div>`;}).join("");
 }
@@ -826,9 +852,9 @@ function openOp(id){
   const bars=Object.entries(o.bars).map(([k,v])=>`
     <div class="statrow"><div class="top"><span>${k}</span><b>${v}</b></div><div class="bar"><i style="width:${v}%"></i></div></div>`).join("");
   const focus=o.focus.map(f=>`<div class="node ${f.rec?'rec':''}"><div class="tier">${f.t}</div><h4>${f.h}</h4><p>${f.p}</p></div>`).join("");
-  const squad=o.squad.map(s=>{const t=ALL[s];return `<span class="chip" onclick="event.stopPropagation();${OPS[s]?`openOp('${s}')`:`go('muster')`}">${t.name}<span class="ar">鈫?/span></span>`;}).join("");
-  const ops=o.ops.map(m=>`<span class="chip" onclick="event.stopPropagation();openMission('${m}')">${MISSIONS[m].name}<span class="ar">鈫?/span></span>`).join("");
-  const buildChip=o.build?`<div class="chip" onclick="openBuild('${o.build}')" style="border-color:var(--teal-dim)"><b style="font-family:var(--fd)">${BUILDS[o.build].name}</b><span class="ar">鈫?open loadout</span></div>`:`<span class="muted mono" style="font-size:12px">Flexible 鈥?viable in most standard specs.</span>`;
+  const squad=o.squad.map(s=>{const t=ALL[s];return `<span class="chip" onclick="event.stopPropagation();${OPS[s]?`openOp('${s}')`:`go('muster')`}">${t.name}<span class="ar">→</span></span>`;}).join("");
+  const ops=o.ops.map(m=>`<span class="chip" onclick="event.stopPropagation();openMission('${m}')">${MISSIONS[m].name}<span class="ar">→</span></span>`).join("");
+  const buildChip=o.build?`<div class="chip" onclick="openBuild('${o.build}')" style="border-color:var(--teal-dim)"><b style="font-family:var(--fd)">${BUILDS[o.build].name}</b><span class="ar">→open loadout</span></div>`:`<span class="muted mono" style="font-size:12px">Flexible —viable in most standard specs.</span>`;
 
   $("dossierBody").innerHTML = `
     <div class="dpanel brk">
@@ -846,10 +872,10 @@ function openOp(id){
       <h1 class="page" style="font-size:30px">${o.name}</h1>
       <p class="lead" style="margin-bottom:18px">${o.blurb}</p>
       <div class="block" style="border-color:var(--gold-dim);background:linear-gradient(180deg,rgba(233,184,74,.07),transparent)">
-        <h3 style="color:var(--gold)">猬?Signature ability</h3>
+        <h3 style="color:var(--gold)">▲Signature ability</h3>
         <p style="margin:0;font-size:15px">${o.sig}</p>
       </div>
-      <h2 class="sec" style="font-size:18px">Focus tree 鈥?recommended path</h2>
+      <h2 class="sec" style="font-size:18px">Focus tree —recommended path</h2>
       <div class="focus">${focus}</div>
       <h2 class="sec" style="font-size:18px">Recommended loadout</h2>
       <div class="linkrow">${buildChip}</div>
@@ -870,7 +896,7 @@ function renderTier(){
         <div class="sigil">${c.n[0]}</div>
         <div><b>${c.n}</b><small>${c.role}</small></div>
       </div>`).join("");
-    return `<div class="tier-row"><div class="tier-label tl-${t}">${t}</div><div class="tier-items">${items||'<span class="muted mono">鈥?/span>'}</div></div>`;
+    return `<div class="tier-row"><div class="tier-label tl-${t}">${t}</div><div class="tier-items">${items||'<span class="muted mono">—</span>'}</div></div>`;
   }).join("") + `<div class="tier-row"><div class="tier-label" style="color:var(--faint)">?</div><div class="tier-items">${CLASSES.filter(c=>c.tier==='?').map(c=>`<div class="tier-chip" onclick="openClass('${c.id}')"><div class="sigil">?</div><div><b>${c.n}</b><small>${c.role}</small></div></div>`).join("")}</div></div>`;
 }
 function openClass(id){
@@ -917,7 +943,7 @@ function openBuild(id){
       <div class="block" style="border-color:var(--teal-dim)"><h3 style="color:var(--teal)">Strengths</h3><ul>${b.strengths.map(s=>`<li>${s}</li>`).join("")}</ul></div>
       <div class="block" style="border-color:var(--red-dim)"><h3 style="color:var(--red)">Weaknesses</h3><ul>${b.weaknesses.map(s=>`<li>${s}</li>`).join("")}</ul></div>
     </div>
-    <div class="rating"><div class="big">${b.rating}</div><div><div class="mono" style="font-size:11px;letter-spacing:.16em;color:var(--muted)">ENDGAME RATING</div><div style="font-size:14px">${b.line} 鈥?viability in the projected launch meta.</div></div></div>`;
+    <div class="rating"><div class="big">${b.rating}</div><div><div class="mono" style="font-size:11px;letter-spacing:.16em;color:var(--muted)">ENDGAME RATING</div><div style="font-size:14px">${b.line} —viability in the projected launch meta.</div></div></div>`;
   go('build');
 }
 
@@ -925,22 +951,22 @@ function openBuild(id){
 function renderOpsIndex(){
   $("opsIndex").innerHTML = Object.keys(MISSIONS).map(id=>{const m=MISSIONS[id];return `
     <div class="card brk" onclick="openMission('${id}')">
-      <div class="tag">${m.planet} 路 ${m.diff}</div>
+      <div class="tag">${m.planet} · ${m.diff}</div>
       <h3 style="margin:8px 0 4px">${m.name}</h3>
-      <p>${m.overview.slice(0,110)}鈥?/p>
+      <p>${m.overview.slice(0,110)}...</p>
       <div class="meta">${m.crit?'<span class="pill red">CRITICAL</span>':'<span class="pill">SIDE OP</span>'}<span class="pill teal">${m.hostiles.length} hostile types</span></div>
     </div>`;}).join("");
 }
 function openMission(id){
   const m=MISSIONS[id];
   $("oCrumb").textContent=m.name.toUpperCase();
-  const obj=m.objectives.map(o=>`<div class="objline ${o.crit?'crit':''}"><span class="mk">${o.crit?'鈼?:'鈼?}</span><span>${o.t}${o.crit?' <span class="muted mono" style="font-size:11px">路 required</span>':''}</span></div>`).join("");
-  const host=m.hostiles.map(h=>`<span class="chip" onclick="openHostile('${h}')">${HOSTILES[h].name}<span class="ar">鈫?/span></span>`).join("");
-  const sq=m.squad.map(s=>{const t=ALL[s];return `<span class="chip" onclick="${OPS[s]?`openOp('${s}')`:`go('muster')`}">${t.name}<span class="ar">鈫?/span></span>`;}).join("");
+  const obj=m.objectives.map(o=>`<div class="objline ${o.crit?'crit':''}"><span class="mk">${o.crit?'!':'•'}</span><span>${o.t}${o.crit?' <span class="muted mono" style="font-size:11px">· required</span>':''}</span></div>`).join("");
+  const host=m.hostiles.map(h=>`<span class="chip" onclick="openHostile('${h}')">${HOSTILES[h].name}<span class="ar">→</span></span>`).join("");
+  const sq=m.squad.map(s=>{const t=ALL[s];return `<span class="chip" onclick="${OPS[s]?`openOp('${s}')`:`go('muster')`}">${t.name}<span class="ar">→</span></span>`;}).join("");
   const walk=m.walk.map(w=>`<div class="step"><div class="n"></div><p>${w}</p></div>`).join("");
   $("opBody").innerHTML=`
     <h1 class="page">${m.name}</h1>
-    <div class="linkrow" style="margin-bottom:18px">${m.crit?'<span class="pill red">CRITICAL OP</span>':'<span class="pill">SIDE OP 路 TIME-LIMITED</span>'}<span class="pill teal">${m.planet}</span><span class="pill">${m.diff}</span></div>
+    <div class="linkrow" style="margin-bottom:18px">${m.crit?'<span class="pill red">CRITICAL OP</span>':'<span class="pill">SIDE OP · TIME-LIMITED</span>'}<span class="pill teal">${m.planet}</span><span class="pill">${m.diff}</span></div>
     <div class="block"><h3>Overview</h3><p style="margin:0">${m.overview}</p></div>
     <div class="split">
       <div class="block"><h3>Objectives</h3>${obj}</div>
@@ -956,7 +982,7 @@ function renderHostIndex(){
   $("hostIndex").innerHTML = Object.keys(HOSTILES).map(id=>{const h=HOSTILES[id];return `
     <div class="card brk" onclick="openHostile('${id}')">
       <div style="display:flex;align-items:center;gap:12px"><span class="tierbadge t-${h.threat==='?'?'C':h.threat}">${h.threat}</span><div><h3 style="margin:0">${h.name}</h3><div class="role mono" style="font-size:11px;color:var(--muted)">${h.role}</div></div></div>
-      <p style="margin-top:12px"><b style="color:var(--text)">HP ${h.hp}</b> 路 ${h.weak.slice(0,60)}鈥?/p>
+      <p style="margin-top:12px"><b style="color:var(--text)">HP ${h.hp}</b> · ${h.weak.slice(0,60)}...</p>
     </div>`;}).join("");
 }
 function openHostile(id){
@@ -974,7 +1000,7 @@ function openHostile(id){
 }
 
 /* ===========================================================
-   MUSTER BOARD 鈥?squad builder (the differentiating tool)
+   MUSTER BOARD —squad builder (the differentiating tool)
    =========================================================== */
 let squad=[null,null,null,null];
 const AXES=["ATK","DEF","SUP","MOB","CTL"];
@@ -986,27 +1012,27 @@ const BONDS=[
   {a:"cly",b:"telrea",label:"Honor & the Force",txt:"complementary entry tools open the enemy line."},
 ];
 const FRICTION=[
-  {a:"trick",b:"luco",label:"Umbara Grudge",txt:"unresolved history 鈥?cohesion penalty until the Dilemma is settled."},
+  {a:"trick",b:"luco",label:"Umbara Grudge",txt:"unresolved history —cohesion penalty until the Dilemma is settled."},
 ];
 const COMBOS=[ // by class
-  {a:"Assault",b:"Sharpshooter",label:"Cover Strip 鈫?Headshot",txt:"Assault breaks cover so the marksman lands the kill."},
-  {a:"Scoundrel",b:"Sharpshooter",label:"Identify Weakness 鈫?Crit",txt:"flag a target, then guarantee a critical hit."},
+  {a:"Assault",b:"Sharpshooter",label:"Cover Strip →Headshot",txt:"Assault breaks cover so the marksman lands the kill."},
+  {a:"Scoundrel",b:"Sharpshooter",label:"Identify Weakness →Crit",txt:"flag a target, then guarantee a critical hit."},
   {a:"Medic",b:"Heavy",label:"Sustained Anvil",txt:"healing keeps the tank holding the line indefinitely."},
   {a:"Medic",b:"Gunslinger",label:"Combat Stim Spray",txt:"the damage buff turns many small shots into a spike."},
-  {a:"Commander 路 Soldier base",b:"Gunslinger",label:"Refresh the Chain",txt:"refresh AP after a kill to extend the finisher chain."},
+  {a:"Commander · Soldier base",b:"Gunslinger",label:"Refresh the Chain",txt:"refresh AP after a kill to extend the finisher chain."},
 ];
 
 function renderRoster(){
   $("roster").innerHTML = Object.keys(ALL).map(id=>{
     const o=ALL[id]; const inSquad=squad.includes(id);
-    return `<div class="r-chip ${inSquad?'in':''}" onclick="addToSquad('${id}')">${sigil(o)}<div><b>${o.name}</b><small>${(o.cls||'').split('路')[0].trim()} 路 ${o.tier}</small></div></div>`;
+    return `<div class="r-chip ${inSquad?'in':''}" onclick="addToSquad('${id}')">${sigil(o)}<div><b>${o.name}</b><small>${(o.cls||'').split('·')[0].trim()} · ${o.tier}</small></div></div>`;
   }).join("");
 }
 function renderSlots(){
   $("slots").innerHTML = squad.map((id,i)=>{
-    if(!id) return `<div class="slot"><div class="ph">SLOT ${i+1} 路 EMPTY</div></div>`;
+    if(!id) return `<div class="slot"><div class="ph">SLOT ${i+1} · EMPTY</div></div>`;
     const o=ALL[id];
-    return `<div class="slot filled brk"><span class="x" onclick="removeSlot(${i})" title="remove">鉁?/span>${sigil(o)}<div class="info"><b>${o.name}</b><small>${(o.cls||'').split('路')[0].trim()}</small></div></div>`;
+    return `<div class="slot filled brk"><span class="x" onclick="removeSlot(${i})" title="remove">×/span>${sigil(o)}<div class="info"><b>${o.name}</b><small>${(o.cls||'').split('·')[0].trim()}</small></div></div>`;
   }).join("");
 }
 function addToSquad(id){
@@ -1080,25 +1106,25 @@ function updateMuster(){
 
   if(!filled.length){
     lines=`<div class="synline warn"><span class="ic">!</span><span>Empty board. Add operatives to read coverage.</span></div>`;
-    $("squadGrade").textContent="鈥?; $("squadGrade").style.color="var(--faint)";
+    $("squadGrade").textContent="—"; $("squadGrade").style.color="var(--faint)";
     $("synergies").innerHTML=lines; return;
   }
 
   // detected bonds
-  BONDS.forEach(p=>{ if(filled.includes(p.a)&&filled.includes(p.b)){ score+=12; lines+=`<div class="synline good"><span class="ic">+</span><span><b>${p.label}</b> 鈥?${p.txt}</span></div>`; }});
+  BONDS.forEach(p=>{ if(filled.includes(p.a)&&filled.includes(p.b)){ score+=12; lines+=`<div class="synline good"><span class="ic">+</span><span><b>${p.label}</b> —${p.txt}</span></div>`; }});
   // detected class combos
-  COMBOS.forEach(c=>{ if(classesIn.includes(c.a)&&classesIn.includes(c.b)){ score+=10; lines+=`<div class="synline good"><span class="ic">猬?/span><span><b>${c.label}</b> 鈥?${c.txt}</span></div>`; }});
+  COMBOS.forEach(c=>{ if(classesIn.includes(c.a)&&classesIn.includes(c.b)){ score+=10; lines+=`<div class="synline good"><span class="ic">▲/span><span><b>${c.label}</b> —${c.txt}</span></div>`; }});
   // frictions
-  FRICTION.forEach(p=>{ if(filled.includes(p.a)&&filled.includes(p.b)){ score-=14; lines+=`<div class="synline bad"><span class="ic">鉁?/span><span><b>${p.label}</b> 鈥?${p.txt}</span></div>`; }});
+  FRICTION.forEach(p=>{ if(filled.includes(p.a)&&filled.includes(p.b)){ score-=14; lines+=`<div class="synline bad"><span class="ic">×/span><span><b>${p.label}</b> —${p.txt}</span></div>`; }});
 
   // coverage warnings
   const hasSustain=filled.some(id=>/Medic|Astromech/.test(ALL[id].cls));
   const hasFront=filled.some(id=>/Heavy|Assault|Mandalorian|brawler|Soldier/.test(ALL[id].cls));
   const hasDPS=filled.some(id=>/Sharpshooter|Gunslinger/.test(ALL[id].cls));
   if(!hasSustain) lines+=`<div class="synline warn"><span class="ic">!</span><span><b>No sustain.</b> Without a Medic or Astromech, Injuries stack toward permadeath. Add one.</span></div>`;
-  if(!hasFront) lines+=`<div class="synline warn"><span class="ic">!</span><span><b>No frontline.</b> Squishy specialists will get focused down 鈥?add a Heavy or Assault.</span></div>`;
+  if(!hasFront) lines+=`<div class="synline warn"><span class="ic">!</span><span><b>No frontline.</b> Squishy specialists will get focused down —add a Heavy or Assault.</span></div>`;
   if(!hasDPS) lines+=`<div class="synline warn"><span class="ic">!</span><span><b>Low kill power.</b> Consider a Sharpshooter or Gunslinger to close out targets.</span></div>`;
-  if(hasSustain&&hasFront&&hasDPS&&filled.length===4) lines+=`<div class="synline good"><span class="ic">鉁?/span><span><b>Balanced core.</b> Frontline, sustain and kill power all covered.</span></div>`;
+  if(hasSustain&&hasFront&&hasDPS&&filled.length===4) lines+=`<div class="synline good"><span class="ic">×/span><span><b>Balanced core.</b> Frontline, sustain and kill power all covered.</span></div>`;
 
   // grade from average attribute + synergy score
   const avg=vec.reduce((a,b)=>a+b,0)/5;
@@ -1130,7 +1156,7 @@ function runSearch(){
   const box=$("searchResults");
   if(!q){box.innerHTML="";return;}
   const hits=SEARCH_IDX.filter(x=>x.n.toLowerCase().includes(q)||x.k.toLowerCase().includes(q)).slice(0,7);
-  box.innerHTML = hits.length ? hits.map((h,i)=>`<div class="sr-item" data-i="${i}"><span class="k">${h.k}</span><span class="n">${h.n}</span><span class="ar mono" style="margin-left:auto;color:var(--teal)">鈫?/span></div>`).join("")
+  box.innerHTML = hits.length ? hits.map((h,i)=>`<div class="sr-item" data-i="${i}"><span class="k">${h.k}</span><span class="n">${h.n}</span><span class="ar mono" style="margin-left:auto;color:var(--teal)">→</span></div>`).join("")
     : `<div class="sr-item" style="cursor:default"><span class="muted mono" style="font-size:13px">No match for "${q}". Try: hawks, droideka, sharpshooter, kafrene.</span></div>`;
   box.querySelectorAll('.sr-item[data-i]').forEach(el=>el.onclick=()=>{hits[el.dataset.i].go();box.innerHTML="";$("search").value="";});
 }
@@ -1150,7 +1176,7 @@ function go(route){
 }
 
 /* ===========================================================
-   COUNTDOWN to launch 鈥?27 Aug 2026
+   COUNTDOWN to launch —27 Aug 2026
    =========================================================== */
 function countdown(){
   const launch=new Date("2026-08-27T00:00:00Z");
@@ -1168,5 +1194,6 @@ if(h&&VIEWS.includes(h)) go(h);
 </script>
 </body>
 </html>
+
 
 
