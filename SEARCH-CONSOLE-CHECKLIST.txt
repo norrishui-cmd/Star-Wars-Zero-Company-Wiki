@@ -1,0 +1,13 @@
+Search Console sitemap recovery checklist
+
+Canonical host: https://starwarszerocompany.cc/
+Submit only these in the https://starwarszerocompany.cc property:
+1. https://starwarszerocompany.cc/sitemap.xml
+2. https://starwarszerocompany.cc/sitemap-index.xml
+
+Do not submit the www sitemap URL unless you also verify the www property and it returns 200 directly. Current www behavior is a redirect to the apex host, which can show as Unable to fetch in Search Console.
+
+After upload:
+- Open https://starwarszerocompany.cc/sitemap.xml in an incognito browser. It must show XML, not an HTML page.
+- Open https://starwarszerocompany.cc/robots.txt and confirm it lists the sitemap URLs.
+- In Search Console, remove the www sitemap row, resubmit only the apex sitemap URL, then use URL Inspection on https://starwarszerocompany.cc/ and click Test live URL.
