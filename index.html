@@ -153,6 +153,26 @@ button{font-family:inherit}
 .nav a:hover{color:var(--text);background:rgba(255,255,255,.03)}
 .nav a.active{color:var(--teal)}
 .nav a.active::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;height:2px;background:var(--teal);box-shadow:0 0 8px var(--teal)}
+.nav-group{position:relative;display:inline-flex;align-items:center}
+.subnav{
+  position:absolute;
+  top:100%;
+  left:0;
+  min-width:178px;
+  padding:8px;
+  border:1px solid var(--line-2);
+  border-radius:5px;
+  background:rgba(8,11,15,.98);
+  box-shadow:0 18px 48px -28px rgba(0,0,0,.9);
+  display:none;
+}
+.subnav a{
+  display:block;
+  padding:8px 9px;
+  font-size:12px;
+}
+.nav-group:hover .subnav,
+.nav-group:focus-within .subnav{display:block}
 
 .tminus{grid-area:status;margin-left:0;display:flex;align-items:center;gap:9px;font-family:var(--fm);font-size:11px;color:var(--muted);white-space:nowrap;justify-self:end}
 .tminus .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red);animation:pulse 2s ease-in-out infinite}
@@ -637,6 +657,7 @@ footer a:hover{color:var(--teal)}
       <a href="/operations/">Operations</a>
       <a href="/hostiles/">Hostiles</a>
       <a href="/guides/">Guides</a>
+      <span class="nav-group"><a href="/about/">About</a><span class="subnav"><a href="/about/editorial-policy.html">Policy</a><a href="/about/sources-and-citations.html">Sources</a><a href="/about/update-log.html">Updates</a><a href="/about/contact.html">Contact</a></span></span>
       <a data-route="muster" onclick="go('muster')">Muster Board</a>
     </nav>
     <div class="tminus" id="tminus"><span class="dot"></span>T-MINUS <b id="tdays">—</b> TO DEPLOYMENT</div>
@@ -800,6 +821,12 @@ footer a:hover{color:var(--teal)}
     <a class="card brk" href="/squads/"><div class="tag">Long-tail</div><h3>Squad modules</h3><p>Mission, role and risk-based team composition pages.</p></a>
     <a class="card brk" href="/pairings/"><div class="tag">Long-tail</div><h3>Pairing pages</h3><p>Two-character synergy and friction guide URLs.</p></a>
     <a class="card brk" href="/counters/"><div class="tag">Long-tail</div><h3>Counter matrix</h3><p>Enemy-by-class counter pages for narrow tactical searches.</p></a>
+    <a class="card brk" href="/about/"><div class="tag">Trust</div><h3>About hub</h3><p>Editorial policy, sources, update log, roadmap and corrections pages.</p></a>
+    <a class="card brk" href="/glossary/"><div class="tag">Long-tail</div><h3>Glossary</h3><p>Short definition pages for AP, bonds, overwatch, extraction and more.</p></a>
+    <a class="card brk" href="/questions/"><div class="tag">Long-tail</div><h3>Decision FAQ</h3><p>Question pages with direct answers and decision trees.</p></a>
+    <a class="card brk" href="/compare/"><div class="tag">Long-tail</div><h3>Comparisons</h3><p>Versus-intent pages for classes, roles, enemies and campaign choices.</p></a>
+    <a class="card brk" href="/scenarios/"><div class="tag">Long-tail</div><h3>Scenario playbooks</h3><p>Situation-specific tactical pages for shields, timers and ambushes.</p></a>
+    <a class="card brk" href="/campaign/"><div class="tag">Long-tail</div><h3>Campaign routes</h3><p>Route planning pages for upgrades, bonds, side ops and launch week.</p></a>
   </div>
 </section>
 </main>
@@ -1393,6 +1420,7 @@ if(h&&VIEWS.includes(h)) go(h);
 </script>
 </body>
 </html>
+
 
 
 

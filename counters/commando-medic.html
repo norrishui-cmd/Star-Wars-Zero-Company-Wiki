@@ -16,10 +16,10 @@
 <style>
 :root{--bg:#080b0f;--panel:#101821;--panel2:#0c1219;--line:#243444;--text:#dce6ee;--muted:#8ea0ae;--teal:#34e0c4;--gold:#e9b84a;--red:#ff5a57;--max:1000px}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 520px at 80% -10%,rgba(52,224,196,.08),transparent),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:var(--max);margin:auto;padding:0 22px}.top{border-bottom:1px solid var(--line);background:rgba(8,11,15,.94);position:sticky;top:0;z-index:2}.top .wrap{min-height:58px;display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.brand{font-weight:800;color:var(--text)}.nav{margin-left:auto;display:flex;gap:8px 14px;flex-wrap:wrap;justify-content:flex-end}.nav a{color:var(--muted);font-size:14px}.hero{padding:52px 0 28px}.crumb{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}h1{font-size:clamp(32px,6vw,54px);line-height:1.05;margin:14px 0 12px}h2{font-size:22px;margin:34px 0 12px;border-left:4px solid var(--teal);padding-left:12px}h3{margin:0 0 8px}.lead{font-size:18px;color:var(--muted);max-width:780px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card,.block{border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--panel),var(--panel2));padding:18px;margin:14px 0}.pill{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:4px 8px;margin:4px 6px 4px 0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.gold{color:var(--gold);border-color:rgba(233,184,74,.45)}.teal{color:var(--teal);border-color:rgba(52,224,196,.45)}.red{color:var(--red);border-color:rgba(255,90,87,.45)}li{margin:7px 0}.mini{color:var(--muted);font-size:14px}.footer{border-top:1px solid var(--line);margin-top:44px;padding:26px 0;color:var(--muted);font-size:14px}
-</style>
+.nav-group{position:relative;display:inline-flex;align-items:center}.subnav{position:absolute;top:100%;left:0;min-width:168px;padding:8px;border:1px solid var(--line);border-radius:5px;background:rgba(8,11,15,.98);box-shadow:0 18px 48px -28px rgba(0,0,0,.9);display:none}.subnav a{display:block;padding:8px 9px;font-size:12px}.nav-group:hover .subnav,.nav-group:focus-within .subnav{display:block}</style>
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="/">StarWars Zero Company Wiki</a><nav class="nav"><a href="/guides/">Long-tail Guides</a><a href="/squads/">Squads</a><a href="/pairings/">Pairings</a><a href="/counters/">Counters</a><a href="/operatives/">Operatives</a><a href="/classes/">Classes</a></nav></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="/">StarWars Zero Company Wiki</a><nav class="nav"><span class="nav-group"><a href="/about/">About</a><span class="subnav"><a href="/about/editorial-policy.html">Policy</a><a href="/about/sources-and-citations.html">Sources</a><a href="/about/update-log.html">Updates</a><a href="/about/contact.html">Contact</a></span></span><a href="/guides/">Long-tail Guides</a><a href="/squads/">Squads</a><a href="/pairings/">Pairings</a><a href="/counters/">Counters</a><a href="/operatives/">Operatives</a><a href="/classes/">Classes</a></nav></div></header>
 <main class="wrap">
 <section class="hero"><div class="crumb">Enemy x Class Counter</div><h1>Medic vs Commando Droid</h1><p class="lead">A narrow tactical answer for players asking whether Medic can handle Commando Droid safely.</p><span class="pill red">Threat A</span><span class="pill teal">Sustain / buffs</span><span class="pill gold">Good Fit</span></section>
 <section class="block"><h2>Short Answer</h2><p>Medic can contribute strongly against Commando Droid. The key is to respect the enemy resistance: Evasive against single long-range shots while moving.</p></section>
@@ -30,5 +30,7 @@
 <footer class="footer"><div class="wrap">StarWars Zero Company Wiki long-tail guide hub for Star Wars Zero Company. <a href="/sitemap.xml">Sitemap</a></div></footer>
 </body>
 </html>
+
+
 
 
