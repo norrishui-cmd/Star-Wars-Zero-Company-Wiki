@@ -4,3 +4,5 @@ Allow: /
 Sitemap: https://starwarszerocompany.cc/sitemap.xml
 Sitemap: https://starwarszerocompany.cc/sitemap-index.xml
 Sitemap: https://starwarszerocompany.cc/sitemap-pages.xml
+Sitemap: https://starwarszerocompany.cc/sitemap-core.xml
+Sitemap: https://starwarszerocompany.cc/sitemap.txt
