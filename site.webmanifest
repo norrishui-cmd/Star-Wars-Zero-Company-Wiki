@@ -1,0 +1,22 @@
+{
+  "name": "StarWars Zero Company Wiki",
+  "short_name": "Zero Company Wiki",
+  "description": "Independent tactical guide wiki for Star Wars Zero Company.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080b0f",
+  "theme_color": "#34e0c4",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
