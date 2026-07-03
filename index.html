@@ -388,6 +388,83 @@ h2.sec::before{content:"";width:4px;height:20px;background:var(--teal);box-shado
 .sr-item .k{font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase;min-width:78px}
 .sr-item .n{font-weight:600}
 
+.launch-countdown{
+  margin-top:22px;
+  max-width:720px;
+  border:1px solid rgba(233,184,74,.42);
+  border-radius:6px;
+  background:
+    linear-gradient(180deg, rgba(233,184,74,.1), rgba(11,17,24,.76)),
+    radial-gradient(340px 160px at 15% 0%, rgba(52,224,196,.12), transparent 62%);
+  box-shadow:inset 0 0 42px rgba(233,184,74,.035), 0 16px 48px -36px rgba(0,0,0,.95);
+  padding:15px;
+}
+.launch-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:12px;
+}
+.launch-head .k{
+  font-family:var(--fm);
+  font-size:10px;
+  letter-spacing:.18em;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+.launch-head strong{
+  display:block;
+  font-family:var(--fd);
+  font-size:18px;
+  letter-spacing:.02em;
+  line-height:1.15;
+  margin-top:3px;
+}
+.launch-head .platforms{
+  font-family:var(--fm);
+  font-size:10px;
+  letter-spacing:.1em;
+  color:var(--muted);
+  text-transform:uppercase;
+  white-space:nowrap;
+  padding-top:4px;
+}
+.launch-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.launch-cell{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:5px;
+  background:rgba(8,11,15,.62);
+  padding:12px 10px;
+  text-align:center;
+}
+.launch-cell .num{
+  font-family:var(--fd);
+  font-size:clamp(24px,4vw,38px);
+  font-weight:800;
+  color:var(--gold);
+  line-height:.95;
+  text-shadow:0 0 18px rgba(233,184,74,.22);
+}
+.launch-cell .unit{
+  font-family:var(--fm);
+  font-size:10px;
+  letter-spacing:.14em;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-top:7px;
+}
+.launch-note{
+  margin:11px 0 0;
+  font-family:var(--fm);
+  font-size:11px;
+  color:var(--muted);
+}
+
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:26px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden}
 .hero-stats .cell{background:var(--panel);padding:16px 18px}
 .hero-stats .v{font-family:var(--fd);font-weight:800;font-size:26px;color:var(--gold);line-height:1}
@@ -598,6 +675,9 @@ footer a:hover{color:var(--teal)}
   .topbar.open .nav{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--void);border-bottom:1px solid var(--line);padding:10px 18px}
   .topbar.open .nav a{padding:11px 4px}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .launch-head{display:block}
+  .launch-head .platforms{margin-top:8px;white-space:normal}
+  .launch-grid{grid-template-columns:repeat(2,1fr)}
   .g4,.g3,.g2,.split,.slots{grid-template-columns:1fr}
   h2.sec{margin-top:30px}
   #view-home{padding-top:48px}
@@ -695,6 +775,23 @@ footer a:hover{color:var(--teal)}
       </div>
       <div class="search-results" id="searchResults"></div>
 
+      <div class="launch-countdown brk" aria-label="Star Wars Zero Company release countdown">
+        <div class="launch-head">
+          <div>
+            <div class="k">Official launch target</div>
+            <strong>Countdown to August 27, 2026</strong>
+          </div>
+          <div class="platforms">PC · PS5 · Xbox Series X/S</div>
+        </div>
+        <div class="launch-grid">
+          <div class="launch-cell"><div class="num" id="cdDays">--</div><div class="unit">Days</div></div>
+          <div class="launch-cell"><div class="num" id="cdHours">--</div><div class="unit">Hours</div></div>
+          <div class="launch-cell"><div class="num" id="cdMins">--</div><div class="unit">Minutes</div></div>
+          <div class="launch-cell"><div class="num" id="cdSecs">--</div><div class="unit">Seconds</div></div>
+        </div>
+        <p class="launch-note">Based on the official EA launch date. Local countdown updates live in your browser.</p>
+      </div>
+
       <div class="hero-stats">
         <div class="cell"><div class="v">12</div><div class="l">Classes indexed</div></div>
         <div class="cell"><div class="v">7+</div><div class="l">Authored operatives</div></div>
@@ -709,7 +806,7 @@ footer a:hover{color:var(--teal)}
 
   <h2 class="sec">Jump to a system</h2>
   <div class="grid g3">
-    <div class="card brk" onclick="go('tier')"><div class="tag">Rankings</div><h3>Class Tier List</h3><p>Every standard &amp; exotic specialization, ranked S鈫扖 for the launch meta with role notes.</p></div>
+    <div class="card brk" onclick="go('tier')"><div class="tag">Rankings</div><h3>Class Tier List</h3><p>Every standard &amp; exotic specialization, ranked S-A for the launch meta with role notes.</p></div>
     <div class="card brk" onclick="go('builds')"><div class="tag">Loadouts</div><h3>Build Guides</h3><p>Focus-tree priorities, weapon spec, secondary pairing, squad synergy and endgame rating.</p></div>
     <div class="card brk" onclick="go('muster')"><div class="tag">Tool · Exclusive</div><h3>Muster Board</h3><p>Drop in four operatives, read live attribute coverage and auto-detected bond synergies.</p></div>
     <div class="card brk" onclick="go('ops')"><div class="tag">Walkthroughs</div><h3>Operations</h3><p>Objectives, hostile roster, recommended squad and turn-by-turn routes for each mission.</p></div>
@@ -1420,13 +1517,24 @@ function go(route){
 function countdown(){
   const launch=new Date("2026-08-27T00:00:00Z");
   const now=new Date();
-  const d=Math.max(0,Math.ceil((launch-now)/86400000));
-  $("tdays").textContent = d>0 ? d+" DAYS" : "LIVE";
+  const diff=Math.max(0,launch-now);
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  $("tdays").textContent = diff>0 ? Math.ceil(diff/86400000)+" DAYS" : "LIVE";
+  if($("cdDays")){
+    $("cdDays").textContent = diff>0 ? String(d) : "0";
+    $("cdHours").textContent = diff>0 ? String(h).padStart(2,"0") : "00";
+    $("cdMins").textContent = diff>0 ? String(m).padStart(2,"0") : "00";
+    $("cdSecs").textContent = diff>0 ? String(s).padStart(2,"0") : "00";
+  }
 }
 
 /* init */
 renderHome(); renderOpIndex(); renderTier(); renderBuildIndex(); renderOpsIndex(); renderHostIndex();
 renderSlots(); renderRoster(); updateMuster(); countdown();
+setInterval(countdown,1000);
 // open from hash if present
 const h=location.hash.replace("#","");
 if(h&&VIEWS.includes(h)) go(h);
