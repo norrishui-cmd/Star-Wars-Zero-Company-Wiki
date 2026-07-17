@@ -1,0 +1,17 @@
+{
+  "site": "https://starwarszerocompany.cc",
+  "reviewed_on": "2026-07-17",
+  "draft_leaf_directories": [
+    "builds",
+    "campaign",
+    "classes",
+    "compare",
+    "counters",
+    "glossary",
+    "operations",
+    "pairings",
+    "scenarios",
+    "squads"
+  ],
+  "notes": "Directory hubs remain indexable. Leaves stay crawlable but noindex until launch evidence makes the answer specific and verifiable."
+}

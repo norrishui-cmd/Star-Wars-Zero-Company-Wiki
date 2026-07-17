@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <meta name="theme-color" content="#080b0f" />
-<title>StarWars Zero Company Wiki</title>
+<title>Star Wars Zero Company Wiki: Guides, Classes & Release Info</title>
 <meta name="description" content="Field intel terminal for Star Wars Zero Company: operative dossiers, class tier list, loadout guides, operation walkthroughs, hostile database, and a live Muster Board squad builder with bond synergy detection." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://starwarszerocompany.cc/" />
@@ -19,22 +19,18 @@
 <!-- Open Graph / social -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://starwarszerocompany.cc/" />
-<meta property="og:title" content="StarWars Zero Company Wiki" />
+<meta property="og:title" content="Star Wars Zero Company Wiki: Guides, Classes & Release Info" />
 <meta property="og:description" content="Dossiers, tier list, loadouts, operations, hostiles, and a live squad synergy builder for Star Wars Zero Company." />
-<meta property="og:site_name" content="StarWars Zero Company Wiki" />
+<meta property="og:site_name" content="Star Wars Zero Company Wiki" />
 
 <!-- Structured data: demonstrates the SEO schema layer the brief requires -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "StarWars Zero Company Wiki",
+  "name": "Star Wars Zero Company Wiki",
   "url": "https://starwarszerocompany.cc/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://starwarszerocompany.cc/search?q={query}",
-    "query-input": "required name=query"
-  }
+  "description": "Independent guides and verified release information for Star Wars Zero Company."
 }
 </script>
 <script type="application/ld+json">
@@ -56,7 +52,7 @@
 
 <style>
 /* ============================================================
-   StarWars Zero Company Wiki —design tokens
+   Star Wars Zero Company Wiki —design tokens
    Subject: Clone Wars covert mercenary ops console at "the Den".
    Faction-coded color is INFORMATION, not decoration:
      teal  = allied / interactive UI
@@ -723,7 +719,7 @@ footer a:hover{color:var(--teal)}
 <!-- ================= NAV ================= -->
 <header class="topbar" id="topbar">
   <div class="wrap topbar-inner">
-    <div class="brand" onclick="go('home')" aria-label="StarWars Zero Company Wiki home">
+    <div class="brand" onclick="go('home')" aria-label="Star Wars Zero Company Wiki home">
       <svg class="cog" viewBox="0 0 100 100" aria-hidden="true">
         <g class="rot" fill="none" stroke="var(--teal)" stroke-width="5">
           <circle cx="50" cy="50" r="20"/>
@@ -732,7 +728,7 @@ footer a:hover{color:var(--teal)}
         <circle cx="50" cy="50" r="6" fill="var(--gold)"/>
       </svg>
       <div>
-        <b>StarWars Zero Company Wiki</b>
+        <b>Star Wars Zero Company Wiki</b>
         <span>FIELD INTEL // ZERO COMPANY</span>
       </div>
     </div>
@@ -789,7 +785,7 @@ footer a:hover{color:var(--teal)}
         <div class="launch-head">
           <div>
             <div class="k">Official launch target</div>
-            <strong>Countdown to August 27, 2026</strong>
+            <strong>Countdown to August 27, 2026 at 3 PM UTC</strong>
           </div>
           <div class="platforms">PC · PS5 · Xbox Series X/S</div>
         </div>
@@ -799,7 +795,7 @@ footer a:hover{color:var(--teal)}
           <div class="launch-cell"><div class="num" id="cdMins">--</div><div class="unit">Minutes</div></div>
           <div class="launch-cell"><div class="num" id="cdSecs">--</div><div class="unit">Seconds</div></div>
         </div>
-        <p class="launch-note">Based on the official EA launch date. Local countdown updates live in your browser.</p>
+        <p class="launch-note">EA lists the PC release for August 27, 2026 at 3:00 PM UTC. Console timing can vary by store and region.</p>
       </div>
 
       <div class="hero-stats">
@@ -958,7 +954,7 @@ footer a:hover{color:var(--teal)}
       <div>
         <div class="brand" style="cursor:default">
           <svg class="cog" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="var(--teal)" stroke-width="5"><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="33" stroke-dasharray="6 10"/></g><circle cx="50" cy="50" r="6" fill="var(--gold)"/></svg>
-          <div><b>StarWars Zero Company Wiki</b><span>FIELD INTEL // ZERO COMPANY</span></div>
+          <div><b>Star Wars Zero Company Wiki</b><span>FIELD INTEL // ZERO COMPANY</span></div>
         </div>
         <p class="muted" style="font-size:13px;margin-top:14px;max-width:34ch">Independent player resource. Continuously updated through launch and the post-release meta.</p>
       </div>
@@ -984,7 +980,7 @@ footer a:hover{color:var(--teal)}
       </div>
     </div>
     <p class="disclaimer">
-      Star Wars Zero Company is a trademark of Lucasfilm Ltd. / Electronic Arts. StarWars Zero Company Wiki is an unofficial fan resource and is not affiliated with or endorsed by Lucasfilm, EA, Bit Reactor or Respawn. Stats and ratings are pre-launch estimates based on published previews and are subject to change.
+      Star Wars Zero Company is a trademark of Lucasfilm Ltd. / Electronic Arts. Star Wars Zero Company Wiki is an unofficial fan resource and is not affiliated with or endorsed by Lucasfilm, EA, Bit Reactor or Respawn. Stats and ratings are pre-launch estimates based on published previews and are subject to change.
     </p>
   </div>
 </footer>
@@ -1528,7 +1524,7 @@ function go(route){
    COUNTDOWN to launch —27 Aug 2026
    =========================================================== */
 function countdown(){
-  const launch=new Date("2026-08-27T00:00:00Z");
+  const launch=new Date("2026-08-27T15:00:00Z");
   const now=new Date();
   const diff=Math.max(0,launch-now);
   const d=Math.floor(diff/86400000);
@@ -1554,7 +1550,6 @@ if(h&&VIEWS.includes(h)) go(h);
 </script>
 </body>
 </html>
-
 
 
 
