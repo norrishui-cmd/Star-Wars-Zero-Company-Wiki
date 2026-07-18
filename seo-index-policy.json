@@ -12,6 +12,7 @@
     "pairings",
     "scenarios",
     "squads"
+    ,"systems"
   ],
   "notes": "Directory hubs remain indexable. Leaves stay crawlable but noindex until launch evidence makes the answer specific and verifiable."
 }

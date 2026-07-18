@@ -92,3 +92,15 @@ Word count is a warning signal, not the definition of quality. A short page can 
 1. Expand the official June 9 gameplay overview into verified entity pages for Hawks, Trick, Tel-Rea, the Den, mission types and combat systems without creating overlapping intents.
 2. Create the launch-day data capture sheet/schema for missions, items, enemies, abilities, rewards, locations and bugs so verified pages can be generated quickly.
 3. Export GSC 7-day and 28-day query/page data after deployment; use it to choose the next 25-page cluster and identify existing cannibalization.
+
+## Round 2 — July 18, 2026
+
+- Replaced seven speculative Operative pages with source-grounded profiles for Hawks, Trick, Tel-Rea, Cly, Luco, Jae and Kabb.
+- Removed invented tier rankings, Focus Tree nodes, percentages and unverified signature abilities from those pages.
+- Added nine focused Den facility pages plus a facility hub: Command Center, HoloTable, Recruitment, Personnel, Armory, Upgrade, Medbay, Customization and Memorial.
+- Added four story-entity pages plus a lore hub: Kundri Fathom, the Infinite Coil, Zero Company and the Ring of Kafrene.
+- Corrected the obsolete EA gameplay-overview source path across the official-systems cluster.
+- Added prominent homepage links to the new source-grounded clusters.
+- Held the older `/systems/` leaf set as `noindex,follow` because it overlaps the stronger `/official-systems/` cluster; the `/systems/` hub remains available while consolidation decisions are made.
+
+Round 3 priority: turn the eight confirmed standard Specializations into complete, evidence-based class pages and replace the current speculative class leaves before they are allowed back into the sitemap.
