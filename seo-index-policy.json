@@ -15,4 +15,14 @@
     ,"systems"
   ],
   "notes": "Directory hubs remain indexable. Leaves stay crawlable but noindex until launch evidence makes the answer specific and verifiable."
+  ,"approved_draft_routes": [
+    "classes/assault.html",
+    "classes/gunslinger.html",
+    "classes/heavy.html",
+    "classes/medic.html",
+    "classes/scoundrel.html",
+    "classes/scout.html",
+    "classes/sharpshooter.html",
+    "classes/soldier.html"
+  ]
 }

@@ -104,3 +104,14 @@ Word count is a warning signal, not the definition of quality. A short page can 
 - Held the older `/systems/` leaf set as `noindex,follow` because it overlaps the stronger `/official-systems/` cluster; the `/systems/` hub remains available while consolidation decisions are made.
 
 Round 3 priority: turn the eight confirmed standard Specializations into complete, evidence-based class pages and replace the current speculative class leaves before they are allowed back into the sitemap.
+
+## Round 3 — July 18, 2026
+
+- Rebuilt the Classes hub around the eight standard Specializations officially named by EA: Assault, Gunslinger, Heavy, Medic, Scoundrel, Scout, Sharpshooter and Soldier.
+- Replaced eight speculative class leaves with 400+ word source-grounded guides covering official role, tactical decision principles, shared Ability structure, progression and launch-verification boundaries.
+- Removed all S/A/B tiers, invented Ability names, fictional percentages and unsupported weapon locks from the class cluster.
+- Restored only the eight verified standard Specialization pages to the sitemap through an explicit route allowlist.
+- Reframed Astromech, Jedi, Mandalorian and “secret class” URLs as `noindex,follow` boundary pages because EA has not named them among the eight standard Specializations.
+- Replaced the homepage's embedded pre-launch tier list with an official Specialization browser and direct links to the full verified guides.
+
+Round 4 priority: consolidate the overlapping buyer-intent and beginner guide pages, then rebuild the highest-value FAQ cluster around exact official answers such as offline/single-player status, three AP per turn, maximum Advantage, Injury rules, mission Cycles and Custom Operator creation.

@@ -14,6 +14,8 @@ SITE = POLICY["site"].rstrip("/")
 
 def is_draft_leaf(path: Path) -> bool:
     relative = path.relative_to(ROOT)
+    if relative.as_posix() in POLICY.get("approved_draft_routes", []):
+        return False
     return len(relative.parts) > 1 and relative.parts[0] in POLICY["draft_leaf_directories"] and path.name != "index.html"
 
 

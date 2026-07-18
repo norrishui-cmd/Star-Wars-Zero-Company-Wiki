@@ -11,7 +11,7 @@
 <link rel="manifest" href="/site.webmanifest" />
 <meta name="theme-color" content="#080b0f" />
 <title>Star Wars Zero Company Wiki: Guides, Classes & Release Info</title>
-<meta name="description" content="Field intel terminal for Star Wars Zero Company: operative dossiers, class tier list, loadout guides, operation walkthroughs, hostile database, and a live Muster Board squad builder with bond synergy detection." />
+<meta name="description" content="Independent Star Wars Zero Company wiki with verified Operative profiles, all eight official Specializations, Den facilities, gameplay systems and release information." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://starwarszerocompany.cc/" />
 <link rel="sitemap" type="application/xml" href="https://starwarszerocompany.cc/sitemap.xml" />
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://starwarszerocompany.cc/" />
 <meta property="og:title" content="Star Wars Zero Company Wiki: Guides, Classes & Release Info" />
-<meta property="og:description" content="Dossiers, tier list, loadouts, operations, hostiles, and a live squad synergy builder for Star Wars Zero Company." />
+<meta property="og:description" content="Verified Operative profiles, all eight official Specializations, Den facilities, gameplay systems and release information." />
 <meta property="og:site_name" content="Star Wars Zero Company Wiki" />
 
 <!-- Structured data: demonstrates the SEO schema layer the brief requires -->
@@ -735,7 +735,7 @@ footer a:hover{color:var(--teal)}
     <nav class="nav" id="nav">
       <a data-route="home" onclick="go('home')">Home</a>
       <a href="/operatives/">Operatives</a>
-      <a href="/classes/">Tier List</a>
+      <a href="/classes/">Specializations</a>
       <a href="/builds/">Loadouts</a>
       <a href="/operations/">Operations</a>
       <a href="/hostiles/">Hostiles</a>
@@ -814,7 +814,7 @@ footer a:hover{color:var(--teal)}
 
   <h2 class="sec">Jump to a system</h2>
   <div class="grid g3">
-    <div class="card brk" onclick="go('tier')"><div class="tag">Rankings</div><h3>Class Tier List</h3><p>Every standard &amp; exotic specialization, ranked S-A for the launch meta with role notes.</p></div>
+    <div class="card brk" onclick="go('tier')"><div class="tag">Official Roles</div><h3>8 Standard Specializations</h3><p>Assault, Gunslinger, Heavy, Medic, Scoundrel, Scout, Sharpshooter and Soldier—without speculative pre-launch rankings.</p></div>
     <div class="card brk" onclick="go('builds')"><div class="tag">Loadouts</div><h3>Build Guides</h3><p>Focus-tree priorities, weapon spec, secondary pairing, squad synergy and endgame rating.</p></div>
     <div class="card brk" onclick="go('muster')"><div class="tag">Tool · Exclusive</div><h3>Muster Board</h3><p>Drop in four operatives, read live attribute coverage and auto-detected bond synergies.</p></div>
     <div class="card brk" onclick="go('ops')"><div class="tag">Walkthroughs</div><h3>Operations</h3><p>Objectives, hostile roster, recommended squad and turn-by-turn routes for each mission.</p></div>
@@ -838,13 +838,13 @@ footer a:hover{color:var(--teal)}
   <div class="dossier" id="dossierBody"></div>
 </section>
 
-<!-- ================= TIER LIST ================= -->
+<!-- ================= SPECIALIZATIONS ================= -->
 <section class="view" id="view-tier">
-  <div class="crumb"><a onclick="go('home')">DATABASE</a><span class="sep">/</span>RANKINGS<span class="sep">/</span>CLASS TIER LIST</div>
-  <h1 class="page">Class Tier List</h1>
-  <p class="lead">Launch-window ranking of all twelve specializations by ceiling, flexibility and squad value. Exotic classes are locked to one story operative each. Select any class to open its profile.</p>
+  <div class="crumb"><a onclick="go('home')">DATABASE</a><span class="sep">/</span>SPECIALIZATIONS</div>
+  <h1 class="page">8 Standard Specializations</h1>
+  <p class="lead">Official role descriptions for the eight standard Specializations named by EA. Final Abilities, builds and tier rankings await launch verification.</p>
   <div id="tierList"></div>
-  <p class="muted mono" style="font-size:11.5px;margin-top:14px">Assessment basis: PC Gamer hands-on (Mar 2026) + Summer Game Fest 2026 gameplay. Confidence: medium —full meta is pre-launch and subject to balancing.</p>
+  <p class="muted mono" style="font-size:11.5px;margin-top:14px">Source: EA official gameplay overview, June 9, 2026. Each standard Specialization has an Ultimate, Standard Ability and Passive.</p>
 </section>
 
 <!-- ================= BUILDS INDEX ================= -->
@@ -924,7 +924,7 @@ footer a:hover{color:var(--teal)}
   <h2 class="sec">Long-tail guide index</h2>
   <div class="grid g4">
     <a class="card brk" href="/operatives/"><div class="tag">Crawlable</div><h3>Operative guides</h3><p>Static dossiers for every confirmed character.</p></a>
-    <a class="card brk" href="/classes/"><div class="tag">Crawlable</div><h3>Class tier pages</h3><p>Individual class URLs with abilities and role notes.</p></a>
+    <a class="card brk" href="/classes/"><div class="tag">Verified Roles</div><h3>Specialization guides</h3><p>Eight official role pages with confirmed positioning and clearly labeled launch-verification fields.</p></a>
     <a class="card brk" href="/builds/"><div class="tag">Crawlable</div><h3>Loadout guides</h3><p>Focus paths, weapon specs, strengths and weaknesses.</p></a>
     <a class="card brk" href="/operations/"><div class="tag">Crawlable</div><h3>Mission walkthroughs</h3><p>Objectives, squads, enemy rosters and rewards.</p></a>
     <a class="card brk" href="/guides/"><div class="tag">Long-tail</div><h3>Question guides</h3><p>AP, Advantage, permadeath, The Den, cycles and buyer-intent pages.</p></a>
@@ -965,7 +965,7 @@ footer a:hover{color:var(--teal)}
       <div>
         <h5>Wiki</h5>
         <a onclick="go('operatives')">Operatives</a>
-        <a onclick="go('tier')">Class tier list</a>
+        <a onclick="go('tier')">Specializations</a>
         <a onclick="go('hostiles')">Hostile database</a>
       </div>
       <div>
@@ -1077,18 +1077,14 @@ const CUSTOM = {
 const ALL = Object.assign({}, OPS, CUSTOM);
 
 const CLASSES = [
-  {id:"assault",n:"Assault",w:"Rifle",tier:"S",role:"Frontline flanker",ult:"Multishot barrage",std:"Move-and-fire flank attack",pas:"Bonus damage vs flanked targets",note:"Top opener: strip cover and punish out-of-position enemies."},
-  {id:"sharpshooter",n:"Sharpshooter",w:"Longarm",tier:"S",role:"Long-range single target",ult:"Guaranteed high-damage shot",std:"Aimed elimination from vantage",pas:"Aim bonus from elevation",note:"Deletes priority targets; wants Assault/Scoundrel to set up the kill."},
-  {id:"gunslinger",n:"Gunslinger",w:"Pistol / Repeater",tier:"S",role:"Multi-target chainer",ult:"Rapid multi-target burst",std:"Kill refreshes AP —chain finishers",pas:"Extra shots on low-HP targets",note:"Highest skill ceiling: snowballs a turn once kills start landing."},
-  {id:"medic",n:"Medic",w:"Pistol",tier:"A",role:"Sustain / buffs",ult:"Squad-wide stabilize",std:"Combat Stim: heal + damage buff",pas:"Reduces Injury chance on allies",note:"Quietly essential —counters permadeath pressure. Combat Stim + Gunslinger spikes damage."},
-  {id:"heavy",n:"Heavy",w:"Repeater",tier:"A",role:"Tank / area damage",ult:"AoE rocket launcher",std:"Suppress and hold ground",pas:"Flat damage reduction",note:"Anchors the frontline so squishier specialists work safely."},
-  {id:"scoundrel",n:"Scoundrel",w:"Pistol",tier:"A",role:"Opportunist",ult:"Big-payoff gamble",std:"Identify Weakness →guaranteed crit setup",pas:"Bonus from unpredictable plays",note:"Force-multiplies a Sharpshooter; thrives in messy fights."},
-  {id:"scout",n:"Scout",w:"Rifle",tier:"B",role:"Recon",ult:"Map-wide reveal",std:"Scout ahead, set overwatch",pas:"Detection + first-strike bonus",note:"Information and lane control; weaker solo damage."},
-  {id:"soldier",n:"Soldier",w:"Rifle",tier:"B",role:"Generalist",ult:"Focused fire",std:"Versatile close-to-mid attacks",pas:"Reliable all-rounder",note:"No glaring weakness, no standout strength —safe, flexible filler."},
-  {id:"astromech",n:"Astromech",w:"Utility",tier:"B",role:"Support droid · exotic",ult:"Deployable device",std:"Heal/utility + grenades/flamethrower",pas:"Customizable chassis",note:"Surprisingly potent; an all-astromech squad is a real challenge run."},
-  {id:"mando",n:"Mandalorian Warrior",w:"Repeater",tier:"S",role:"Mobile burst · exotic (Cly)",ult:"Aerial strike",std:"Jetpack reposition",pas:"Elevation bonuses",note:"Locked to Cly Kullervo; map mobility no other class matches."},
-  {id:"jedi",n:"Jedi Padawan",w:"Lightsaber",tier:"S",role:"Control · exotic (Tel'Rea)",ult:"Shockwave (6 Advantage AoE push)",std:"Saber melee + deflection",pas:"Force mobility",note:"Locked to Tel'Rea Vokoss; best raw crowd control in the game."},
-  {id:"secret",n:"Secret Special Class",w:"Unknown",tier:"?",role:"Unrevealed · exotic",ult:"?",std:"?",pas:"?",note:"Confirmed to exist; details withheld pre-launch."},
+  {id:"assault",n:"Assault",role:"Frontline fighter",range:"Medium to close range",note:"Maneuvers to defeat targets hiding in cover."},
+  {id:"gunslinger",n:"Gunslinger",role:"Multi-target attacker",range:"Flexible blaster range",note:"Spreads offense across numerous targets with fast strikes."},
+  {id:"heavy",n:"Heavy",role:"Durable frontline combatant",range:"Frontline / exposed positions",note:"Uses armor and survivability to soak up enemy pressure."},
+  {id:"medic",n:"Medic",role:"Healing and Injury prevention",range:"Squad support",note:"Heals, helps prevent Injuries and boosts teammates."},
+  {id:"scoundrel",n:"Scoundrel",role:"Opportunistic wildcard",range:"Situation dependent",note:"Makes the most of combat opportunities with little preparation."},
+  {id:"scout",n:"Scout",role:"Reconnaissance and setup",range:"Team-wide support",note:"Uses planning and timing to create opportunities for the team."},
+  {id:"sharpshooter",n:"Sharpshooter",role:"Long-range marksman",range:"Long range",note:"Singles out and defeats chosen enemies from distance."},
+  {id:"soldier",n:"Soldier",role:"Mainstay offensive unit",range:"Close to medium range",note:"Uses melee, grenades, heavy blaster fire and a rocket launcher."},
 ];
 
 const BUILDS = {
@@ -1238,29 +1234,22 @@ function openOp(id){
 
 // tier list
 function renderTier(){
-  const tiers=["S","A","B","C"];
-  $("tierList").innerHTML = tiers.map(t=>{
-    const items=CLASSES.filter(c=>c.tier===t).map(c=>`
-      <div class="tier-chip" onclick="openClass('${c.id}')">
-        <div class="sigil">${c.n[0]}</div>
-        <div><b>${c.n}</b><small>${c.role}</small></div>
-      </div>`).join("");
-    return `<div class="tier-row"><div class="tier-label tl-${t}">${t}</div><div class="tier-items">${items||'<span class="muted mono">—</span>'}</div></div>`;
-  }).join("") + `<div class="tier-row"><div class="tier-label" style="color:var(--faint)">?</div><div class="tier-items">${CLASSES.filter(c=>c.tier==='?').map(c=>`<div class="tier-chip" onclick="openClass('${c.id}')"><div class="sigil">?</div><div><b>${c.n}</b><small>${c.role}</small></div></div>`).join("")}</div></div>`;
+  $("tierList").innerHTML = `<div class="grid g3">${CLASSES.map(c=>`
+    <div class="tier-chip" onclick="openClass('${c.id}')">
+      <div class="sigil">${c.n[0]}</div>
+      <div><b>${c.n}</b><small>${c.role}</small></div>
+    </div>`).join("")}</div>`;
 }
 function openClass(id){
   const c=CLASSES.find(x=>x.id===id);
   $("bCrumb").textContent=c.n.toUpperCase();
   $("buildBody").innerHTML=`
     <h1 class="page">${c.n}</h1>
-    <div class="linkrow" style="margin-bottom:18px"><span class="tierbadge t-${c.tier==='?'?'C':c.tier}">${c.tier}</span><span class="pill teal">${c.role}</span><span class="pill">Weapon: ${c.w}</span></div>
+    <div class="linkrow" style="margin-bottom:18px"><span class="pill teal">${c.role}</span><span class="pill">${c.range}</span></div>
     <p class="lead">${c.note}</p>
-    <div class="block"><h3>Abilities</h3><ul>
-      <li><b>Ultimate:</b> ${c.ult}</li>
-      <li><b>Standard:</b> ${c.std}</li>
-      <li><b>Passive:</b> ${c.pas}</li>
-    </ul></div>
-    <div class="block"><h3>Where it fits</h3><p style="margin:0">${c.note}</p></div>`;
+    <div class="block"><h3>Official structure</h3><p>Every standard Specialization has one Ultimate, one Standard Ability and one Passive. Named Abilities and final values await launch verification.</p></div>
+    <div class="block"><h3>Official role</h3><p style="margin:0">${c.note}</p></div>
+    <p><a href="/classes/${c.id}.html">Open the full verified ${c.n} guide →</a></p>`;
   go('build');
 }
 
@@ -1554,5 +1543,4 @@ if(h&&VIEWS.includes(h)) go(h);
 </script>
 </body>
 </html>
-
 

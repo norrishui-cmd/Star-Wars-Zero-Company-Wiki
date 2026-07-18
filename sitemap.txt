@@ -7,7 +7,15 @@ https://starwarszerocompany.cc/about/sources-and-citations.html
 https://starwarszerocompany.cc/about/update-log.html
 https://starwarszerocompany.cc/builds/
 https://starwarszerocompany.cc/campaign/
+https://starwarszerocompany.cc/classes/assault.html
+https://starwarszerocompany.cc/classes/gunslinger.html
+https://starwarszerocompany.cc/classes/heavy.html
 https://starwarszerocompany.cc/classes/
+https://starwarszerocompany.cc/classes/medic.html
+https://starwarszerocompany.cc/classes/scoundrel.html
+https://starwarszerocompany.cc/classes/scout.html
+https://starwarszerocompany.cc/classes/sharpshooter.html
+https://starwarszerocompany.cc/classes/soldier.html
 https://starwarszerocompany.cc/compare/
 https://starwarszerocompany.cc/confirmed/bonds-relationships-no-romance.html
 https://starwarszerocompany.cc/confirmed/combat-ap-advantage.html
