@@ -126,3 +126,10 @@ Round 4 priority: consolidate the overlapping buyer-intent and beginner guide pa
 - Updated the audit to use a CJK character threshold for Japanese pages instead of treating whitespace-based English word count as a valid quality test.
 
 Round 5 priority: use GSC country/query data to decide whether German or Japanese deserves the next localized cluster, then expand only the winning language into FAQ pages for single-player/offline, three AP, Advantage, Injuries, mission Cycles and Custom Operators.
+
+## AdSense ownership configuration — July 18, 2026
+
+- Added publisher account `ca-pub-9505220977121599` to every HTML page through both the AdSense account meta tag and the asynchronous AdSense loader.
+- Added the required root-level `/ads.txt` declaration for publisher `pub-9505220977121599`.
+- Added explicit plain-text response headers for `/ads.txt` on both Vercel and Netlify-style deployments.
+- Kept the configuration repeatable through `tools/configure_adsense.py`, which removes duplicates before applying the current publisher ID.

@@ -7,6 +7,8 @@ import json
 from pathlib import Path
 import re
 
+from configure_adsense import main as configure_adsense
+
 ROOT = Path(__file__).resolve().parents[1]
 POLICY = json.loads((ROOT / "seo-index-policy.json").read_text())
 SITE = POLICY["site"].rstrip("/")
@@ -66,6 +68,8 @@ def main() -> None:
         sections.append(f'<section><h2>{escape(group)} <span>{len(links)}</span></h2><div class="links">{items}</div></section>')
     html_map = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HTML Sitemap | Star Wars Zero Company Wiki</title><meta name="description" content="Browse all quality-approved Star Wars Zero Company Wiki pages by topic."><meta name="robots" content="index,follow"><link rel="canonical" href="{SITE}/sitemap.html"><style>body{{margin:0;background:#071016;color:#edf7ff;font:16px/1.6 system-ui}}main{{max-width:1100px;margin:auto;padding:42px 22px}}a{{color:#36e0ce;text-decoration:none}}h1{{font-size:clamp(34px,6vw,58px)}}h2{{border-left:4px solid #36e0ce;padding-left:12px}}h2 span{{color:#9db0bd;font-size:14px}}section{{border:1px solid #284050;background:#0d1922;padding:20px;margin:18px 0;border-radius:8px}}.links{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:9px 16px}}</style></head><body><main><p><a href="/">← Home</a></p><h1>HTML Sitemap</h1><p>Quality-approved, canonical pages included in the current XML sitemap.</p>{''.join(sections)}</main></body></html>'''
     (ROOT / "sitemap.html").write_text(html_map, encoding="utf-8")
+    # sitemap.html is regenerated above, so apply the global publisher tags last.
+    configure_adsense()
     print(f"Built sitemap with {len(urls)} quality-approved URLs")
 
 
