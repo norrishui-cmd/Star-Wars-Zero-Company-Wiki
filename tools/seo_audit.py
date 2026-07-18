@@ -24,6 +24,13 @@ def visible_word_count(text: str) -> int:
     return len(unescape(re.sub(r"<[^>]+>", " ", text)).split())
 
 
+def visible_cjk_count(text: str) -> int:
+    """Count CJK characters so Japanese pages are not judged by whitespace tokens."""
+    text = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", text, flags=re.I | re.S)
+    visible = unescape(re.sub(r"<[^>]+>", " ", text))
+    return len(re.findall(r"[\u3040-\u30ff\u3400-\u9fff]", visible))
+
+
 def route_for(path: Path) -> str:
     relative = path.relative_to(ROOT).as_posix()
     if relative == "index.html":
@@ -45,6 +52,7 @@ def main() -> int:
         h1s = re.findall(r"<h1[^>]*>.*?</h1>", visible_markup, re.I | re.S)
         robots = first(r'<meta\s+name=["\']robots["\']\s+content=(?P<quote>["\'])(?P<value>.*?)(?P=quote)', text)
         words = visible_word_count(text)
+        cjk_chars = visible_cjk_count(text)
         rows.append((route, title, desc, canonical))
         expected = SITE + route
         h1_ok = len(h1s) >= 1 if route == "/" else len(h1s) == 1
@@ -52,7 +60,9 @@ def main() -> int:
             errors.append(f"{route}: missing title/description/canonical or H1 count is {len(h1s)}")
         if canonical and canonical != expected:
             errors.append(f"{route}: canonical {canonical} != {expected}")
-        if "noindex" not in robots.lower() and words < 180:
+        # A focused Japanese answer can be complete at roughly 250 CJK characters;
+        # whitespace-token counts are not comparable to English or German words.
+        if "noindex" not in robots.lower() and words < 180 and cjk_chars < 250:
             warnings.append(f"{route}: indexable page has only {words} visible words")
         if "noindex" not in robots.lower() and re.search(r"\b(placeholder|TBD|not confirmed)\b", text, re.I):
             warnings.append(f"{route}: indexable page contains an uncertainty marker")

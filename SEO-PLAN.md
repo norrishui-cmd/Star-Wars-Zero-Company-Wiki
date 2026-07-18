@@ -115,3 +115,14 @@ Round 3 priority: turn the eight confirmed standard Specializations into complet
 - Replaced the homepage's embedded pre-launch tier list with an official Specialization browser and direct links to the full verified guides.
 
 Round 4 priority: consolidate the overlapping buyer-intent and beginner guide pages, then rebuild the highest-value FAQ cluster around exact official answers such as offline/single-player status, three AP per turn, maximum Advantage, Injury rules, mission Cycles and Custom Operator creation.
+
+## Round 4 — July 18, 2026
+
+- Added a quality-approved German layer under `/de/` and Japanese layer under `/ja/`, with 14 pages per language.
+- Localized the highest-confidence pre-release intents: home, release date and local time, platforms, supported languages, gameplay overview, Specializations hub and all eight confirmed standard Specializations.
+- Added a new English supported-languages page and corrected the site-wide answer to 11 interface/subtitle languages, with full audio in English and German.
+- Added reciprocal `hreflang` annotations for English, German, Japanese and `x-default`, while keeping every localized page self-canonical.
+- Added language switching, localized navigation, dated official sources, distinct metadata and language-specific structured data.
+- Updated the audit to use a CJK character threshold for Japanese pages instead of treating whitespace-based English word count as a valid quality test.
+
+Round 5 priority: use GSC country/query data to decide whether German or Japanese deserves the next localized cluster, then expand only the winning language into FAQ pages for single-player/offline, three AP, Advantage, Injuries, mission Cycles and Custom Operators.
