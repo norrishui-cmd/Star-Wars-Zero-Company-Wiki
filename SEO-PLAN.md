@@ -133,3 +133,13 @@ Round 5 priority: use GSC country/query data to decide whether German or Japanes
 - Added the required root-level `/ads.txt` declaration for publisher `pub-9505220977121599`.
 - Added explicit plain-text response headers for `/ads.txt` on both Vercel and Netlify-style deployments.
 - Kept the configuration repeatable through `tools/configure_adsense.py`, which removes duplicates before applying the current publisher ID.
+
+## Tab news expansion — July 19, 2026
+
+- Added a Latest News module to all 16 primary content-tab hubs.
+- Published five source-linked briefs per tab, creating 80 independent NewsArticle URLs plus a global `/news/` hub.
+- Limited coverage to verifiable details from EA's April 2025 reveal, June 2026 preorder announcement, June 2026 gameplay overview and current purchase page.
+- Added direct answers, player impact, editorial verification boundaries, related-news links, canonical metadata, social metadata and NewsArticle structured data.
+- Kept About and utility-only pages outside the game-news expansion; they retain their existing update log and policy functions.
+
+Next priority: measure discovery and indexing for `/news/` before adding another batch. Refresh or consolidate briefs when EA publishes a new official update instead of creating duplicate recaps.
