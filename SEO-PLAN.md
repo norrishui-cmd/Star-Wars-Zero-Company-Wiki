@@ -153,3 +153,14 @@ Next priority: measure discovery and indexing for `/news/` before adding another
 - Added a direct answer, supporting context, source link, verification date, related questions, canonical metadata and single-question FAQPage schema to every approved FAQ URL.
 
 Next priority: monitor FAQ query impressions by topic and strengthen only pages that receive real discovery. After launch, replace verification boundaries with tested answers and add screenshots where they materially clarify a mechanic.
+
+## Confirmed game database expansion — July 19, 2026
+
+- Added a `/database/` navigation layer with a dated snapshot of confirmed entity counts and gameplay numbers.
+- Added eight creator-species pages for Devaronian, Human, Neimoidian, Ovissian, Togruta, Twi'lek, Weequay and Zabrak.
+- Added 17 preorder and Deluxe cosmetic entries covering the Crystalline Astromech pack, R3, BR-1, R4/R5 heads, Republic armor, Shadow Collective cosmetics, tattoos and five painted weapon themes.
+- Added a special-features hub and a dated Demo-status page. As of July 19, neither EA nor Steam lists a public Demo.
+- Added current database modules to the most relevant content tabs and a Database link to every page that has site navigation.
+- Kept cosmetic acquisition separate from gameplay power and excluded unpublished weapon stats, item values and creator bonuses.
+
+Next priority: recheck EA News, EA Help and Steam weekly. Update existing entity URLs when official data changes instead of producing a second page for the same intent.
