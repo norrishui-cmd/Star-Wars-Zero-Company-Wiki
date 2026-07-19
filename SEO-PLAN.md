@@ -143,3 +143,13 @@ Round 5 priority: use GSC country/query data to decide whether German or Japanes
 - Kept About and utility-only pages outside the game-news expansion; they retain their existing update log and policy functions.
 
 Next priority: measure discovery and indexing for `/news/` before adding another batch. Refresh or consolidate briefs when EA publishes a new official update instead of creating duplicate recaps.
+
+## Verified FAQ expansion — July 19, 2026
+
+- Rebuilt `/questions/` as a 50-answer FAQ center with one independent URL per question.
+- Covered release timing, platforms, stores, editions, languages, game modes, action points, Advantage, Injuries, Mission Cycles, Specializations, Operators, The Den and story.
+- Rewrote reusable legacy question URLs where a first-party answer exists; older speculative questions remain accessible but use `noindex,follow` and are excluded from the sitemap.
+- Added a visible FAQ link to site navigation and a topic-matched Related FAQs module to all 16 primary content tabs.
+- Added a direct answer, supporting context, source link, verification date, related questions, canonical metadata and single-question FAQPage schema to every approved FAQ URL.
+
+Next priority: monitor FAQ query impressions by topic and strengthen only pages that receive real discovery. After launch, replace verification boundaries with tested answers and add screenshots where they materially clarify a mechanic.
