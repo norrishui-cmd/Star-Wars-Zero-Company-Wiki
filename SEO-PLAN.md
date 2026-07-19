@@ -164,3 +164,6 @@ Next priority: monitor FAQ query impressions by topic and strengthen only pages 
 - Kept cosmetic acquisition separate from gameplay power and excluded unpublished weapon stats, item values and creator bonuses.
 
 Next priority: recheck EA News, EA Help and Steam weekly. Update existing entity URLs when official data changes instead of producing a second page for the same intent.
+# Round 9 multilingual deployment — 2026-07-19
+
+German and Japanese now contain 49 pages each, with localized FAQ, database, feature, demo, guide, and news clusters. A navigation dropdown provides English, Deutsch, and 日本語 on every HTML page. Exact translation sets use reciprocal hreflang; pages without an exact localized equivalent route language selection to the locale homepage. The quality-approved sitemap contains 398 URLs.
