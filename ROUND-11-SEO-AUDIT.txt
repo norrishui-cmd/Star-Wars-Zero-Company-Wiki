@@ -1,0 +1,42 @@
+SEO audit: 732 HTML pages, 0 errors, 58 quality warnings
+WARN  /about/contact.html: indexable page has only 144 visible words
+WARN  /about/disclaimer.html: indexable page has only 143 visible words
+WARN  /about/editorial-policy.html: indexable page has only 141 visible words
+WARN  /about/: indexable page has only 165 visible words
+WARN  /about/roadmap.html: indexable page has only 140 visible words
+WARN  /about/sources-and-citations.html: indexable page has only 150 visible words
+WARN  /database/gameplay-systems.html: indexable page has only 177 visible words
+WARN  /guides/astromech-builder.html: indexable page has only 178 visible words
+WARN  /guides/beginner-first-squad.html: indexable page has only 164 visible words
+WARN  /guides/cover-flanking-basics.html: indexable page has only 170 visible words
+WARN  /guides/early-game-mistakes.html: indexable page has only 172 visible words
+WARN  /guides/gear-upgrade-order.html: indexable page has only 168 visible words
+WARN  /guides/no-romance-squad-relationships.html: indexable page has only 175 visible words
+WARN  /guides/overwatch-lanes.html: indexable page has only 164 visible words
+WARN  /guides/price-editions-preorder.html: indexable page has only 176 visible words
+WARN  /guides/release-date-countdown.html: indexable page has only 171 visible words
+WARN  /guides/sabotage-priorities.html: indexable page has only 174 visible words
+WARN  /guides/single-player-offline.html: indexable page has only 172 visible words
+WARN  /guides/third-person-exploration.html: indexable page has only 179 visible words
+WARN  /guides/xcom-players-start-here.html: indexable page has only 179 visible words
+WARN  /hostiles/b1.html: indexable page has only 102 visible words
+WARN  /hostiles/b2.html: indexable page has only 110 visible words
+WARN  /hostiles/commando.html: indexable page has only 112 visible words
+WARN  /hostiles/droideka.html: indexable page has only 131 visible words
+WARN  /: indexable page contains an uncertainty marker
+WARN  /media/key-art.html: indexable page has only 144 visible words
+WARN  /media/screenshots.html: indexable page has only 146 visible words
+WARN  /media/store-assets.html: indexable page has only 152 visible words
+WARN  /media/trailers.html: indexable page has only 146 visible words
+WARN  /media/ui-clues.html: indexable page has only 143 visible words
+WARN  /official/confirmed-features.html: indexable page has only 161 visible words
+WARN  /official/five-things-video.html: indexable page has only 163 visible words
+WARN  /official/languages.html: indexable page has only 125 visible words
+WARN  /official/official-news-tracker.html: indexable page has only 148 visible words
+WARN  /official-systems/the-den-facilities-guide.html: indexable page contains an uncertainty marker
+WARN  /operatives/cly.html: indexable page contains an uncertainty marker
+WARN  /operatives/hawks.html: indexable page contains an uncertainty marker
+WARN  /operatives/jae.html: indexable page contains an uncertainty marker
+WARN  /operatives/kabb.html: indexable page contains an uncertainty marker
+WARN  /operatives/luco.html: indexable page contains an uncertainty marker
+WARN  ... 18 more warnings

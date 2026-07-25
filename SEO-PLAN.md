@@ -167,3 +167,15 @@ Next priority: recheck EA News, EA Help and Steam weekly. Update existing entity
 # Round 9 multilingual deployment — 2026-07-19
 
 German and Japanese now contain 49 pages each, with localized FAQ, database, feature, demo, guide, and news clusters. A navigation dropdown provides English, Deutsch, and 日本語 on every HTML page. Exact translation sets use reciprocal hreflang; pages without an exact localized equivalent route language selection to the locale homepage. The quality-approved sitemap contains 398 URLs.
+# Round 11 checkpoint — July 25, 2026
+
+- Total HTML: 732
+- Quality-approved sitemap URLs: 494
+- Pre-release target: 1,000 quality-approved URLs
+- Remaining gap: 506
+- Latest expansion: 96 source-grounded cast, mechanics, mission, tactics and
+  news pages, plus complete German and Japanese cast layers.
+- Quality rule: URL growth is counted from canonical indexable sitemap entries,
+  not raw generated HTML.
+- Next priority: full German and Japanese localization of the 50 verified FAQ
+  and 80 active News pages, with page-specific translation and exact hreflang.
