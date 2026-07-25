@@ -1,0 +1,42 @@
+SEO audit: 772 HTML pages, 0 errors, 48 quality warnings
+WARN  /about/contact.html: indexable page has only 153 visible words
+WARN  /about/disclaimer.html: indexable page has only 152 visible words
+WARN  /about/editorial-policy.html: indexable page has only 150 visible words
+WARN  /about/: indexable page has only 174 visible words
+WARN  /about/roadmap.html: indexable page has only 149 visible words
+WARN  /about/sources-and-citations.html: indexable page has only 159 visible words
+WARN  /guides/beginner-first-squad.html: indexable page has only 173 visible words
+WARN  /guides/cover-flanking-basics.html: indexable page has only 179 visible words
+WARN  /guides/gear-upgrade-order.html: indexable page has only 177 visible words
+WARN  /guides/overwatch-lanes.html: indexable page has only 173 visible words
+WARN  /hostiles/b1.html: indexable page has only 111 visible words
+WARN  /hostiles/b2.html: indexable page has only 119 visible words
+WARN  /hostiles/commando.html: indexable page has only 121 visible words
+WARN  /hostiles/droideka.html: indexable page has only 140 visible words
+WARN  /: indexable page contains an uncertainty marker
+WARN  /media/key-art.html: indexable page has only 153 visible words
+WARN  /media/screenshots.html: indexable page has only 155 visible words
+WARN  /media/store-assets.html: indexable page has only 161 visible words
+WARN  /media/trailers.html: indexable page has only 155 visible words
+WARN  /media/ui-clues.html: indexable page has only 152 visible words
+WARN  /official/confirmed-features.html: indexable page has only 170 visible words
+WARN  /official/five-things-video.html: indexable page has only 172 visible words
+WARN  /official/languages.html: indexable page has only 134 visible words
+WARN  /official/official-news-tracker.html: indexable page has only 157 visible words
+WARN  /official-systems/the-den-facilities-guide.html: indexable page contains an uncertainty marker
+WARN  /operatives/cly.html: indexable page contains an uncertainty marker
+WARN  /operatives/hawks.html: indexable page contains an uncertainty marker
+WARN  /operatives/jae.html: indexable page contains an uncertainty marker
+WARN  /operatives/kabb.html: indexable page contains an uncertainty marker
+WARN  /operatives/luco.html: indexable page contains an uncertainty marker
+WARN  /operatives/telrea.html: indexable page contains an uncertainty marker
+WARN  /operatives/trick.html: indexable page contains an uncertainty marker
+WARN  /planner/bond-pair-planner.html: indexable page has only 138 visible words
+WARN  /planner/guide-verification-checklist.html: indexable page has only 141 visible words
+WARN  /planner/injury-risk-audit.html: indexable page has only 142 visible words
+WARN  /planner/launch-week-update-checklist.html: indexable page has only 144 visible words
+WARN  /planner/platform-buy-checklist.html: indexable page has only 141 visible words
+WARN  /planner/pre-mission-checklist.html: indexable page has only 138 visible words
+WARN  /planner/squad-role-audit.html: indexable page has only 138 visible words
+WARN  /planner/upgrade-spend-audit.html: indexable page has only 139 visible words
+WARN  ... 8 more warnings

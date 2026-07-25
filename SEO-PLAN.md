@@ -179,3 +179,18 @@ German and Japanese now contain 49 pages each, with localized FAQ, database, fea
   not raw generated HTML.
 - Next priority: full German and Japanese localization of the 50 verified FAQ
   and 80 active News pages, with page-specific translation and exact hreflang.
+
+# Round 12 checkpoint — July 25, 2026
+
+- Verified all 11 official interface/subtitle languages; full audio remains
+  English and German only.
+- Added a five-page quality core for the eight previously uncovered official
+  languages: French, Italian, Spanish (Spain), Korean, Polish, Simplified
+  Chinese, Traditional Chinese and Portuguese (Brazil).
+- Total HTML: 772.
+- Quality-approved sitemap URLs: 534.
+- Pre-release target: 1,000 quality-approved URLs.
+- Remaining gap: 466.
+- The language dropdown now covers 772/772 pages and lists all 11 languages.
+- Next priority: choose expansion depth by GSC country/query evidence; translate
+  verified FAQ and confirmed-mechanic clusters before news recaps.

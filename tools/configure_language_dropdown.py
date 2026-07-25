@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install an accessible EN/DE/JA dropdown in every HTML page navigation."""
+"""Install an accessible dropdown for every officially supported game language."""
 
 from pathlib import Path
 import re
@@ -17,13 +17,31 @@ CSS = """
 """.strip()
 
 
+LOCALES = (
+    ("en", "en", "English"),
+    ("de", "de", "Deutsch"),
+    ("fr", "fr", "Français"),
+    ("it", "it", "Italiano"),
+    ("es", "es", "Español"),
+    ("ja", "ja", "日本語"),
+    ("ko", "ko", "한국어"),
+    ("pl", "pl", "Polski"),
+    ("zh-cn", "zh-Hans", "简体中文"),
+    ("zh-tw", "zh-Hant", "繁體中文"),
+    ("pt-br", "pt-BR", "Português (Brasil)"),
+)
+LOCALE_DIRS = {directory for directory, _, _ in LOCALES if directory != "en"}
+LABELS = {directory: label for directory, _, label in LOCALES}
+LANG_TAGS = {directory: tag for directory, tag, _ in LOCALES}
+
+
 def route_for(path: Path):
     rel = path.relative_to(ROOT).as_posix()
     locale = "en"
-    if rel.startswith("de/"):
-        locale, rel = "de", rel[3:]
-    elif rel.startswith("ja/"):
-        locale, rel = "ja", rel[3:]
+    first = rel.split("/", 1)[0]
+    if first in LOCALE_DIRS:
+        locale = first
+        rel = rel[len(first) + 1:]
     if rel == "index.html":
         route = ""
     else:
@@ -48,13 +66,12 @@ def href_for(locale, route):
 
 
 def menu(current, route):
-    labels = {"en": "English", "de": "Deutsch", "ja": "日本語"}
     links = []
-    for locale in ("en", "de", "ja"):
+    for locale, lang_tag, label in LOCALES:
         active = ' aria-current="page"' if locale == current else ""
-        links.append(f'<a href="{href_for(locale, route)}" lang="{locale}"{active}>{labels[locale]}</a>')
-    return (f'<details class="lang-menu"><summary aria-label="Choose language / Sprache wählen / 言語を選択">'
-            f'{labels[current]}</summary><div class="lang-options">{"".join(links)}</div></details>')
+        links.append(f'<a href="{href_for(locale, route)}" lang="{lang_tag}"{active}>{label}</a>')
+    return (f'<details class="lang-menu"><summary aria-label="Choose language">'
+            f'{LABELS[current]}</summary><div class="lang-options">{"".join(links)}</div></details>')
 
 
 def main():
