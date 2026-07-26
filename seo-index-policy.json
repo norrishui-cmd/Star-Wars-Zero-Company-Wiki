@@ -1,6 +1,6 @@
 {
   "site": "https://starwarszerocompany.cc",
-  "reviewed_on": "2026-07-17",
+  "reviewed_on": "2026-07-26",
   "draft_leaf_directories": [
     "builds",
     "campaign",
@@ -23,6 +23,21 @@
     "classes/scoundrel.html",
     "classes/scout.html",
     "classes/sharpshooter.html",
-    "classes/soldier.html"
+    "classes/soldier.html",
+    "systems/squad-acts-before-enemies.html",
+    "systems/three-action-points-each-turn.html",
+    "systems/movement-distance-ap-cost.html",
+    "systems/weapon-type-ap-cost.html",
+    "systems/chance-to-hit-shot-breakdown.html",
+    "systems/shared-advantage-pool.html",
+    "systems/destructible-cover.html",
+    "systems/push-enemy-into-overwatch.html",
+    "systems/three-injuries-permadeath.html",
+    "systems/permadeath-toggle.html",
+    "systems/the-den-third-person-base.html",
+    "systems/holotable-cycle-planning.html",
+    "systems/operation-choices-affect-bonds.html",
+    "systems/pre-combat-exploration-rewards.html",
+    "systems/galaxy-map-150-planets.html"
   ]
 }
