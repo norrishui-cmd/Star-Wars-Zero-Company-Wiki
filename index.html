@@ -871,6 +871,121 @@ footer a:hover{color:var(--teal)}
   .nav > .lang-menu{width:100%;margin:4px 0 0}
 }
 
+/* ROUND 19: navigation search */
+.nav-search{
+  grid-area:status;
+  position:relative;
+  justify-self:end;
+  width:clamp(176px,16vw,226px);
+  height:38px;
+  display:flex;
+  align-items:center;
+  border:1px solid var(--line-2);
+  border-radius:5px;
+  background:rgba(11,17,24,.86);
+  box-shadow:inset 0 0 18px rgba(52,224,196,.025);
+}
+.nav-search:focus-within{
+  border-color:var(--teal-dim);
+  box-shadow:0 0 0 2px rgba(52,224,196,.09),inset 0 0 18px rgba(52,224,196,.04);
+}
+.nav-search-icon{
+  position:relative;
+  width:14px;
+  height:14px;
+  margin-left:11px;
+  flex:0 0 14px;
+  border:1.5px solid var(--teal);
+  border-radius:50%;
+  opacity:.85;
+}
+.nav-search-icon::after{
+  content:"";
+  position:absolute;
+  width:6px;
+  height:1.5px;
+  right:-5px;
+  bottom:-2px;
+  background:var(--teal);
+  transform:rotate(45deg);
+  transform-origin:left center;
+}
+.nav-search input{
+  min-width:0;
+  flex:1;
+  height:100%;
+  padding:0 7px 0 10px;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  font-family:var(--fm);
+  font-size:11px;
+}
+.nav-search input::placeholder{color:var(--faint)}
+.nav-search > button{
+  width:36px;
+  height:100%;
+  overflow:hidden;
+  border:0;
+  border-left:1px solid var(--line);
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+  font-size:0;
+}
+.nav-search > button::before{
+  content:"→";
+  color:var(--teal);
+  font-family:var(--fm);
+  font-size:16px;
+}
+.nav-search > button:hover{background:rgba(52,224,196,.08)}
+.nav-search-results{
+  display:none;
+  position:absolute;
+  z-index:90;
+  top:calc(100% + 8px);
+  right:0;
+  width:min(330px,calc(100vw - 32px));
+  padding:7px;
+  border:1px solid var(--line-2);
+  border-radius:6px;
+  background:rgba(8,11,15,.99);
+  box-shadow:0 22px 55px -24px rgba(0,0,0,.95);
+}
+.nav-search-results.show{display:block}
+.nav-search-hit{
+  width:100%;
+  display:grid;
+  grid-template-columns:72px 1fr;
+  gap:9px;
+  align-items:center;
+  padding:9px 10px;
+  border:0;
+  border-radius:4px;
+  background:transparent;
+  color:var(--text);
+  cursor:pointer;
+  text-align:left;
+}
+.nav-search-hit:hover,.nav-search-hit:focus{background:rgba(52,224,196,.08);outline:0}
+.nav-search-hit span{
+  color:var(--faint);
+  font-family:var(--fm);
+  font-size:9px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.nav-search-hit strong{font-family:var(--fd);font-size:12px;font-weight:650}
+.nav-search-empty{padding:10px;color:var(--muted);font-family:var(--fm);font-size:11px}
+@media(max-width:1180px) and (min-width:981px){
+  .nav-search{width:176px}
+}
+@media(max-width:980px){
+  .nav-search{display:none}
+}
+
 </style>
 <meta name="google-adsense-account" content="ca-pub-9505220977121599">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9505220977121599" crossorigin="anonymous"></script>
@@ -938,7 +1053,12 @@ footer a:hover{color:var(--teal)}
       <a class="nav-direct" href="/questions/">FAQ</a>
       <details class="lang-menu"><summary aria-label="Choose language">English</summary><div class="lang-options"><a href="/" lang="en" aria-current="page">English</a><a href="/de/" lang="de">Deutsch</a><a href="/fr/" lang="fr">Français</a><a href="/it/" lang="it">Italiano</a><a href="/es/" lang="es">Español</a><a href="/ja/" lang="ja">日本語</a><a href="/ko/" lang="ko">한국어</a><a href="/pl/" lang="pl">Polski</a><a href="/zh-cn/" lang="zh-Hans">简体中文</a><a href="/zh-tw/" lang="zh-Hant">繁體中文</a><a href="/pt-br/" lang="pt-BR">Português (Brasil)</a></div></details>
     </nav>
-    <div class="tminus" id="tminus"><span class="dot"></span>T-MINUS <b id="tdays">—</b> TO DEPLOYMENT</div>
+    <form class="nav-search" role="search" onsubmit="return runNavSearch(event)">
+      <span class="nav-search-icon" aria-hidden="true"></span>
+      <input id="navSearch" type="search" placeholder="Search wiki..." autocomplete="off" aria-label="Search Star Wars Zero Company Wiki" />
+      <button type="submit" aria-label="Submit search">Search</button>
+      <div class="nav-search-results" id="navSearchResults" role="listbox" aria-label="Search suggestions"></div>
+    </form>
     <button class="burger" onclick="document.getElementById('topbar').classList.toggle('open')">MENU</button>
   </div>
 </header>
@@ -1686,6 +1806,54 @@ function runSearch(){
 $("search").addEventListener("keydown",e=>{if(e.key==="Enter")runSearch();});
 $("search").addEventListener("input",runSearch);
 
+function navSearchHits(query){
+  const q=query.trim().toLowerCase();
+  if(!q)return [];
+  return SEARCH_IDX.filter(x=>x.n.toLowerCase().includes(q)||x.k.toLowerCase().includes(q)).slice(0,5);
+}
+function renderNavSearch(){
+  const input=$("navSearch");
+  const box=$("navSearchResults");
+  const q=input.value.trim();
+  if(!q){box.innerHTML="";box.classList.remove("show");return;}
+  const hits=navSearchHits(q);
+  box.innerHTML=hits.length
+    ? hits.map((h,i)=>`<button type="button" class="nav-search-hit" data-i="${i}" role="option"><span>${h.k}</span><strong>${h.n}</strong></button>`).join("")
+    : `<div class="nav-search-empty">No match. Try Hawks, Medic or Droideka.</div>`;
+  box.classList.add("show");
+  box.querySelectorAll(".nav-search-hit").forEach(el=>el.addEventListener("click",()=>{
+    hits[Number(el.dataset.i)].go();
+    input.value="";
+    box.innerHTML="";
+    box.classList.remove("show");
+  }));
+}
+function runNavSearch(event){
+  event.preventDefault();
+  const hits=navSearchHits($("navSearch").value);
+  if(hits.length){
+    hits[0].go();
+    $("navSearch").value="";
+    $("navSearchResults").innerHTML="";
+    $("navSearchResults").classList.remove("show");
+  }else{
+    renderNavSearch();
+  }
+  return false;
+}
+$("navSearch").addEventListener("input",renderNavSearch);
+$("navSearch").addEventListener("keydown",event=>{
+  if(event.key==="Escape"){
+    event.currentTarget.value="";
+    $("navSearchResults").innerHTML="";
+    $("navSearchResults").classList.remove("show");
+    event.currentTarget.blur();
+  }
+});
+document.addEventListener("click",event=>{
+  if(!event.target.closest(".nav-search"))$("navSearchResults").classList.remove("show");
+});
+
 /* ===========================================================
    ROUTER
    =========================================================== */
@@ -1709,7 +1877,6 @@ function countdown(){
   const h=Math.floor((diff%86400000)/3600000);
   const m=Math.floor((diff%3600000)/60000);
   const s=Math.floor((diff%60000)/1000);
-  $("tdays").textContent = diff>0 ? Math.ceil(diff/86400000)+" DAYS" : "LIVE";
   if($("cdDays")){
     $("cdDays").textContent = diff>0 ? String(d) : "0";
     $("cdHours").textContent = diff>0 ? String(h).padStart(2,"0") : "00";
@@ -1740,6 +1907,8 @@ document.addEventListener('click',event=>{
     document.querySelectorAll('.site-menu[open]').forEach(menu=>menu.removeAttribute('open'));
   }
 });
+
+/* ROUND 19: compact functional search replaces the navigation countdown. */
 
 </script>
 </body>
