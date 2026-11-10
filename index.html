@@ -10,8 +10,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <meta name="theme-color" content="#080b0f" />
-<title>Star Wars Zero Company Wiki: Guides, Classes & Release Info</title>
-<meta name="description" content="Independent Star Wars Zero Company wiki with verified Operative profiles, all eight official Specializations, Den facilities, gameplay systems and release information." />
+<title>Star Wars Zero Company Wiki: Guides, Operatives and Patch 1.2</title>
+<meta name="description" content="Independent Star Wars Zero Company wiki with campaign settings, Permadeath, Operatives, Specializations, Den facilities, and Patch 1.2 guides." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://starwarszerocompany.cc/" /><link rel="alternate" hreflang="en" href="https://starwarszerocompany.cc/"><link rel="alternate" hreflang="de" href="https://starwarszerocompany.cc/de/"><link rel="alternate" hreflang="fr" href="https://starwarszerocompany.cc/fr/"><link rel="alternate" hreflang="it" href="https://starwarszerocompany.cc/it/"><link rel="alternate" hreflang="es" href="https://starwarszerocompany.cc/es/"><link rel="alternate" hreflang="ja" href="https://starwarszerocompany.cc/ja/"><link rel="alternate" hreflang="ko" href="https://starwarszerocompany.cc/ko/"><link rel="alternate" hreflang="pl" href="https://starwarszerocompany.cc/pl/"><link rel="alternate" hreflang="zh-Hans" href="https://starwarszerocompany.cc/zh-cn/"><link rel="alternate" hreflang="zh-Hant" href="https://starwarszerocompany.cc/zh-tw/"><link rel="alternate" hreflang="pt-BR" href="https://starwarszerocompany.cc/pt-br/"><link rel="alternate" hreflang="x-default" href="https://starwarszerocompany.cc/">
 <link rel="sitemap" type="application/xml" href="https://starwarszerocompany.cc/sitemap.xml" />
@@ -19,8 +19,8 @@
 <!-- Open Graph / social -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://starwarszerocompany.cc/" />
-<meta property="og:title" content="Star Wars Zero Company Wiki: Guides, Classes & Release Info" />
-<meta property="og:description" content="Verified Operative profiles, all eight official Specializations, Den facilities, gameplay systems and release information." />
+<meta property="og:title" content="Star Wars Zero Company Wiki: Guides, Operatives and Patch 1.2" />
+<meta property="og:description" content="Independent Star Wars Zero Company wiki with campaign settings, Permadeath, Operatives, Specializations, Den facilities, and Patch 1.2 guides." />
 <meta property="og:site_name" content="Star Wars Zero Company Wiki" />
 
 <!-- Structured data: demonstrates the SEO schema layer the brief requires -->
@@ -30,7 +30,7 @@
   "@type": "WebSite",
   "name": "Star Wars Zero Company Wiki",
   "url": "https://starwarszerocompany.cc/",
-  "description": "Independent guides and verified release information for Star Wars Zero Company."
+  "description": "Independent guides to Star Wars Zero Company, including campaign settings, Operatives, and Patch 1.2."
 }
 </script>
 <script type="application/ld+json">
@@ -391,7 +391,7 @@ h2.sec::before{content:"";width:4px;height:20px;background:var(--teal);box-shado
 .sr-item .k{font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase;min-width:78px}
 .sr-item .n{font-weight:600}
 
-.launch-countdown{
+.launch-status{
   margin-top:22px;
   max-width:720px;
   border:1px solid rgba(233,184,74,.42);
@@ -432,34 +432,6 @@ h2.sec::before{content:"";width:4px;height:20px;background:var(--teal);box-shado
   text-transform:uppercase;
   white-space:nowrap;
   padding-top:4px;
-}
-.launch-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-}
-.launch-cell{
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:5px;
-  background:rgba(8,11,15,.62);
-  padding:12px 10px;
-  text-align:center;
-}
-.launch-cell .num{
-  font-family:var(--fd);
-  font-size:clamp(24px,4vw,38px);
-  font-weight:800;
-  color:var(--gold);
-  line-height:.95;
-  text-shadow:0 0 18px rgba(233,184,74,.22);
-}
-.launch-cell .unit{
-  font-family:var(--fm);
-  font-size:10px;
-  letter-spacing:.14em;
-  color:var(--muted);
-  text-transform:uppercase;
-  margin-top:7px;
 }
 .launch-note{
   margin:11px 0 0;
@@ -680,7 +652,6 @@ footer a:hover{color:var(--teal)}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .launch-head{display:block}
   .launch-head .platforms{margin-top:8px;white-space:normal}
-  .launch-grid{grid-template-columns:repeat(2,1fr)}
   .g4,.g3,.g2,.split,.slots{grid-template-columns:1fr}
   h2.sec{margin-top:30px}
   #view-home{padding-top:48px}
@@ -1214,8 +1185,8 @@ footer a:hover{color:var(--teal)}
         <span class="led"></span> CONNECTION SECURE
         <span class="right">THE DEN · RING OF KAFRENE · CLASSIFIED</span>
       </div>
-      <h1>Run the war from <span class="hl">the terminal.</span></h1>
-      <p class="sub">Operative dossiers, class rankings, loadouts, operation walkthroughs and a live squad-synergy board for <b>Star Wars Zero Company</b> —the XCOM-style Clone Wars tactics game from Bit Reactor &amp; Respawn.</p>
+      <h1>Star Wars Zero Company <span class="hl">Wiki</span></h1>
+      <p class="sub">Find Operative profiles, Specializations, and squad tools for the Clone Wars tactics game. Starting a campaign? Check the difficulty and injury rules before you deploy.</p>
 
       <div class="cmd brk">
         <span class="prompt">&gt;</span>
@@ -1224,21 +1195,15 @@ footer a:hover{color:var(--teal)}
       </div>
       <div class="search-results" id="searchResults"></div>
 
-      <div class="launch-countdown brk" aria-label="Star Wars Zero Company release countdown">
+      <div class="launch-status brk" aria-label="Star Wars Zero Company release and patch information">
         <div class="launch-head">
           <div>
-            <div class="k">Official launch target</div>
-            <strong>Countdown to August 27, 2026 at 3 PM UTC</strong>
+            <div class="k">Available now</div>
+            <strong>Released August 27, 2026</strong>
           </div>
-          <div class="platforms">PC · PS5 · Xbox Series X/S</div>
+          <div class="platforms">PC &middot; PS5 &middot; Xbox Series X|S</div>
         </div>
-        <div class="launch-grid">
-          <div class="launch-cell"><div class="num" id="cdDays">--</div><div class="unit">Days</div></div>
-          <div class="launch-cell"><div class="num" id="cdHours">--</div><div class="unit">Hours</div></div>
-          <div class="launch-cell"><div class="num" id="cdMins">--</div><div class="unit">Minutes</div></div>
-          <div class="launch-cell"><div class="num" id="cdSecs">--</div><div class="unit">Seconds</div></div>
-        </div>
-        <p class="launch-note">EA lists the PC release for August 27, 2026 at 3:00 PM UTC. Console timing can vary by store and region.</p>
+        <p class="launch-note"><a href="/official/release-date.html">Release and platforms</a> &middot; <a href="/guides/difficulty-for-new-players.html">First-campaign difficulty</a> &middot; <a href="/guides/permadeath-injury-prevention.html">Patch 1.2 Permadeath rules</a></p>
       </div>
 
       <div class="hero-stats">
@@ -1255,14 +1220,14 @@ footer a:hover{color:var(--teal)}
 
   <h2 class="sec">Jump to a system</h2>
   <div class="grid g3">
-    <div class="card brk" onclick="go('tier')"><div class="tag">Official Roles</div><h3>8 Standard Specializations</h3><p>Assault, Gunslinger, Heavy, Medic, Scoundrel, Scout, Sharpshooter and Soldier—without speculative pre-launch rankings.</p></div>
+    <div class="card brk" onclick="go('tier')"><div class="tag">Official Roles</div><h3>8 Standard Specializations</h3><p>Assault, Gunslinger, Heavy, Medic, Scoundrel, Scout, Sharpshooter and Soldier.</p></div>
     <div class="card brk" onclick="go('builds')"><div class="tag">Loadouts</div><h3>Build Guides</h3><p>Focus-tree priorities, weapon spec, secondary pairing, squad synergy and endgame rating.</p></div>
     <div class="card brk" onclick="go('muster')"><div class="tag">Tool · Exclusive</div><h3>Muster Board</h3><p>Drop in four operatives, read live attribute coverage and auto-detected bond synergies.</p></div>
     <div class="card brk" onclick="go('ops')"><div class="tag">Walkthroughs</div><h3>Operations</h3><p>Objectives, hostile roster, recommended squad and turn-by-turn routes for each mission.</p></div>
     <div class="card brk" onclick="go('hostiles')"><div class="tag">Threat data</div><h3>Hostile Database</h3><p>HP, resistances, weak points and the fastest counter for every Separatist unit.</p></div>
     <div class="card brk" onclick="go('operatives')"><div class="tag">Wiki</div><h3>Operative Index</h3><p>Full dossiers: stats, signature ability, focus tree, recommended build and squad.</p></div>
   </div>
-<!-- ROUND24_HOME_MODULES_START --><!-- ROUND24_NEWS_home_START --><section class="round24-news" aria-label="New Home news" style="margin:42px 0"><h2>5 New Home News Reports</h2><p style="color:#9db0bd">Source-linked updates for the site&#x27;s launch dashboard and fastest route to confirmed information.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px"><a href="/news/home/home-release-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">August 27 Release Remains Confirmed</strong><br><span style="color:#9db0bd;font-size:14px">Star Wars Zero Company remains scheduled for August 27, 2026 on PC, PlayStation 5 and Xbox Series X|S.</span></a><a href="/news/home/home-cast-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">Full Voice Cast Now Lists 15 Character Credits</strong><br><span style="color:#9db0bd;font-size:14px">StarWars.com now names 15 character-to-actor credits, including both Hawks performances, Kundri Fathom, Trick, Anakin Skywalker and the wider supporting cast.</span></a><a href="/news/home/home-operator-cap-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">The Den Operator Limit Can Reach 20</strong><br><span style="color:#9db0bd;font-size:14px">Players begin with a maximum of seven Operators and can expand the headquarters limit to 20 through upgrades, story progress and authored recruits.</span></a><a href="/news/home/home-collectors-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">A Collectors&#x27; Edition Was Announced at SDCC</strong><br><span style="color:#9db0bd;font-size:14px">StarWars.com confirms that a Star Wars Zero Company Collectors&#x27; Edition is available to preorder through Limited Run Games.</span></a><a href="/news/home/home-soundtrack-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">The Original Soundtrack Launches August 27</strong><br><span style="color:#9db0bd;font-size:14px">Gordy Haab&#x27;s soundtrack arrives with the game on August 27, and its first track, “Zero Company,” is already available.</span></a></div><p><a href="/news/#home">Browse the complete News index →</a></p><!-- ROUND26_HOME_MODULES_START --><section class="round26-news" aria-label="Five additional Home news reports"><h2>5 More Home News Reports</h2><p class="muted">A second, non-duplicating source-linked batch for the site&#x27;s launch dashboard and fastest route to confirmed information.</p><div class="grid"><a class="card" href="/news/home/home-campaign-length-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Main Campaign Estimate Is 30–40 Hours</strong><br><span class="muted">Bit Reactor estimates 30–40 hours for an average main-story run, with difficulty and tactics experience affecting the total.</span></a><a class="card" href="/news/home/home-eight-species-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Eight Operator Species Are Named</strong><br><span class="muted">The official trailer report names Devaronian, Human, Neimoidian, Ovissian, Togruta, Twi&#x27;lek, Weequay and Zabrak as character-creation species.</span></a><a class="card" href="/news/home/home-development-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Bit Reactor Leads Development with Lucasfilm Games</strong><br><span class="muted">Bit Reactor develops the game in collaboration with Lucasfilm Games, with Electronic Arts publishing.</span></a><a class="card" href="/news/home/home-crystal-pack-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Every Preorder Includes the Crystalline Astromech Pack</strong><br><span class="muted">The preorder bonus includes an R3 droid, crystalline R4 and R5 head variants and the BR-1 droid.</span></a><a class="card" href="/news/home/home-soundtrack-single-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>The First Gordy Haab Track Is Already Available</strong><br><span class="muted">Walt Disney Records released the track “Zero Company” ahead of the full August 27 soundtrack.</span></a></div><p><a href="/news/#round26-home">Open the expanded News index →</a></p></section><section class="round26-faq" aria-label="Additional Home FAQs"><h2>More Related Home FAQs</h2><p class="muted">Five direct answers selected from the new 50-page FAQ batch.</p><div class="grid"><a class="card" href="/questions/can-choose-hawks-voice.html"><small>NEW VERIFIED FAQ</small><br><strong>Can you choose Hawks&#x27; voice?</strong><br><span class="muted">Yes. Hawks has masculine and feminine performance options.</span></a><a class="card" href="/questions/who-voices-cly-kullervo.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Cly Kullervo?</strong><br><span class="muted">Alex McKenna voices Cly Kullervo.</span></a><a class="card" href="/questions/who-voices-jae-mordant.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Jae Mordant?</strong><br><span class="muted">Judy Alice Lee voices Jae Mordant.</span></a><a class="card" href="/questions/who-voices-kabb-uppercut.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Kabb Uppercut?</strong><br><span class="muted">JB Blanc voices Kabb Uppercut.</span></a><a class="card" href="/questions/who-voices-meevo.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices M-3VO / Meevo?</strong><br><span class="muted">D.C. Douglas voices M-3VO, also called Meevo.</span></a></div><p><a href="/questions/">Browse all 152 English FAQs →</a></p></section><!-- ROUND26_HOME_MODULES_END --></section><!-- ROUND24_NEWS_home_END --><!-- ROUND24_FAQ_home_START --><section class="round24-faq" aria-label="New Home FAQs" style="margin:42px 0"><h2>Related Home FAQs</h2><p style="color:#9db0bd">Five new first-party-grounded answers connected to this section.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px"><a href="/questions/is-zero-company-collectors-edition-announced.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">Is there a Star Wars Zero Company Collectors&#x27; Edition?</strong><br><span style="color:#9db0bd;font-size:14px">Yes. A Collectors&#x27; Edition was announced at SDCC 2026.</span></a><a href="/questions/what-does-meevo-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Meevo do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Meevo, also called M-3VO, supports piloting and the Medbay.</span></a><a href="/questions/what-does-neesh-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Neesh Renark do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Neesh supports the Armory and Black Market.</span></a><a href="/questions/what-does-runa-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Runa Blask do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Runa handles operations and finance and serves as Hawks&#x27; right hand.</span></a><a href="/questions/when-does-zero-company-soundtrack-release.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">When does the Zero Company soundtrack release?</strong><br><span style="color:#9db0bd;font-size:14px">The original soundtrack releases on August 27, 2026.</span></a></div><p><a href="/questions/">Browse all 102 FAQs →</a></p></section><!-- ROUND24_FAQ_home_END --><!-- ROUND24_HOME_MODULES_END --></section>
+<!-- ROUND24_HOME_MODULES_START --><!-- ROUND24_NEWS_home_START --><section class="round24-news" aria-label="New Home news" style="margin:42px 0"><h2>July 29 News Archive</h2><p style="color:#9db0bd">July reports from before the game launched.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px"><a href="/news/home/home-release-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">August 27 Release Remains Confirmed</strong><br><span style="color:#9db0bd;font-size:14px">Star Wars Zero Company remains scheduled for August 27, 2026 on PC, PlayStation 5 and Xbox Series X|S.</span></a><a href="/news/home/home-cast-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">Full Voice Cast Now Lists 15 Character Credits</strong><br><span style="color:#9db0bd;font-size:14px">StarWars.com now names 15 character-to-actor credits, including both Hawks performances, Kundri Fathom, Trick, Anakin Skywalker and the wider supporting cast.</span></a><a href="/news/home/home-operator-cap-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">The Den Operator Limit Can Reach 20</strong><br><span style="color:#9db0bd;font-size:14px">Players begin with a maximum of seven Operators and can expand the headquarters limit to 20 through upgrades, story progress and authored recruits.</span></a><a href="/news/home/home-collectors-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">A Collectors&#x27; Edition Was Announced at SDCC</strong><br><span style="color:#9db0bd;font-size:14px">StarWars.com confirms that a Star Wars Zero Company Collectors&#x27; Edition is available to preorder through Limited Run Games.</span></a><a href="/news/home/home-soundtrack-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">The Original Soundtrack Launches August 27</strong><br><span style="color:#9db0bd;font-size:14px">Gordy Haab&#x27;s soundtrack arrives with the game on August 27, and its first track, “Zero Company,” is already available.</span></a></div><p><a href="/news/#home">Browse the complete News index →</a></p><!-- ROUND26_HOME_MODULES_START --><section class="round26-news" aria-label="Five additional Home news reports"><h2>July 31 News Archive</h2><p class="muted">Additional July reports covering the campaign, species, and soundtrack.</p><div class="grid"><a class="card" href="/news/home/home-campaign-length-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Main Campaign Estimate Is 30–40 Hours</strong><br><span class="muted">Bit Reactor estimates 30–40 hours for an average main-story run, with difficulty and tactics experience affecting the total.</span></a><a class="card" href="/news/home/home-eight-species-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Eight Operator Species Are Named</strong><br><span class="muted">The official trailer report names Devaronian, Human, Neimoidian, Ovissian, Togruta, Twi&#x27;lek, Weequay and Zabrak as character-creation species.</span></a><a class="card" href="/news/home/home-development-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Bit Reactor Leads Development with Lucasfilm Games</strong><br><span class="muted">Bit Reactor develops the game in collaboration with Lucasfilm Games, with Electronic Arts publishing.</span></a><a class="card" href="/news/home/home-crystal-pack-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Every Preorder Includes the Crystalline Astromech Pack</strong><br><span class="muted">The preorder bonus includes an R3 droid, crystalline R4 and R5 head variants and the BR-1 droid.</span></a><a class="card" href="/news/home/home-soundtrack-single-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>The First Gordy Haab Track Is Already Available</strong><br><span class="muted">Walt Disney Records released the track “Zero Company” ahead of the full August 27 soundtrack.</span></a></div><p><a href="/news/#round26-home">Open the expanded News index →</a></p></section><section class="round26-faq" aria-label="Additional Home FAQs"><h2>More Related Home FAQs</h2><p class="muted">Answers about character voices and the cast.</p><div class="grid"><a class="card" href="/questions/can-choose-hawks-voice.html"><small>NEW VERIFIED FAQ</small><br><strong>Can you choose Hawks&#x27; voice?</strong><br><span class="muted">Yes. Hawks has masculine and feminine performance options.</span></a><a class="card" href="/questions/who-voices-cly-kullervo.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Cly Kullervo?</strong><br><span class="muted">Alex McKenna voices Cly Kullervo.</span></a><a class="card" href="/questions/who-voices-jae-mordant.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Jae Mordant?</strong><br><span class="muted">Judy Alice Lee voices Jae Mordant.</span></a><a class="card" href="/questions/who-voices-kabb-uppercut.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Kabb Uppercut?</strong><br><span class="muted">JB Blanc voices Kabb Uppercut.</span></a><a class="card" href="/questions/who-voices-meevo.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices M-3VO / Meevo?</strong><br><span class="muted">D.C. Douglas voices M-3VO, also called Meevo.</span></a></div><p><a href="/questions/">Browse all 152 English FAQs →</a></p></section><!-- ROUND26_HOME_MODULES_END --></section><!-- ROUND24_NEWS_home_END --><!-- ROUND24_FAQ_home_START --><section class="round24-faq" aria-label="New Home FAQs" style="margin:42px 0"><h2>Related Home FAQs</h2><p style="color:#9db0bd">Five new first-party-grounded answers connected to this section.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px"><a href="/questions/is-zero-company-collectors-edition-announced.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">Is there a Star Wars Zero Company Collectors&#x27; Edition?</strong><br><span style="color:#9db0bd;font-size:14px">Yes. A Collectors&#x27; Edition was announced at SDCC 2026.</span></a><a href="/questions/what-does-meevo-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Meevo do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Meevo, also called M-3VO, supports piloting and the Medbay.</span></a><a href="/questions/what-does-neesh-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Neesh Renark do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Neesh supports the Armory and Black Market.</span></a><a href="/questions/what-does-runa-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Runa Blask do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Runa handles operations and finance and serves as Hawks&#x27; right hand.</span></a><a href="/questions/when-does-zero-company-soundtrack-release.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">When does the Zero Company soundtrack release?</strong><br><span style="color:#9db0bd;font-size:14px">The original soundtrack was released on August 27, 2026.</span></a></div><p><a href="/questions/">Browse all FAQs →</a></p></section><!-- ROUND24_FAQ_home_END --><!-- ROUND24_HOME_MODULES_END --></section>
 
 <!-- ================= OPERATIVES INDEX ================= -->
 <section class="view" id="view-operatives">
@@ -1283,7 +1248,7 @@ footer a:hover{color:var(--teal)}
 <section class="view" id="view-tier">
   <div class="crumb"><a onclick="go('home')">DATABASE</a><span class="sep">/</span>SPECIALIZATIONS</div>
   <h1 class="page">8 Standard Specializations</h1>
-  <p class="lead">Official role descriptions for the eight standard Specializations named by EA. Final Abilities, builds and tier rankings await launch verification.</p>
+  <p class="lead">Official role descriptions for the eight standard Specializations named by EA. Check the in-game Specialization profile for current ability names and values.</p>
   <div id="tierList"></div>
   <p class="muted mono" style="font-size:11.5px;margin-top:14px">Source: EA official gameplay overview, June 9, 2026. Each standard Specialization has an Ultimate, Standard Ability and Passive.</p>
 </section>
@@ -1688,7 +1653,7 @@ function openClass(id){
     <h1 class="page">${c.n}</h1>
     <div class="linkrow" style="margin-bottom:18px"><span class="pill teal">${c.role}</span><span class="pill">${c.range}</span></div>
     <p class="lead">${c.note}</p>
-    <div class="block"><h3>Official structure</h3><p>Every standard Specialization has one Ultimate, one Standard Ability and one Passive. Named Abilities and final values await launch verification.</p></div>
+    <div class="block"><h3>Official structure</h3><p>Every standard Specialization has one Ultimate, one Standard Ability and one Passive. Check the in-game profile for each ability's current values.</p></div>
     <div class="block"><h3>Official role</h3><p style="margin:0">${c.note}</p></div>
     <p><a href="/classes/${c.id}.html">Open the full verified ${c.n} guide →</a></p>`;
   go('build');
@@ -2002,29 +1967,9 @@ function go(route){
   if(history.replaceState) history.replaceState(null,"","#"+route);
 }
 
-/* ===========================================================
-   COUNTDOWN to launch —27 Aug 2026
-   =========================================================== */
-function countdown(){
-  const launch=new Date("2026-08-27T15:00:00Z");
-  const now=new Date();
-  const diff=Math.max(0,launch-now);
-  const d=Math.floor(diff/86400000);
-  const h=Math.floor((diff%86400000)/3600000);
-  const m=Math.floor((diff%3600000)/60000);
-  const s=Math.floor((diff%60000)/1000);
-  if($("cdDays")){
-    $("cdDays").textContent = diff>0 ? String(d) : "0";
-    $("cdHours").textContent = diff>0 ? String(h).padStart(2,"0") : "00";
-    $("cdMins").textContent = diff>0 ? String(m).padStart(2,"0") : "00";
-    $("cdSecs").textContent = diff>0 ? String(s).padStart(2,"0") : "00";
-  }
-}
-
 /* init */
 renderHome(); renderOpIndex(); renderTier(); renderBuildIndex(); renderOpsIndex(); renderHostIndex();
-renderSlots(); renderRoster(); updateMuster(); countdown();
-setInterval(countdown,1000);
+renderSlots(); renderRoster(); updateMuster();
 // open from hash if present
 const h=location.hash.replace("#","");
 if(h&&VIEWS.includes(h)) go(h);

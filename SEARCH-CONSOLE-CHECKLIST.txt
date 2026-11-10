@@ -1,13 +1,22 @@
 Search Console sitemap recovery checklist
 
 Canonical host: https://starwarszerocompany.cc/
-Submit only these in the https://starwarszerocompany.cc property:
-1. https://starwarszerocompany.cc/sitemap.xml
-2. https://starwarszerocompany.cc/sitemap-index.xml
+Submission URL: https://starwarszerocompany.cc/sitemap-index.xml
+Child URL: https://starwarszerocompany.cc/sitemap-pages.xml
 
-Do not submit the www sitemap URL unless you also verify the www property and it returns 200 directly. Current www behavior is a redirect to the apex host, which can show as Unable to fetch in Search Console.
+1. In the starwarszerocompany.cc Domain property or the exact
+   https://starwarszerocompany.cc/ URL-prefix property, inspect the submission
+   URL and run Test Live URL. Check that Page fetch is successful.
+2. Confirm the index and child both return 200 with XML directly. Confirm that
+   robots.txt points to the same index. Submit the index in the Sitemaps report.
+3. sitemap.html is a navigation page. Remove its old failed submission from the
+   report if present. sitemap.xml is a legacy XML endpoint with the same URLs
+   as the child sitemap, so the new submission only needs the index.
+4. Check the Last read and Discovered pages fields. If the new submission fails,
+   open its details and compare the timestamp and error with Vercel request and
+   firewall logs. Ordinary HTTP checks do not establish what Google fetched.
+5. Once the sitemap succeeds, inspect the homepage and several priority guides
+   for indexing and Google's selected canonical. Track indexing separately
+   from sitemap discovery.
 
-After upload:
-- Open https://starwarszerocompany.cc/sitemap.xml in an incognito browser. It must show XML, not an HTML page.
-- Open https://starwarszerocompany.cc/robots.txt and confirm it lists the sitemap URLs.
-- In Search Console, remove the www sitemap row, resubmit only the apex sitemap URL, then use URL Inspection on https://starwarszerocompany.cc/ and click Test live URL.
+Google documentation: https://support.google.com/webmasters/answer/7451001
