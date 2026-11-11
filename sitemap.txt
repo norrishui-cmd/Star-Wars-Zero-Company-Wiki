@@ -391,7 +391,9 @@ https://starwarszerocompany.cc/guides/advantage-meter.html
 https://starwarszerocompany.cc/guides/astromech-builder.html
 https://starwarszerocompany.cc/guides/beginner-first-squad.html
 https://starwarszerocompany.cc/guides/bonds-squad-synergy.html
+https://starwarszerocompany.cc/guides/campaign-modifiers.html
 https://starwarszerocompany.cc/guides/cover-flanking-basics.html
+https://starwarszerocompany.cc/guides/crashing-on-startup-or-load.html
 https://starwarszerocompany.cc/guides/custom-hawks-options.html
 https://starwarszerocompany.cc/guides/cycles-time-limited-missions.html
 https://starwarszerocompany.cc/guides/difficulty-for-new-players.html
@@ -806,6 +808,7 @@ https://starwarszerocompany.cc/news/classes/eight-standard-specializations.html
 https://starwarszerocompany.cc/news/classes/focus-points-upgrade-talents.html
 https://starwarszerocompany.cc/news/classes/personnel-specialization-changes.html
 https://starwarszerocompany.cc/news/classes/species-no-weapon-proficiency-bonus.html
+https://starwarszerocompany.cc/news/community/reddit-discussion-roundup-2026-11.html
 https://starwarszerocompany.cc/news/confirmed/confirmed-ability-types-update.html
 https://starwarszerocompany.cc/news/confirmed/confirmed-helmet-voice-update.html
 https://starwarszerocompany.cc/news/confirmed/confirmed-microtransactions-update.html

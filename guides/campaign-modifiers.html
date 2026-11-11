@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/assets/site-icon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#080b0f" />
+<title>Star Wars Zero Company Campaign Modifiers Guide</title>
+<meta name="description" content="Set up Campaign Modifiers in Star Wars Zero Company Patch 1.2. Compare injury, assist, and progression rules, then pick settings for a new campaign." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://starwarszerocompany.cc/guides/campaign-modifiers.html" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://starwarszerocompany.cc/guides/campaign-modifiers.html" />
+<meta property="og:title" content="Star Wars Zero Company Campaign Modifiers Guide" />
+<meta property="og:description" content="Set up Campaign Modifiers in Star Wars Zero Company Patch 1.2. Compare injury, assist, and progression rules, then pick settings for a new campaign." />
+<meta property="og:site_name" content="Star Wars Zero Company Wiki" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Star Wars Zero Company Campaign Modifiers Guide","description":"Set up Campaign Modifiers in Star Wars Zero Company Patch 1.2. Compare injury, assist, and progression rules, then pick settings for a new campaign.","url":"https://starwarszerocompany.cc/guides/campaign-modifiers.html","mainEntityOfPage":"https://starwarszerocompany.cc/guides/campaign-modifiers.html","about":"Star Wars Zero Company Campaign Modifiers","isPartOf":{"@type":"WebSite","name":"Star Wars Zero Company Wiki","url":"https://starwarszerocompany.cc/"},"datePublished":"2026-11-11","dateModified":"2026-11-11"}</script>
+<style>
+:root{--bg:#080b0f;--panel:#101821;--panel2:#0c1219;--line:#243444;--text:#dce6ee;--muted:#8ea0ae;--teal:#34e0c4;--gold:#e9b84a;--red:#ff5a57;--max:1000px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 520px at 80% -10%,rgba(52,224,196,.08),transparent),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:var(--max);margin:auto;padding:0 22px}.top{border-bottom:1px solid var(--line);background:rgba(8,11,15,.94);position:sticky;top:0;z-index:2}.top .wrap{min-height:58px;display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.brand{font-weight:800;color:var(--text)}.nav{margin-left:auto;display:flex;gap:8px 14px;flex-wrap:wrap;justify-content:flex-end}.nav a{color:var(--muted);font-size:14px}.hero{padding:52px 0 28px}.crumb{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}h1{font-size:clamp(32px,6vw,54px);line-height:1.05;margin:14px 0 12px}h2{font-size:22px;margin:34px 0 12px;border-left:4px solid var(--teal);padding-left:12px}h3{margin:0 0 8px}.lead{font-size:18px;color:var(--muted);max-width:780px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card,.block{border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--panel),var(--panel2));padding:18px;margin:14px 0}.pill{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:4px 8px;margin:4px 6px 4px 0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.gold{color:var(--gold);border-color:rgba(233,184,74,.45)}.teal{color:var(--teal);border-color:rgba(52,224,196,.45)}.red{color:var(--red);border-color:rgba(255,90,87,.45)}li{margin:7px 0}.mini{color:var(--muted);font-size:14px}.footer{border-top:1px solid var(--line);margin-top:44px;padding:26px 0;color:var(--muted);font-size:14px}
+.nav-group{position:relative;display:inline-flex;align-items:center}.subnav{position:absolute;top:100%;left:0;min-width:168px;padding:8px;border:1px solid var(--line);border-radius:5px;background:rgba(8,11,15,.98);box-shadow:0 18px 48px -28px rgba(0,0,0,.9);display:none}.subnav a{display:block;padding:8px 9px;font-size:12px}.nav-group:hover .subnav,.nav-group:focus-within .subnav{display:block}.lang-menu{position:relative;display:inline-block;margin-left:4px;z-index:40;font:600 14px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif;color:#edf7ff}
+.lang-menu summary{list-style:none;cursor:pointer;border:1px solid #365264;border-radius:7px;padding:8px 28px 8px 11px;background:#0d1922;color:#edf7ff;white-space:nowrap;position:relative}
+.lang-menu summary::-webkit-details-marker{display:none}.lang-menu summary::after{content:'▾';position:absolute;right:10px;color:#36e0ce}
+.lang-menu[open] summary::after{content:'▴'}.lang-options{position:absolute;right:0;top:calc(100% + 7px);min-width:154px;padding:6px;background:#0b161e;border:1px solid #365264;border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.38)}
+.lang-options a{display:block!important;padding:9px 10px!important;margin:0!important;border-radius:5px;color:#c8d8e1!important;text-decoration:none!important;white-space:nowrap;font-size:14px!important}
+.lang-options a:hover,.lang-options a[aria-current="page"]{background:#132631;color:#36e0ce!important}.lang-options a[aria-current="page"]::before{content:'✓ ';color:#e9b84a}
+@media(max-width:760px){.lang-menu{width:100%;margin:4px 0}.lang-menu summary{width:100%}.lang-options{position:static;margin-top:6px;width:100%}}
+.modifier-table{width:100%;border-collapse:collapse;text-align:left}
+.modifier-table th,.modifier-table td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:break-word}
+.modifier-table caption{color:var(--muted);text-align:left;padding:0 0 8px}
+</style>
+<meta name="google-adsense-account" content="ca-pub-9505220977121599">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9505220977121599" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="/">Star Wars Zero Company Wiki</a><nav class="nav"><a href="/database/">Database</a><a href="/questions/">FAQ</a><span class="nav-group"><a href="/about/">About</a><span class="subnav"><a href="/about/editorial-policy.html">Policy</a><a href="/about/sources-and-citations.html">Sources</a><a href="/about/update-log.html">Updates</a><a href="/about/contact.html">Contact</a></span></span><a href="/guides/">Long-tail Guides</a><a href="/squads/">Squads</a><a href="/pairings/">Pairings</a><a href="/counters/">Counters</a><a href="/operatives/">Operatives</a><a href="/classes/">Classes</a><details class="lang-menu"><summary aria-label="Choose language">English</summary><div class="lang-options"><a href="/guides/campaign-modifiers.html" lang="en" aria-current="page">English</a><a href="/de/" lang="de">Deutsch</a><a href="/fr/" lang="fr">Français</a><a href="/it/" lang="it">Italiano</a><a href="/es/" lang="es">Español</a><a href="/ja/" lang="ja">日本語</a><a href="/ko/" lang="ko">한국어</a><a href="/pl/" lang="pl">Polski</a><a href="/zh-cn/" lang="zh-Hans">简体中文</a><a href="/zh-tw/" lang="zh-Hant">繁體中文</a><a href="/pt-br/" lang="pt-BR">Português (Brasil)</a></div></details></nav></div></header>
+<main class="wrap">
+<section class="hero">
+  <div class="crumb">Campaign guide &middot; Published <time datetime="2026-11-11">November 11, 2026</time></div>
+  <h1>Star Wars Zero Company Campaign Modifiers Guide</h1>
+  <p class="lead">To enable Campaign Modifiers, start a new campaign and open <strong>Additional Campaign Options</strong> in <strong>Difficulty Settings</strong>. Patch 1.2 lets you use modifiers at any difficulty. The selected rules take effect after the tutorial.</p>
+</section>
+<section class="block">
+  <h2>How to enable Campaign Modifiers</h2>
+  <ol>
+    <li>From the main menu, choose <strong>New Campaign</strong>.</li>
+    <li>On <strong>Difficulty Settings</strong>, choose your difficulty and review the Permadeath and Beskar Mode settings for this save.</li>
+    <li>Open <strong>Additional Campaign Options</strong> and select the rules you want.</li>
+    <li>Start the campaign and finish the tutorial to activate the modifiers.</li>
+  </ol>
+  <p>Campaign Modifiers apply to the new save. If you already have a campaign underway, create a separate campaign to play with modifiers. For the regular setup choices, see the <a href="/guides/difficulty-for-new-players.html">difficulty and Beskar Mode guide</a>.</p>
+</section>
+<section class="block">
+  <h2>Which settings change the game?</h2>
+  <table class="modifier-table">
+    <caption>What to check before confirming your campaign</caption>
+    <thead><tr><th scope="col">Rule</th><th scope="col">Effect to consider</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Injury limit</th><td>With <strong>Two Strikes</strong>, an Operator who already has an Injury can die when defeated in a Tactical Mission. The default three-strike threshold is two existing Injuries. <strong>Instant Death</strong> can make the first tactical defeat fatal. EA documents a Trick exception in the patch notes.</td></tr>
+      <tr><th scope="row">Random death risk</th><td><strong>No Risk of Death</strong> leaves the injury limit in effect and adds no random death chance. Static risk adds a 20% chance on tactical defeat. Escalating risk begins at 20%, rises to 40% after one survived defeat, and reaches 80% after two.</td></tr>
+      <tr><th scope="row">Health growth</th><td>By default, Operators gain 1 maximum HP for every 3 Focus Points earned. Reduced growth requires 6 Focus Points for that 1 HP. The no-growth setting removes this source of maximum HP.</td></tr>
+      <tr><th scope="row">Advantage generation</th><td>You can exclude area attacks or assist attacks from earning Advantage, or make eligible damaging attacks generate it only half the time. Fewer gains mean fewer opportunities to spend Advantage on special actions.</td></tr>
+      <tr><th scope="row">Tactical rules</th><td><strong>Assist Shots Can Miss</strong> makes assists use normal ranged hit rules. Other settings add enemy critical hits or cap Operator ranged hit chance at 99%.</td></tr>
+      <tr><th scope="row">Roster and respec</th><td>Separate settings can lock changes to Talents, Specializations, or weapons. The recruitment lock removes manual refresh, with the scheduled refresh still happening each cycle.</td></tr>
+    </tbody>
+  </table>
+  <p>The added random death risk applies to defeat in Tactical Missions. An injury picked up in a Galaxy Map Operation does not trigger that death roll or raise the escalating chance. Use the <a href="/guides/permadeath-injury-prevention.html">Permadeath and injury guide</a> when choosing a threshold.</p>
+</section>
+<section class="block">
+  <h2>Three settings combinations to try</h2>
+  <p>These are suggested combinations. EA recommends learning the default rules on Normal before enabling modifiers.</p>
+  <h3>Practice a backup plan</h3>
+  <p>Enable <strong>Assist Shots Can Miss</strong> and turn off Advantage generation from assist attacks. Keep the standard injury and health settings. Before relying on an assist, check the hit preview and reserve a teammate's <a href="/guides/action-points.html">Action Points</a> for a follow-up if the shot misses.</p>
+  <h3>Make injuries matter sooner</h3>
+  <p>With Permadeath on, choose <strong>Two Strikes</strong> and <strong>No Risk of Death</strong>. An already injured Operator faces a lower margin for error in tactical combat, with the injury threshold controlling the risk. Check the Medbay and your available substitutes between missions.</p>
+  <h3>Commit to your squad's roles</h3>
+  <p>Enable <strong>Locked Talent Respec</strong> and <strong>Locked Tactical Respec</strong>. Leave weapon changes and manual recruit refresh available. Pick complementary roles before you deploy and use weapon or lineup changes to cover gaps. See the <a href="/guides/beginner-first-squad.html">first squad guide</a> for role ideas.</p>
+</section>
+<section class="block">
+  <h2>Sources and further reading</h2>
+  <p>EA's patch notes specify the campaign setup and each rule. A community thread from October 17 records players comparing which modifiers to use on a new run.</p>
+  <ul>
+    <li><a href="https://www.ea.com/games/starwars/zero-company/news/patch-notes-1-2">EA Patch 1.2 notes</a></li>
+    <li><a href="https://www.reddit.com/r/ZeroCompany/comments/1x8gfjz/with_the_new_patch_did_anyone_else_immediately/">October 17 Reddit discussion about optional campaign rules</a></li>
+    <li><a href="/news/">Zero Company updates and hotfixes</a></li>
+  </ul>
+</section>
+</main>
+<footer class="footer"><div class="wrap">Star Wars Zero Company Wiki &middot; Unofficial fan guide. <a href="/sitemap.xml">Sitemap</a></div></footer>
+</body>
+</html>
+
+
+
+
