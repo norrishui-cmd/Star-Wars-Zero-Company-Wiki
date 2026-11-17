@@ -6,6 +6,7 @@ from __future__ import annotations
 from html import escape
 from pathlib import Path
 import json
+from refresh_english_faqs import refresh_page, refresh_hub
 import re
 
 
@@ -366,21 +367,24 @@ def article_html(target, fact_key: str, siblings: list[str]) -> str:
         "author": {"@type": "Organization", "name": "Star Wars Zero Company Wiki Editorial Team"},
         "publisher": {"@type": "Organization", "name": "Star Wars Zero Company Wiki"},
     }
+    archive_followup = 'For updates since this July report, see the <a href="/news/#patch-notes">patch notes and hotfixes</a>.'
+    if fact_key == "operator-cap":
+        archive_followup = 'For your current save, check <a href="/guides/the-den-base-upgrades.html">how to expand roster capacity at the Den</a> and <a href="/facilities/recruitment.html">how to hire an Operator for 100 Credits in Patch 1.2</a>.'
     body = f"""
 <section class="hero"><div class="crumb"><a href="/news/">News</a> / <a href="{route}">{escape(label)}</a></div>
-<p class="eyebrow">Navigation desk update · Verified {DISPLAY_DATE}</p><h1>{escape(title)}</h1>
+<p class="eyebrow">Pre-release news archive · {DISPLAY_DATE}</p><h1>{escape(title)}</h1>
 <p class="lead">{escape(answer)}</p></section>
 <section class="block answer"><h2>Quick Read</h2><p><strong>{escape(answer)}</strong></p>
 <p>This update is filed under {escape(label)} because it changes how readers use {escape(purpose)}. It answers that section's immediate question without turning an official description into an unverified statistic or launch-day tier ranking.</p></section>
 <section class="block"><h2>What the Official Update Establishes</h2><ul>
 <li>{escape(answer)}</li><li>The supporting first-party source is the {escape(source_name)}, published {escape(source_date)}.</li>
-<li>The game remains scheduled for August 27, 2026 on PC, PlayStation 5 and Xbox Series X|S.</li></ul>
-<p>For the {escape(label)} hub, the usable conclusion is narrow and practical: {escape(purpose)} can now be organized around this confirmed boundary. Details the source does not provide—such as final numerical balance, exact unlock timing or every mission exception—remain reserved for launch verification.</p></section>
+<li>The game launched on August 27, 2026 on PC, PlayStation 5 and Xbox Series X|S.</li></ul>
+<p>For the {escape(label)} hub, the usable conclusion is narrow and practical: {escape(purpose)} can now be organized around this confirmed boundary. Details the source does not provide—such as final numerical balance, exact unlock timing or every mission exception—were still open questions at the time of this July report.</p></section>
 <section class="block"><h2>Why This Matters for {escape(label)}</h2>
 <p>The page is intentionally scoped to the relationship between this announcement and {escape(purpose)}. That makes it different from the general announcement page: readers entering through this navigation tab receive the implication that is relevant to their current task, then can move to the source or related guide.</p>
-<p>After launch, this URL will be updated only when the shipped game or a later official statement changes the specific answer. Patch-dependent information will be dated rather than silently replacing the original evidence.</p></section>
-<section class="block"><h2>Launch Verification Checklist</h2><p>{escape(VERIFY[fact_key])}</p>
-<p>The resulting evidence belongs in {escape(label)} only when it answers the navigation intent described above. Screenshots, version numbers and observed exceptions will be attached to this route instead of generating overlapping pages.</p></section>
+<p>{archive_followup}</p></section>
+<section class="block"><h2>Questions recorded before release</h2><p>{escape(VERIFY[fact_key])}</p>
+<p>The resulting evidence belongs in {escape(label)} only when it answers the navigation intent described above. For current answers, start with the <a href="/guides/">player guides</a>.</p></section>
 <section class="block note"><h2>Evidence Boundary</h2><p>This is an unofficial, source-linked editorial brief. It does not claim access to review code, leaked files or unpublished mechanics. The official source remains authoritative.</p>
 <p class="source"><a href="{source_url}" rel="nofollow">Read the {escape(source_name)}</a></p></section>
 <section><h2>Related {escape(label)} News</h2><div class="grid">{related}<a class="card" href="{route}"><strong>Open {escape(label)}</strong><br><span class="muted">{escape(purpose)}</span></a></div></section>
@@ -425,16 +429,10 @@ def faq_html(item, related_items) -> str:
 <section class="hero"><div class="crumb"><a href="/questions/">FAQ</a> / New Verified Answer</div>
 <p class="eyebrow">Fact-checked {DISPLAY_DATE}</p><h1>{escape(question)}</h1><p class="lead">{escape(answer)}</p></section>
 <section class="block answer"><h2>Quick Answer</h2><p><strong>{escape(answer)}</strong></p><p>{escape(detail)}</p></section>
-<section class="block"><h2>What the Official Source Says</h2>
-<p>The answer comes from the <a href="{source_url}" rel="nofollow">{escape(source_name)}</a>, published {escape(source_date)}. The wording above preserves the source's confirmed boundary instead of expanding it into an unsupported feature promise.</p>
-<p>{escape(detail)} This distinction matters because Zero Company is still approaching its August 27 release, and exact unlock timing, difficulty modifiers or platform-specific behavior may not yet be public.</p></section>
-<section class="block"><h2>How to Use This Answer</h2>
-<p>Use the direct answer when planning a purchase, squad, mission or campaign route. If the question depends on a final number or an exception that the source does not state, check the linked hub and the post-launch verification date before treating it as settled.</p>
-<p>This URL owns one search intent. Related questions below cover adjacent decisions instead of repeating the same answer under multiple titles.</p></section>
-<section class="block note"><h2>Verification Boundary</h2><p>This page reports the current first-party position. It does not rely on leaks, inferred trailer statistics or another tactics game's rules. We will update the answer if EA or Lucasfilm publishes a conflicting statement.</p></section>
+<section class="block"><h2>Sources</h2><p><a href="{source_url}">{escape(source_name)}</a></p></section>
 <section><h2>Related Questions</h2><div class="grid">{related}<a class="card" href="/questions/"><strong>Browse all 102 FAQs</strong><br><span class="muted">Release, roster, systems, missions, story and editions</span></a></div></section>
 """
-    return (
+    return refresh_page(slug,
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         f"<title>{escape(question)} | Zero Company FAQ</title>"
@@ -590,8 +588,9 @@ def extend_news_hub() -> None:
             f'<strong>{escape(FACTS[fact][0])}</strong><br><span class="muted">{escape(FACTS[fact][1])}</span></a>'
             for fact in facts
         )
+        section_id = f"july29-{key}" if f'id="{key}"' in text else key
         sections.append(
-            f'<section id="{key}"><h2>{escape(label)} — 5 New Reports</h2>'
+            f'<section id="{section_id}"><h2>{escape(label)} — 5 New Reports</h2>'
             f'<p><a href="{route}">Open {escape(label)} →</a></p><div class="grid">{cards}</div></section>'
         )
     block = (
@@ -651,7 +650,7 @@ def extend_faq_hub() -> None:
     text = text.replace("One hundred source-linked", "One hundred two source-linked")
     text = text.replace("Browse all 50 FAQs", "Browse all 102 FAQs")
     text = text.replace("Browse all 100 FAQs", "Browse all 102 FAQs")
-    path.write_text(text, encoding="utf-8")
+    path.write_text(refresh_hub(text), encoding="utf-8")
 
 
 def write_report() -> None:

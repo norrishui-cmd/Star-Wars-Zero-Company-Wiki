@@ -434,7 +434,7 @@ def extend_faq_hub() -> None:
     text = text.replace("102 Verified Answers", "152 Verified Answers")
     text = text.replace("One hundred two source-linked", "One hundred fifty-two source-linked")
     text = text.replace("Browse all 102 FAQs", "Browse all 152 English FAQs")
-    path.write_text(text, encoding="utf-8")
+    path.write_text(r24.refresh_hub(text), encoding="utf-8")
 
 
 def write_report() -> None:

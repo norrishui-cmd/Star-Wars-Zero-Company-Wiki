@@ -92,6 +92,9 @@ def main():
     for slug, data in OPERATIVES.items():
         write(f"operatives/{slug}.html", operative_page(slug, data))
     for slug, data in FACILITIES.items():
+        # Personnel and Recruitment now use hand-edited post-launch guides.
+        if slug in {"personnel", "recruitment"} and (ROOT / f"facilities/{slug}.html").exists():
+            continue
         write(f"facilities/{slug}.html", facility_page(slug, data))
     for slug, data in LORE.items():
         write(f"lore/{slug}.html", lore_page(slug, data))

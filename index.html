@@ -23,7 +23,7 @@
 <meta property="og:description" content="Independent Star Wars Zero Company wiki with Operative profiles, first-squad guides, campaign settings, PC requirements, and patch notes." />
 <meta property="og:site_name" content="Star Wars Zero Company Wiki" />
 
-<!-- Structured data: demonstrates the SEO schema layer the brief requires -->
+<!-- Site and game metadata -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -351,7 +351,7 @@ button{font-family:inherit}
 .crumb a{color:var(--muted)}
 .crumb .sep{color:var(--line-2);margin:0 7px}
 
-h1.page{font-family:var(--fd);font-weight:800;font-size:clamp(28px,5vw,46px);letter-spacing:.01em;line-height:1.05;margin:0 0 8px}
+.page{font-family:var(--fd);font-weight:800;font-size:clamp(28px,5vw,46px);letter-spacing:.01em;line-height:1.05;margin:0 0 8px}
 h2.sec{font-family:var(--fd);font-weight:700;font-size:22px;letter-spacing:.02em;margin:38px 0 16px;display:flex;align-items:center;gap:12px}
 h2.sec::before{content:"";width:4px;height:20px;background:var(--teal);box-shadow:0 0 10px var(--teal-dim)}
 .lead{color:var(--muted);max-width:62ch;margin:0 0 6px}
@@ -576,7 +576,7 @@ h2.sec::before{content:"";width:4px;height:20px;background:var(--teal);box-shado
 .r-chip{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:5px;padding:8px 11px;background:var(--panel);cursor:pointer;transition:border-color .15s,transform .1s,opacity .15s}
 .r-chip:hover{border-color:var(--teal-dim)}
 .r-chip:active{transform:scale(.97)}
-.r-chip.in{opacity:.35;pointer-events:none}
+.r-chip{color:var(--text);text-align:left}.r-chip:disabled{opacity:.35;cursor:default}.slot .x{background:none;border:0;padding:6px}.slot.filled{padding-right:34px}.r-chip:focus-visible,.slot .x:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .r-chip .sigil{width:28px;height:28px;font-size:13px}
 .r-chip b{font-family:var(--fd);font-weight:700;font-size:13px}
 .r-chip small{display:block;font-family:var(--fm);font-size:9.5px;color:var(--muted)}
@@ -1091,6 +1091,7 @@ footer a:hover{color:var(--teal)}
   .nav-search > button{width:27px;flex-basis:27px}
 }
 
+.archive{margin:26px 0;padding:12px 16px;border:1px solid var(--line);border-radius:6px}.archive summary{cursor:pointer;color:var(--teal)}.archive h3{margin:20px 0 8px}.archive h4{margin:10px 0 2px}.archive ul{margin:0;padding-left:22px}
 </style>
 <meta name="google-adsense-account" content="ca-pub-9505220977121599">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9505220977121599" crossorigin="anonymous"></script>
@@ -1098,9 +1099,9 @@ footer a:hover{color:var(--teal)}
 <body>
 
 <!-- ================= NAV ================= -->
-<header class="topbar" id="topbar">
+<header class="topbar" id="topbar"><span id="home"></span>
   <div class="wrap topbar-inner">
-    <div class="brand" onclick="go('home')" aria-label="Star Wars Zero Company Wiki home">
+    <a class="brand" href="/" aria-label="Star Wars Zero Company Wiki home">
       <svg class="cog" viewBox="0 0 100 100" aria-hidden="true">
         <g class="rot" fill="none" stroke="var(--teal)" stroke-width="5">
           <circle cx="50" cy="50" r="20"/>
@@ -1112,16 +1113,16 @@ footer a:hover{color:var(--teal)}
         <b>Star Wars Zero Company Wiki</b>
         <span>FIELD INTEL // ZERO COMPANY</span>
       </div>
-    </div>
+    </a>
     <nav class="nav" id="nav">
-      <a class="nav-direct" data-route="home" href="#home" onclick="go('home')">Home</a>
+      <a class="nav-direct" data-route="home" href="/">Home</a>
       <details class="site-menu">
         <summary>Database</summary>
         <div class="site-menu-panel">
           <a href="/database/"><strong>Database Overview</strong><span>Confirmed game data</span></a>
           <a href="/operatives/">Operatives</a>
           <a href="/classes/">Specializations</a>
-          <a href="/builds/">Loadouts</a>
+          <a href="/official-systems/armory-weapons-guide.html">Weapons and armor</a>
           <a href="/hostiles/">Hostiles</a>
         </div>
       </details>
@@ -1138,9 +1139,9 @@ footer a:hover{color:var(--teal)}
       <details class="site-menu">
         <summary>Operations</summary>
         <div class="site-menu-panel">
-          <a href="/operations/"><strong>Operations Hub</strong><span>Mission planning</span></a>
+          <a href="/missions/"><strong>Mission types</strong><span>Mission planning</span></a>
           <a href="/planner/">Planner</a>
-          <a data-route="muster" href="#muster" onclick="go('muster')">Muster Board</a>
+          <a data-route="muster" href="#muster">Muster Board</a>
           <a href="/facilities/">The Den</a>
         </div>
       </details>
@@ -1164,7 +1165,7 @@ footer a:hover{color:var(--teal)}
         <span class="nav-search-icon" aria-hidden="true"></span>
         <input id="navSearch" type="search" placeholder="Search wiki..." autocomplete="off" aria-label="Search Star Wars Zero Company Wiki" />
         <button type="submit" aria-label="Submit search">Search</button>
-        <div class="nav-search-results" id="navSearchResults" role="listbox" aria-label="Search suggestions"></div>
+        <div class="nav-search-results" id="navSearchResults" role="region" aria-label="Search suggestions"></div>
       </form>
     </div>
     <button class="burger" onclick="document.getElementById('topbar').classList.toggle('open')">MENU</button>
@@ -1191,7 +1192,7 @@ footer a:hover{color:var(--teal)}
 
       <div class="cmd brk">
         <span class="prompt">&gt;</span>
-        <input id="search" type="text" placeholder="query operatives, loadouts, operations, hostiles..." autocomplete="off" aria-label="Search the database" />
+        <input id="search" type="text" placeholder="Search Operators, guides, enemies or patch notes…" autocomplete="off" aria-label="Search the database" />
         <button onclick="runSearch()">Search</button>
       </div>
       <div class="search-results" id="searchResults"></div>
@@ -1208,155 +1209,150 @@ footer a:hover{color:var(--teal)}
       </div>
 
       <div class="hero-stats">
-        <div class="cell"><div class="v">12</div><div class="l">Classes indexed</div></div>
-        <div class="cell"><div class="v">7+</div><div class="l">Authored operatives</div></div>
-        <div class="cell"><div class="v">4</div><div class="l">Squad slots / deploy</div></div>
+        <div class="cell"><div class="v">8</div><div class="l">Standard Specializations</div></div>
+        <div class="cell"><div class="v">7</div><div class="l">Operator profiles</div></div>
+        <div class="cell"><div class="v">Up to 4</div><div class="l">Standard squad</div></div>
         <div class="cell"><div class="v">3 AP</div><div class="l">Per operative / turn</div></div>
       </div>
     </div>
   </div>
 
-  <h2 class="sec">Most accessed dossiers</h2>
-  <div class="grid g4" id="homeOps"></div>
-
-  <h2 class="sec">Jump to a system</h2>
-  <div class="grid g3">
-    <a class="card brk home-system-link" href="/classes/" data-view="tier"><div class="tag">Official Roles</div><h3>8 Standard Specializations</h3><p>Assault, Gunslinger, Heavy, Medic, Scoundrel, Scout, Sharpshooter and Soldier.</p></a>
-    <a class="card brk home-system-link" href="/builds/" data-view="builds"><div class="tag">Loadouts</div><h3>Build Guides</h3><p>Focus-tree priorities, weapon spec, secondary pairing, squad synergy and endgame rating.</p></a>
-    <a class="card brk home-system-link" href="#muster" data-view="muster"><div class="tag">Tool · Exclusive</div><h3>Muster Board</h3><p>Drop in four operatives, read live attribute coverage and auto-detected bond synergies.</p></a>
-    <a class="card brk home-system-link" href="/operations/" data-view="ops"><div class="tag">Walkthroughs</div><h3>Operations</h3><p>Objectives, hostile roster, recommended squad and turn-by-turn routes for each mission.</p></a>
-    <a class="card brk home-system-link" href="/hostiles/" data-view="hostiles"><div class="tag">Threat data</div><h3>Hostile Database</h3><p>HP, resistances, weak points and the fastest counter for every Separatist unit.</p></a>
-    <a class="card brk home-system-link" href="/operatives/" data-view="operatives"><div class="tag">Wiki</div><h3>Operative Index</h3><p>Full dossiers: stats, signature ability, focus tree, recommended build and squad.</p></a>
+  <h2 class="sec">Guides and patch notes</h2>
+  <div class="grid g4">
+    <a class="card brk home-system-link" href="/news/#patch-notes"><div class="tag">Updates</div><h3>Patch notes and hotfixes</h3><p>The November 10 hotfix addresses console loading crashes, saves after Concussion Grenades, and effects missing after a reload.</p></a>
+    <a class="card brk home-system-link" href="/guides/beginner-first-squad.html"><div class="tag">First campaign</div><h3>Choose your first squad</h3><p>Plan around Hawks, your mission objective, and the Operators available at The Den.</p></a>
+    <a class="card brk home-system-link" href="/guides/crashing-on-startup-or-load.html"><div class="tag">Troubleshooting</div><h3>Game crashes on startup or load</h3><p>Start with the steps for your platform and the point where the game stops.</p></a>
+    <a class="card brk home-system-link" href="/guides/permadeath-injury-prevention.html"><div class="tag">Campaign settings</div><h3>Injuries and permanent death</h3><p>Find out what happens when an Operator goes down and which difficulty settings affect the consequences.</p></a>
   </div>
-<!-- ROUND24_HOME_MODULES_START --><!-- ROUND24_NEWS_home_START --><section class="round24-news" aria-label="New Home news" style="margin:42px 0"><h2>July 29 News Archive</h2><p style="color:#9db0bd">July reports from before the game launched.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px"><a href="/news/home/home-release-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">August 27 Release Remains Confirmed</strong><br><span style="color:#9db0bd;font-size:14px">Star Wars Zero Company remains scheduled for August 27, 2026 on PC, PlayStation 5 and Xbox Series X|S.</span></a><a href="/news/home/home-cast-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">Full Voice Cast Now Lists 15 Character Credits</strong><br><span style="color:#9db0bd;font-size:14px">StarWars.com now names 15 character-to-actor credits, including both Hawks performances, Kundri Fathom, Trick, Anakin Skywalker and the wider supporting cast.</span></a><a href="/news/home/home-operator-cap-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">The Den Operator Limit Can Reach 20</strong><br><span style="color:#9db0bd;font-size:14px">Players begin with a maximum of seven Operators and can expand the headquarters limit to 20 through upgrades, story progress and authored recruits.</span></a><a href="/news/home/home-collectors-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">A Collectors&#x27; Edition Was Announced at SDCC</strong><br><span style="color:#9db0bd;font-size:14px">StarWars.com confirms that a Star Wars Zero Company Collectors&#x27; Edition is available to preorder through Limited Run Games.</span></a><a href="/news/home/home-soundtrack-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">The Original Soundtrack Launches August 27</strong><br><span style="color:#9db0bd;font-size:14px">Gordy Haab&#x27;s soundtrack arrives with the game on August 27, and its first track, “Zero Company,” is already available.</span></a></div><p><a href="/news/#home">Browse the complete News index →</a></p><!-- ROUND26_HOME_MODULES_START --><section class="round26-news" aria-label="Five additional Home news reports"><h2>July 31 News Archive</h2><p class="muted">Additional July reports covering the campaign, species, and soundtrack.</p><div class="grid"><a class="card" href="/news/home/home-campaign-length-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Main Campaign Estimate Is 30–40 Hours</strong><br><span class="muted">Bit Reactor estimates 30–40 hours for an average main-story run, with difficulty and tactics experience affecting the total.</span></a><a class="card" href="/news/home/home-eight-species-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Eight Operator Species Are Named</strong><br><span class="muted">The official trailer report names Devaronian, Human, Neimoidian, Ovissian, Togruta, Twi&#x27;lek, Weequay and Zabrak as character-creation species.</span></a><a class="card" href="/news/home/home-development-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Bit Reactor Leads Development with Lucasfilm Games</strong><br><span class="muted">Bit Reactor develops the game in collaboration with Lucasfilm Games, with Electronic Arts publishing.</span></a><a class="card" href="/news/home/home-crystal-pack-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Every Preorder Includes the Crystalline Astromech Pack</strong><br><span class="muted">The preorder bonus includes an R3 droid, crystalline R4 and R5 head variants and the BR-1 droid.</span></a><a class="card" href="/news/home/home-soundtrack-single-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>The First Gordy Haab Track Is Already Available</strong><br><span class="muted">Walt Disney Records released the track “Zero Company” ahead of the full August 27 soundtrack.</span></a></div><p><a href="/news/#round26-home">Open the expanded News index →</a></p></section><section class="round26-faq" aria-label="Additional Home FAQs"><h2>More Related Home FAQs</h2><p class="muted">Answers about character voices and the cast.</p><div class="grid"><a class="card" href="/questions/can-choose-hawks-voice.html"><small>NEW VERIFIED FAQ</small><br><strong>Can you choose Hawks&#x27; voice?</strong><br><span class="muted">Yes. Hawks has masculine and feminine performance options.</span></a><a class="card" href="/questions/who-voices-cly-kullervo.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Cly Kullervo?</strong><br><span class="muted">Alex McKenna voices Cly Kullervo.</span></a><a class="card" href="/questions/who-voices-jae-mordant.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Jae Mordant?</strong><br><span class="muted">Judy Alice Lee voices Jae Mordant.</span></a><a class="card" href="/questions/who-voices-kabb-uppercut.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices Kabb Uppercut?</strong><br><span class="muted">JB Blanc voices Kabb Uppercut.</span></a><a class="card" href="/questions/who-voices-meevo.html"><small>NEW VERIFIED FAQ</small><br><strong>Who voices M-3VO / Meevo?</strong><br><span class="muted">D.C. Douglas voices M-3VO, also called Meevo.</span></a></div><p><a href="/questions/">Browse all 152 English FAQs →</a></p></section><!-- ROUND26_HOME_MODULES_END --></section><!-- ROUND24_NEWS_home_END --><!-- ROUND24_FAQ_home_START --><section class="round24-faq" aria-label="New Home FAQs" style="margin:42px 0"><h2>Related Home FAQs</h2><p style="color:#9db0bd">Five new first-party-grounded answers connected to this section.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px"><a href="/questions/is-zero-company-collectors-edition-announced.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">Is there a Star Wars Zero Company Collectors&#x27; Edition?</strong><br><span style="color:#9db0bd;font-size:14px">Yes. A Collectors&#x27; Edition was announced at SDCC 2026.</span></a><a href="/questions/what-does-meevo-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Meevo do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Meevo, also called M-3VO, supports piloting and the Medbay.</span></a><a href="/questions/what-does-neesh-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Neesh Renark do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Neesh supports the Armory and Black Market.</span></a><a href="/questions/what-does-runa-do-at-den.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What does Runa Blask do at The Den?</strong><br><span style="color:#9db0bd;font-size:14px">Runa handles operations and finance and serves as Hawks&#x27; right hand.</span></a><a href="/questions/when-does-zero-company-soundtrack-release.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">When does the Zero Company soundtrack release?</strong><br><span style="color:#9db0bd;font-size:14px">The original soundtrack was released on August 27, 2026.</span></a></div><p><a href="/questions/">Browse all FAQs →</a></p></section><!-- ROUND24_FAQ_home_END --><!-- ROUND24_HOME_MODULES_END --></section>
-
-<!-- ================= OPERATIVES INDEX ================= -->
-<section class="view" id="view-operatives">
-  <div class="crumb"><a onclick="go('home')">DATABASE</a><span class="sep">/</span>OPERATIVES</div>
-  <h1 class="page">Operative Index</h1>
-  <p class="lead">Authored story operatives carry a fixed signature ability that survives any respec. Custom Operators fill the eight standard specializations. Select a file for the full dossier.</p>
-  <h2 class="sec">Authored operatives</h2>
-  <div class="grid g3" id="opIndex"></div>
-</section>
-
-<!-- ================= OPERATIVE DOSSIER ================= -->
-<section class="view" id="view-dossier">
-  <div class="crumb"><a onclick="go('operatives')">OPERATIVES</a><span class="sep">/</span><span id="dCrumb">FILE</span></div>
-  <div class="dossier" id="dossierBody"></div>
-</section>
-
-<!-- ================= SPECIALIZATIONS ================= -->
-<section class="view" id="view-tier">
-  <div class="crumb"><a onclick="go('home')">DATABASE</a><span class="sep">/</span>SPECIALIZATIONS</div>
-  <h1 class="page">8 Standard Specializations</h1>
-  <p class="lead">Official role descriptions for the eight standard Specializations named by EA. Check the in-game Specialization profile for current ability names and values.</p>
-  <div id="tierList"></div>
-  <p class="muted mono" style="font-size:11.5px;margin-top:14px">Source: EA official gameplay overview, June 9, 2026. Each standard Specialization has an Ultimate, Standard Ability and Passive.</p>
-</section>
-
-<!-- ================= BUILDS INDEX ================= -->
-<section class="view" id="view-builds">
-  <div class="crumb"><a onclick="go('home')">DATABASE</a><span class="sep">/</span>LOADOUTS</div>
-  <h1 class="page">Loadout Guides</h1>
-  <p class="lead">Each loadout sets a focus-tree path, weapon specialization, recommended secondary spec and the squad it wants around it. Built from confirmed abilities and the four-layer operator system.</p>
-  <div class="grid g2" id="buildIndex"></div>
-</section>
-
-<!-- ================= BUILD DETAIL ================= -->
-<section class="view" id="view-build">
-  <div class="crumb"><a onclick="go('builds')">LOADOUTS</a><span class="sep">/</span><span id="bCrumb">BUILD</span></div>
-  <div id="buildBody"></div>
-</section>
-
-<!-- ================= OPERATIONS INDEX ================= -->
-<section class="view" id="view-ops">
-  <div class="crumb"><a onclick="go('home')">DATABASE</a><span class="sep">/</span>OPERATIONS</div>
-  <h1 class="page">Operations</h1>
-  <p class="lead">Tactical missions across the galaxy. <span class="pill red" style="vertical-align:middle">CRITICAL</span> operations advance the main story; side ops are time-limited and disappear if ignored.</p>
-  <div class="grid g2" id="opsIndex"></div>
-</section>
-
-<!-- ================= OPERATION DETAIL ================= -->
-<section class="view" id="view-op">
-  <div class="crumb"><a onclick="go('ops')">OPERATIONS</a><span class="sep">/</span><span id="oCrumb">OP</span></div>
-  <div id="opBody"></div>
-</section>
-
-<!-- ================= HOSTILES INDEX ================= -->
-<section class="view" id="view-hostiles">
-  <div class="crumb"><a onclick="go('home')">DATABASE</a><span class="sep">/</span>HOSTILES</div>
-  <h1 class="page">Hostile Database</h1>
-  <p class="lead">Threat assessments for the Separatist droid army and allied hazards. Each entry lists durability, what it shrugs off, where it breaks and the fastest way to put it down.</p>
-  <div class="grid g3" id="hostIndex"></div>
-</section>
-
-<!-- ================= HOSTILE DETAIL ================= -->
-<section class="view" id="view-hostile">
-  <div class="crumb"><a onclick="go('hostiles')">HOSTILES</a><span class="sep">/</span><span id="hCrumb">UNIT</span></div>
-  <div id="hostBody"></div>
+  <h2 class="sec">Operative dossiers</h2>
+  <div class="grid g4">
+    <a class="card brk home-system-link" href="/operatives/hawks.html"><div class="tag">Operative</div><h3>Hawks</h3><p>A former Republic officer. Hawks leads the squad and can choose a combat Specialization.</p></a>
+    <a class="card brk home-system-link" href="/operatives/trick.html"><div class="tag">Operative</div><h3>Trick</h3><p>A clone veteran and longtime ally of Hawks.</p></a>
+    <a class="card brk home-system-link" href="/operatives/cly.html"><div class="tag">Operative</div><h3>Cly Kullervo</h3><p>A survivor of Clan Verminoth. Her Combat Jump gives her a way to change position.</p></a>
+    <a class="card brk home-system-link" href="/operatives/telrea.html"><div class="tag">Operative</div><h3>Tel-Rea Vokoss</h3><p>Force Push can displace an enemy from cover into an ally’s Overwatch.</p></a>
+  </div>
+  <h2 class="sec">Plan a mission</h2>
+  <div class="grid g3">
+    <a class="card brk home-system-link" href="/classes/"><div class="tag">Specializations</div><h3>Standard Specializations</h3><p>Compare the eight standard combat roles before assigning a new recruit.</p></a>
+    <a class="card brk home-system-link" href="#muster"><div class="tag">Squad planner</div><h3>Muster Board</h3><p>Choose up to four Operators and review the roles on your board.</p></a>
+    <a class="card brk home-system-link" href="/official-systems/armory-weapons-guide.html"><div class="tag">Loadouts</div><h3>Weapons and armor</h3><p>Find out what the Armory lets you equip before a mission.</p></a>
+    <a class="card brk home-system-link" href="/missions/"><div class="tag">Objectives</div><h3>Mission types</h3><p>Compare strategic Operations with tactical combat, rescue, retrieval and sabotage missions.</p></a>
+    <a class="card brk home-system-link" href="/hostiles/"><div class="tag">Enemies</div><h3>Separatist droids</h3><p>Identify B1s, B2s, droidekas and commando droids.</p></a>
+    <a class="card brk home-system-link" href="/operatives/"><div class="tag">Characters</div><h3>Operative dossiers</h3><p>Read the backgrounds of Hawks and the authored squad members.</p></a>
+  </div>
+  <h2 class="sec">Explore the wiki</h2>
+  <div class="grid g4">
+    <a class="card brk home-system-link" href="/guides/"><div class="tag">Campaign</div><h3>Guide index</h3><p>Browse difficulty, settings, squad and system guides.</p></a>
+    <a class="card brk home-system-link" href="/cast/"><div class="tag">Characters</div><h3>Voice cast</h3><p>Look up the actors behind Hawks, the Operators and their allies.</p></a>
+    <a class="card brk home-system-link" href="/facilities/"><div class="tag">Headquarters</div><h3>The Den</h3><p>Find recruitment, equipment, training and recovery facilities.</p></a>
+    <a class="card brk home-system-link" href="/questions/"><div class="tag">FAQ</div><h3>Player questions</h3><p>Look up questions about squad building, combat and campaign rules.</p></a>
+  </div>
+  <p class="muted">Official references: <a href="https://www.ea.com/games/starwars/zero-company/news/lead-zero-company-to-victory">EA gameplay overview</a> · <a href="https://www.ea.com/games/starwars/zero-company/news/hotfixes">EA hotfix log</a>. </p>
+<details class="archive"><summary>July 2026 archive and FAQs · Game news</summary>
+<!-- ROUND24_HOME_MODULES_START --><h3>July 29, 2026</h3>
+<!-- ROUND24_NEWS_home_START -->
+<h4>Reports</h4><ul>
+<li><a href="/news/home/home-release-update.html">August 27 Release Remains Confirmed</a></li>
+<li><a href="/news/home/home-cast-update.html">Full Voice Cast Now Lists 15 Character Credits</a></li>
+<li><a href="/news/home/home-operator-cap-update.html">The Den Operator Limit Can Reach 20</a></li>
+<li><a href="/news/home/home-collectors-update.html">A Collectors&#x27; Edition Was Announced at SDCC</a></li>
+<li><a href="/news/home/home-soundtrack-update.html">The Original Soundtrack Launches August 27</a></li>
+</ul>
+<!-- ROUND24_NEWS_home_END -->
+<!-- ROUND24_FAQ_home_START -->
+<h4>Questions</h4><ul>
+<li><a href="/questions/is-zero-company-collectors-edition-announced.html">Is there a Star Wars Zero Company Collectors&#x27; Edition?</a></li>
+<li><a href="/questions/what-does-meevo-do-at-den.html">What does Meevo do at The Den?</a></li>
+<li><a href="/questions/what-does-neesh-do-at-den.html">What does Neesh Renark do at The Den?</a></li>
+<li><a href="/questions/what-does-runa-do-at-den.html">What does Runa Blask do at The Den?</a></li>
+<li><a href="/questions/when-does-zero-company-soundtrack-release.html">When does the Zero Company soundtrack release?</a></li>
+</ul>
+<!-- ROUND24_FAQ_home_END -->
+<!-- ROUND24_HOME_MODULES_END -->
+<!-- ROUND26_HOME_MODULES_START --><h3>July 31, 2026</h3>
+<h4>Reports</h4><ul>
+<li><a href="/news/home/home-campaign-length-update.html">Main Campaign Estimate Is 30–40 Hours</a></li>
+<li><a href="/news/home/home-eight-species-update.html">Eight Operator Species Are Named</a></li>
+<li><a href="/news/home/home-development-update.html">Bit Reactor Leads Development with Lucasfilm Games</a></li>
+<li><a href="/news/home/home-crystal-pack-update.html">Every Preorder Includes the Crystalline Astromech Pack</a></li>
+<li><a href="/news/home/home-soundtrack-single-update.html">The First Gordy Haab Track Is Already Available</a></li>
+</ul>
+<h4>Questions</h4><ul>
+<li><a href="/questions/can-choose-hawks-voice.html">Can you choose Hawks&#x27; voice?</a></li>
+<li><a href="/questions/who-voices-cly-kullervo.html">Who voices Cly Kullervo?</a></li>
+<li><a href="/questions/who-voices-jae-mordant.html">Who voices Jae Mordant?</a></li>
+<li><a href="/questions/who-voices-kabb-uppercut.html">Who voices Kabb Uppercut?</a></li>
+<li><a href="/questions/who-voices-meevo.html">Who voices M-3VO / Meevo?</a></li>
+</ul>
+<!-- ROUND26_HOME_MODULES_END -->
+</details>
 </section>
 
 <!-- ================= MUSTER BOARD (SQUAD BUILDER) ================= -->
 <section class="view" id="view-muster">
-  <div class="crumb"><a onclick="go('home')">TOOLS</a><span class="sep">/</span>MUSTER BOARD</div>
-  <h1 class="page">Muster Board</h1>
-  <p class="lead">Assign up to four operatives, then read live squad coverage and the bonds, class combos and frictions the game will surface in the field. Sustain and frontline gaps are flagged before you deploy.</p>
-
+  <div class="crumb"><a href="/">HOME</a><span class="sep">/</span>SQUAD PLANNER</div>
+  <h2 class="page" id="muster">Muster Board</h2>
+  <p class="lead">Build a four-slot squad from story characters and custom recruits. Use the role summary to see who can heal, fight at range or move an enemy out of cover. Some missions let you control additional characters.</p>
   <div class="muster">
     <div>
       <div class="slots" id="slots"></div>
       <h2 class="sec" style="font-size:18px">Available roster</h2>
-      <p class="muted" style="font-size:13px;margin-top:-6px">Authored operatives plus custom-class archetypes (your own recruits). Tap to add.</p>
+      <p class="muted" style="font-size:13px;margin-top:-6px">Choose an Operator to add them. You can add multiple custom recruits of the same Specialization.</p>
       <div class="roster" id="roster"></div>
     </div>
 
     <aside class="readout brk">
       <div class="rating-line">
-        <span class="lbl">Squad rating</span>
-        <span class="grade" id="squadGrade" style="color:var(--faint)">—</span>
+        <span class="lbl">Filled slots</span>
+        <span class="grade" id="slotCount">0 / 4</span>
       </div>
-      <div class="radar-box">
-        <svg id="radar" width="280" height="240" viewBox="0 0 280 240" aria-label="Squad attribute radar"></svg>
-      </div>
-      <div class="radar-legend"><span><i></i>Attack · Defense · Support · Mobility · Control</span></div>
-      <div id="synergies" style="margin-top:16px">
-        <div class="synline warn"><span class="ic">!</span><span>Empty board. Add operatives to read coverage.</span></div>
-      </div>
+      <h2 style="font-size:18px">Roles on this board</h2>
+      <div id="coverage" aria-live="polite"></div>
       <button class="btn-clear" onclick="clearSquad()">Clear board</button>
     </aside>
   </div>
-<!-- ROUND24_MUSTER_MODULES_START --><!-- ROUND24_NEWS_muster_START --><section class="round24-news" aria-label="New Muster Board news" style="margin:42px 0"><h2>5 New Muster Board News Reports</h2><p style="color:#9db0bd">Source-linked updates for interactive squad composition and role coverage.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px"><a href="/news/muster/muster-squad-cap-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">Standard Tactical Squads Can Reach Four Operators</strong><br><span style="color:#9db0bd;font-size:14px">The standard squad limit is four Operators, although selected missions can place additional controllable characters on the field.</span></a><a href="/news/muster/muster-hawks-story-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">Hawks Is Required on Story Missions</strong><br><span style="color:#9db0bd;font-size:14px">EA confirms that Hawks must deploy on story missions, while skirmish missions allow any available Operator combination.</span></a><a href="/news/muster/muster-jedi-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">Tel-Rea Is the Only Jedi Padawan Operator</strong><br><span style="color:#9db0bd;font-size:14px">EA identifies Tel-Rea as the game&#x27;s only Jedi Padawan-class Operator, so losing her removes that unique authored role.</span></a><a href="/news/muster/muster-astromechs-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">Full Astromech Squads Become Possible Early</strong><br><span style="color:#9db0bd;font-size:14px">Astromechs unlock early enough to fill the non-Hawks slots of a story squad after recruitment becomes available.</span></a><a href="/news/muster/muster-bonds-update.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">JUL 29, 2026 · NEW REPORT</small><br><strong style="color:#36e0ce">Bonds Unlock Support and Cross-Training Benefits</strong><br><span style="color:#9db0bd;font-size:14px">Bonded Operators can gain support abilities and share skills or statistics through cross-training.</span></a></div><p><a href="/news/#muster">Browse the complete News index →</a></p><!-- ROUND26_MUSTER_MODULES_START --><section class="round26-news" aria-label="Five additional Muster Board news reports"><h2>5 More Muster Board News Reports</h2><p class="muted">A second, non-duplicating source-linked batch for interactive squad composition and role coverage.</p><div class="grid"><a class="card" href="/news/muster/muster-clone-team-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>A Full Clone Trooper Team Can Be Unlocked</strong><br><span class="muted">Clone Troopers unlock after a point in the story, after which the roster can support a full Clone Trooper team.</span></a><a class="card" href="/news/muster/muster-authored-custom-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Authored and Custom Operators Can Mix</strong><br><span class="muted">Players can combine story-authored Operators with fully customized recruits in the same company and tactical roster.</span></a><a class="card" href="/news/muster/muster-bonds-support-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Bonds Unlock New Support Abilities</strong><br><span class="muted">Operators who grow closer through combat can unlock support abilities that change how teammates assist one another.</span></a><a class="card" href="/news/muster/muster-ability-types-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Each Standard Specialization Has Three Ability Types</strong><br><span class="muted">The eight standard Specializations each use one Ultimate, one Standard and one Passive ability.</span></a><a class="card" href="/news/muster/muster-operator-voice-update.html"><small>JUL 31, 2026 · VERIFIED BRIEF</small><br><strong>Custom Operators Include Voice Selection</strong><br><span class="muted">Custom recruits support appearance, clothing, voice and name choices rather than only a visual preset.</span></a></div><p><a href="/news/#round26-muster">Open the expanded News index →</a></p></section><section class="round26-faq" aria-label="Additional Muster Board FAQs"><h2>More Related Muster Board FAQs</h2><p class="muted">Five direct answers selected from the new 50-page FAQ batch.</p><div class="grid"><a class="card" href="/questions/can-build-full-clone-trooper-team.html"><small>NEW VERIFIED FAQ</small><br><strong>Can you build a full Clone Trooper team?</strong><br><span class="muted">Yes, after Clone Troopers unlock at a later story point.</span></a><a class="card" href="/questions/can-mix-authored-and-custom-operators.html"><small>NEW VERIFIED FAQ</small><br><strong>Can you mix Authored and Custom Operators?</strong><br><span class="muted">Yes. Both Operator types can belong to the same company and mission roster.</span></a><a class="card" href="/questions/can-customize-hawks-first-name.html"><small>NEW VERIFIED FAQ</small><br><strong>Can you customize Hawks&#x27; first name?</strong><br><span class="muted">Yes. Hawks&#x27; first name is one of the confirmed identity choices.</span></a><a class="card" href="/questions/can-customize-operator-voices.html"><small>NEW VERIFIED FAQ</small><br><strong>Can you customize recruited Operator voices?</strong><br><span class="muted">Yes. Voice is listed among the options for Custom Operators.</span></a><a class="card" href="/questions/can-you-use-a-full-sniper-squad.html"><small>NEW VERIFIED FAQ</small><br><strong>Can you use a full sniper squad?</strong><br><span class="muted">Yes, the game allows specialized squad approaches.</span></a></div><p><a href="/questions/">Browse all 152 English FAQs →</a></p></section><!-- ROUND26_MUSTER_MODULES_END --></section><!-- ROUND24_NEWS_muster_END --><!-- ROUND24_FAQ_muster_START --><section class="round24-faq" aria-label="New Muster Board FAQs" style="margin:42px 0"><h2>Related Muster Board FAQs</h2><p style="color:#9db0bd">Five new first-party-grounded answers connected to this section.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px"><a href="/questions/can-build-full-astromech-squad.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">Can you build a full astromech squad?</strong><br><span style="color:#9db0bd;font-size:14px">Yes, after astromech recruitment unlocks.</span></a><a href="/questions/can-control-more-than-four-operators.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">Can you control more than four characters?</strong><br><span style="color:#9db0bd;font-size:14px">Yes, in certain missions.</span></a><a href="/questions/what-is-standard-squad-size.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">What is the standard squad size?</strong><br><span style="color:#9db0bd;font-size:14px">The standard squad limit can reach four Operators.</span></a><a href="/questions/can-custom-operators-have-backstories.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">Can custom Operators have names and backstories?</strong><br><span style="color:#9db0bd;font-size:14px">Yes. Recruited Operators can have customized names and backstories.</span></a><a href="/questions/can-recruit-separatist-droids.html" style="display:block;border:1px solid #284050;border-radius:7px;padding:16px;color:inherit;text-decoration:none;background:#0d1922"><small style="color:#9db0bd">NEW VERIFIED FAQ</small><br><strong style="color:#36e0ce">Can you recruit Separatist battle droids?</strong><br><span style="color:#9db0bd;font-size:14px">No. Separatist droids cannot be recruited as Operators.</span></a></div><p><a href="/questions/">Browse all 102 FAQs →</a></p></section><!-- ROUND24_FAQ_muster_END --><!-- ROUND24_MUSTER_MODULES_END --></section>
-
-<section class="view show" style="display:block;padding-top:0">
-  <h2 class="sec">Long-tail guide index</h2>
-  <div class="grid g4">
-    <a class="card brk" href="/operatives/"><div class="tag">Crawlable</div><h3>Operative guides</h3><p>Static dossiers for every confirmed character.</p></a>
-    <a class="card brk" href="/classes/"><div class="tag">Verified Roles</div><h3>Specialization guides</h3><p>Eight official role pages with confirmed positioning and clearly labeled launch-verification fields.</p></a>
-    <a class="card brk" href="/builds/"><div class="tag">Crawlable</div><h3>Loadout guides</h3><p>Focus paths, weapon specs, strengths and weaknesses.</p></a>
-    <a class="card brk" href="/operations/"><div class="tag">Crawlable</div><h3>Mission walkthroughs</h3><p>Objectives, squads, enemy rosters and rewards.</p></a>
-    <a class="card brk" href="/guides/"><div class="tag">Long-tail</div><h3>Question guides</h3><p>AP, Advantage, permadeath, The Den, cycles and buyer-intent pages.</p></a>
-    <a class="card brk" href="/squads/"><div class="tag">Long-tail</div><h3>Squad modules</h3><p>Mission, role and risk-based team composition pages.</p></a>
-    <a class="card brk" href="/pairings/"><div class="tag">Long-tail</div><h3>Pairing pages</h3><p>Two-character synergy and friction guide URLs.</p></a>
-    <a class="card brk" href="/counters/"><div class="tag">Long-tail</div><h3>Counter matrix</h3><p>Enemy-by-class counter pages for narrow tactical searches.</p></a>
-    <a class="card brk" href="/about/"><div class="tag">Trust</div><h3>About hub</h3><p>Editorial policy, sources, update log, roadmap and corrections pages.</p></a>
-    <a class="card brk" href="/glossary/"><div class="tag">Long-tail</div><h3>Glossary</h3><p>Short definition pages for AP, bonds, overwatch, extraction and more.</p></a>
-    <a class="card brk" href="/questions/"><div class="tag">Long-tail</div><h3>Decision FAQ</h3><p>Question pages with direct answers and decision trees.</p></a>
-    <a class="card brk" href="/compare/"><div class="tag">Long-tail</div><h3>Comparisons</h3><p>Versus-intent pages for classes, roles, enemies and campaign choices.</p></a>
-    <a class="card brk" href="/scenarios/"><div class="tag">Long-tail</div><h3>Scenario playbooks</h3><p>Situation-specific tactical pages for shields, timers and ambushes.</p></a>
-    <a class="card brk" href="/campaign/"><div class="tag">Long-tail</div><h3>Campaign routes</h3><p>Route planning pages for upgrades, bonds, side ops and launch week.</p></a>
-    <a class="card brk" href="/official/"><div class="tag">Trust</div><h3>Official info</h3><p>Release, platforms, pre-order, Deluxe Edition and confirmed feature pages.</p></a>
-    <a class="card brk" href="/start-here/"><div class="tag">Navigation</div><h3>Start here</h3><p>Visitor paths for new players, XCOM veterans, Star Wars fans and buyers.</p></a>
-    <a class="card brk" href="/systems/"><div class="tag">Deep Guide</div><h3>Systems library</h3><p>Mechanics pages for AP, Advantage, bonds, The Den, cycles and sabotage.</p></a>
-    <a class="card brk" href="/planner/"><div class="tag">Tooling</div><h3>Planner hub</h3><p>Pre-mission, upgrade, injury, bond and launch-week checklists.</p></a>
-    <a class="card brk" href="/media/"><div class="tag">Media</div><h3>Media hub</h3><p>Trailer, screenshot, key art and UI clue pages for source-backed updates.</p></a>
-    <a class="card brk" href="/content-map/"><div class="tag">Quality</div><h3>Content map</h3><p>Complete module audit for this tactics guide site and its remaining launch-week gaps.</p></a>
-    <a class="card brk" href="/official-systems/"><div class="tag">Official Systems</div><h3>Gameplay systems hub</h3><p>AP, Overwatch, Advantage, wounds, The Den, weapons and training pages built from official gameplay details.</p></a>
-    <a class="card brk" href="/facilities/"><div class="tag">Verified Database</div><h3>The Den facilities</h3><p>HoloTable, Recruitment, Personnel, Armory, Upgrade, Medbay, Customization and Memorial guides.</p></a>
-    <a class="card brk" href="/lore/"><div class="tag">Story Entities</div><h3>Story and lore</h3><p>Source-grounded profiles for Zero Company, Kundri Fathom, the Infinite Coil and Ring of Kafrene.</p></a>
-    <a class="card brk" href="/confirmed/"><div class="tag">Quality</div><h3>Confirmed guides</h3><p>Source-anchored cornerstone pages that separate official facts, preview details and unknowns.</p></a>
-  </div>
+  <p class="muted">Hawks must join story missions. Skirmishes allow any available combination. The board shows the selected recruits’ specialties and the story characters’ identifying roles. Your equipped gear, current Specializations and Bonds can change what each Operator brings.</p>
+  <p><a href="/guides/beginner-first-squad.html">First squad guide</a> · <a href="/classes/">Specialization details</a> · <a href="https://www.ea.com/games/starwars/zero-company/news/answering-biggest-questions">Bit Reactor’s squad rules</a></p>
+<details class="archive"><summary>July 2026 archive and FAQs · Squad planning</summary>
+<!-- ROUND24_MUSTER_MODULES_START --><h3>July 29, 2026</h3>
+<!-- ROUND24_NEWS_muster_START -->
+<h4>Reports</h4><ul>
+<li><a href="/news/muster/muster-squad-cap-update.html">Standard Tactical Squads Can Reach Four Operators</a></li>
+<li><a href="/news/muster/muster-hawks-story-update.html">Hawks Is Required on Story Missions</a></li>
+<li><a href="/news/muster/muster-jedi-update.html">Tel-Rea Is the Only Jedi Padawan Operator</a></li>
+<li><a href="/news/muster/muster-astromechs-update.html">Full Astromech Squads Become Possible Early</a></li>
+<li><a href="/news/muster/muster-bonds-update.html">Bonds Unlock Support and Cross-Training Benefits</a></li>
+</ul>
+<!-- ROUND24_NEWS_muster_END -->
+<!-- ROUND24_FAQ_muster_START -->
+<h4>Questions</h4><ul>
+<li><a href="/questions/can-build-full-astromech-squad.html">Can you build a full astromech squad?</a></li>
+<li><a href="/questions/can-control-more-than-four-operators.html">Can you control more than four characters?</a></li>
+<li><a href="/questions/what-is-standard-squad-size.html">What is the standard squad size?</a></li>
+<li><a href="/questions/can-custom-operators-have-backstories.html">Can custom Operators have names and backstories?</a></li>
+<li><a href="/questions/can-recruit-separatist-droids.html">Can you recruit Separatist battle droids?</a></li>
+</ul>
+<!-- ROUND24_FAQ_muster_END -->
+<!-- ROUND24_MUSTER_MODULES_END -->
+<!-- ROUND26_MUSTER_MODULES_START --><h3>July 31, 2026</h3>
+<h4>Reports</h4><ul>
+<li><a href="/news/muster/muster-clone-team-update.html">A Full Clone Trooper Team Can Be Unlocked</a></li>
+<li><a href="/news/muster/muster-authored-custom-update.html">Authored and Custom Operators Can Mix</a></li>
+<li><a href="/news/muster/muster-bonds-support-update.html">Bonds Unlock New Support Abilities</a></li>
+<li><a href="/news/muster/muster-ability-types-update.html">Each Standard Specialization Has Three Ability Types</a></li>
+<li><a href="/news/muster/muster-operator-voice-update.html">Custom Operators Include Voice Selection</a></li>
+</ul>
+<h4>Questions</h4><ul>
+<li><a href="/questions/can-build-full-clone-trooper-team.html">Can you build a full Clone Trooper team?</a></li>
+<li><a href="/questions/can-mix-authored-and-custom-operators.html">Can you mix Authored and Custom Operators?</a></li>
+<li><a href="/questions/can-customize-hawks-first-name.html">Can you customize Hawks&#x27; first name?</a></li>
+<li><a href="/questions/can-customize-operator-voices.html">Can you customize recruited Operator voices?</a></li>
+<li><a href="/questions/can-you-use-a-full-sniper-squad.html">Can you use a full sniper squad?</a></li>
+</ul>
+<!-- ROUND26_MUSTER_MODULES_END -->
+</details>
 </section>
-<section data-round11-quality="true"><h2>July 2026 Verified Expansion</h2><div class="grid"><a class="card" href="/mechanics/"><strong>Confirmed Mechanics</strong><br><span class="mini">20 official July answers</span></a><a class="card" href="/cast/"><strong>Voice Cast</strong><br><span class="mini">15 official credits</span></a><a class="card" href="/missions/"><strong>Mission Types</strong><br><span class="mini">Operations and objectives</span></a><a class="card" href="/tactics/"><strong>Tactics Lab</strong><br><span class="mini">Developer-confirmed combos</span></a></div></section></main>
+</main>
 
 <!-- ================= FOOTER ================= -->
 <footer>
@@ -1367,19 +1363,19 @@ footer a:hover{color:var(--teal)}
           <svg class="cog" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="var(--teal)" stroke-width="5"><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="33" stroke-dasharray="6 10"/></g><circle cx="50" cy="50" r="6" fill="var(--gold)"/></svg>
           <div><b>Star Wars Zero Company Wiki</b><span>FIELD INTEL // ZERO COMPANY</span></div>
         </div>
-        <p class="muted" style="font-size:13px;margin-top:14px;max-width:34ch">Independent player resource. Continuously updated through launch and the post-release meta.</p>
+        <p class="muted" style="font-size:13px;margin-top:14px;max-width:34ch">Independent player guides for Star Wars Zero Company.</p>
       </div>
       <div>
         <h5>Wiki</h5>
-        <a onclick="go('operatives')">Operatives</a>
-        <a onclick="go('tier')">Specializations</a>
-        <a onclick="go('hostiles')">Hostile database</a>
+        <a href="/operatives/">Operatives</a>
+        <a href="/classes/">Specializations</a>
+        <a href="/hostiles/">Hostile database</a>
       </div>
       <div>
         <h5>Guides</h5>
-        <a onclick="go('builds')">Loadouts</a>
-        <a onclick="go('ops')">Operation walkthroughs</a>
-        <a onclick="go('muster')">Muster Board</a>
+        <a href="/official-systems/armory-weapons-guide.html">Weapons and armor</a>
+        <a href="/missions/">Mission types</a>
+        <a href="#muster">Muster Board</a>
       </div>
       <div>
         <h5>Game</h5>
@@ -1391,597 +1387,193 @@ footer a:hover{color:var(--teal)}
       </div>
     </div>
     <p class="disclaimer">
-      Star Wars Zero Company is a trademark of Lucasfilm Ltd. / Electronic Arts. Star Wars Zero Company Wiki is an unofficial fan resource and is not affiliated with or endorsed by Lucasfilm, EA, Bit Reactor or Respawn. Stats and ratings are pre-launch estimates based on published previews and are subject to change.
+      Star Wars Zero Company is a trademark of Lucasfilm Ltd. / Electronic Arts. Star Wars Zero Company Wiki is an unofficial fan resource and is not affiliated with or endorsed by Lucasfilm, EA, Bit Reactor or Respawn.
     </p>
   </div>
 </footer>
 
 <script>
-/* ===========================================================
-   DATA —grounded in confirmed Zero Company reveals.
-   Stats/ratings are plausible pre-launch placeholders, easily
-   swapped for verified values at launch.
-   =========================================================== */
-
-// 5-axis squad vector: [attack, defense, support, mobility, control] 0-100
-const OPS = {
-  hawks:{ name:"Hawks", glyph:"H", gold:true, cls:"Commander · Soldier base", classification:"Protagonist —mandatory in story missions", species:"Custom (6 species)", weapon:"Rifle", tier:"S",
-    role:"Force multiplier / flexible lead",
-    sig:"Tactical Reset —spend Advantage to refresh an ally's Action Points.",
-    blurb:"A disgraced Republic captain running covert work for the highest bidder. Hawks bends the action economy: a well-timed AP refresh turns one operative into two turns of output.",
-    bars:{Health:70,Armor:62,Mobility:66,Aim:72,Tech:55},
-    vec:[68,64,82,66,74],
-    focus:[{t:"Tier 1",h:"Field Command",p:"Refresh range +1 tile; cheaper Advantage cost."},{t:"Tier 2",h:"Press the Advantage",rec:true,p:"Refreshed ally also gains +15% damage that turn."},{t:"Tier 3",h:"No One Left",p:"Rally a Downed ally without spending AP, once per mission."}],
-    build:"command", squad:["trick","luco","custom_medic"], ops:["kafrene","umbara"] },
-
-  trick:{ name:"Trick", glyph:"T", cls:"Soldier", classification:"Authored", species:"Clone", weapon:"Rifle", tier:"A",
-    role:"Dependable frontline anchor",
-    sig:"Old War Buddies —bonus cohesion and shared cover bonus when deployed with Hawks.",
-    blurb:"Hawks' clone-war buddy and consigliere. Steady, versatile, and the emotional spine of the crew —but carries an unresolved grudge with Luco Bronc from Umbara.",
-    bars:{Health:74,Armor:66,Mobility:58,Aim:68,Tech:50},
-    vec:[64,70,60,56,52],
-    focus:[{t:"Tier 1",h:"Suppressing Fire",p:"Pin a target: it loses 1 AP next turn."},{t:"Tier 2",h:"Hold the Line",rec:true,p:"Adjacent allies gain defense while Trick is in cover."},{t:"Tier 3",h:"Veteran",p:"First Injury each mission is ignored."}],
-    build:null, squad:["hawks","kabb","custom_medic"], ops:["umbara"] },
-
-  cly:{ name:"Cly Kullervo", glyph:"C", gold:true, cls:"Mandalorian Warrior · exotic", classification:"Exotic —locked (can respec to Sharpshooter)", species:"Human (Mandalorian)", weapon:"Repeater / Longarm", tier:"S",
-    role:"Vertical flanker / mobile burst",
-    sig:"Jetpack —reposition across the map to vantage points or flanks, ignoring terrain. Persists through respec.",
-    blurb:"A Mandalorian warrior whose jetpack rewrites the map's geometry. Drop onto a rooftop, flank an entrenched line, or chase a fleeing target the rest of the squad can't reach.",
-    bars:{Health:64,Armor:60,Mobility:92,Aim:78,Tech:48},
-    vec:[80,56,40,94,62],
-    focus:[{t:"Tier 1",h:"Thrusters",p:"Jetpack costs 1 AP instead of 2."},{t:"Tier 2",h:"High Ground",rec:true,p:"+aim and +crit on the turn she gains elevation."},{t:"Tier 3",h:"Strafing Run",p:"Jetpack move can pass over a line of enemies for splash damage."}],
-    build:"vantage", squad:["luco","custom_scout","hawks"], ops:["ryloth"] },
-
-  telrea:{ name:"Tel'Rea Vokoss", glyph:"V", gold:true, cls:"Jedi Padawan · exotic", classification:"Exotic —locked", species:"Jedi", weapon:"Lightsaber (melee)", tier:"S",
-    role:"Crowd control / disruption",
-    sig:"Shockwave —spend 6 Advantage to damage and push back all nearby enemies. Unique to her.",
-    blurb:"The squad's Jedi. Closes distance, scatters a clustered enemy line and reshapes a bad turn into a survivable one. High-risk in the open —she wants to be inside the fight.",
-    bars:{Health:72,Armor:50,Mobility:84,Aim:60,Tech:46},
-    vec:[78,52,46,86,90],
-    focus:[{t:"Tier 1",h:"Saber Throw",p:"Ranged opener that ignores cover."},{t:"Tier 2",h:"Deflection",rec:true,p:"Chance to negate ranged hits while she has AP remaining."},{t:"Tier 3",h:"Force Surge",p:"Shockwave also strips 1 AP from pushed enemies."}],
-    build:"saber", squad:["custom_medic","luco","hawks"], ops:["umbara"] },
-
-  luco:{ name:"Luco Bronc", glyph:"L", cls:"Sharpshooter", classification:"Authored (respec to any standard class)", species:"Umbaran", weapon:"Longarm", tier:"A",
-    role:"Long-range elimination",
-    sig:"Cold Read —first shot each turn against a full-health target deals bonus damage.",
-    blurb:"An Umbaran marksman with a bitter history against clone forces —and Trick in particular. From a vantage point, Luco deletes high-value targets before they act.",
-    bars:{Health:54,Armor:42,Mobility:62,Aim:94,Tech:52},
-    vec:[90,38,30,58,56],
-    focus:[{t:"Tier 1",h:"Steady",p:"No aim penalty at long range."},{t:"Tier 2",h:"Headhunter",rec:true,p:"+crit vs targets flagged or out of cover."},{t:"Tier 3",h:"Kill Chain",p:"A kill grants a partial AP refund."}],
-    build:"vantage", squad:["cly","trick","custom_medic"], ops:["umbara","ryloth"] },
-
-  kabb:{ name:'Kabb "Uppercut"', glyph:"K", cls:"Heavy / brawler", classification:"Authored", species:"Felshi", weapon:"Repeater", tier:"B",
-    role:"Frontline tank / bruiser",
-    sig:"Cybernetic Arm —powerful melee that staggers; shrugs off the first hit of each enemy turn.",
-    blurb:"A former prizefighter and crook with a cybernetic arm and a distinctive rhyming patter. Wade in, soak fire, and crack armor up close while the squad works the angles.",
-    bars:{Health:90,Armor:84,Mobility:48,Aim:58,Tech:40},
-    vec:[60,90,34,42,48],
-    focus:[{t:"Tier 1",h:"Plating",p:"Flat damage reduction from ranged attacks."},{t:"Tier 2",h:"Bulwark",rec:true,p:"Taunt: nearby enemies prefer to target Kabb."},{t:"Tier 3",h:"Knockout",p:"Melee finisher refunds AP on a kill."}],
-    build:"anvil", squad:["custom_medic","luco","hawks"], ops:["kafrene"] },
-
-  jae:{ name:"Jae", glyph:"J", cls:"Scoundrel", classification:"Authored", species:"Human", weapon:"Pistol", tier:"A",
-    role:"Wildcard support / finisher",
-    sig:"Mysterious Stranger —a chance each enemy turn to fire a free assist shot that finishes a weakened target.",
-    blurb:"A wildcard who turns the odds in your favor when you least expect it. Pairs cheap utility with an unpredictable assist that closes out hurt enemies for free.",
-    bars:{Health:60,Armor:48,Mobility:72,Aim:70,Tech:64},
-    vec:[66,46,64,72,70],
-    focus:[{t:"Tier 1",h:"Identify Weakness",p:"Flag a target: next hit on it is a guaranteed crit."},{t:"Tier 2",h:"Lucky",rec:true,p:"Higher assist-shot proc chance."},{t:"Tier 3",h:"Smoke & Mirrors",p:"Drop a smoke screen that blocks enemy line of sight."}],
-    build:null, squad:["luco","hawks","custom_medic"], ops:["ryloth"] },
-};
-
-// Custom-class archetypes for the Muster Board (your own recruits, missing classes)
-const CUSTOM = {
-  custom_medic:{ name:"Custom · Medic", glyph:"+", cls:"Medic", role:"Sustain / buffs", tier:"A",
-    sig:"Combat Stim —heal and grant an ally a temporary damage buff.", vec:[34,52,94,50,46] },
-  custom_gun:{ name:"Custom · Gunslinger", glyph:"+", cls:"Gunslinger", role:"Multi-target / chain finisher", tier:"S",
-    sig:"A kill refreshes Action Points —chain finishing blows across a turn.", vec:[86,40,42,70,50] },
-  custom_scout:{ name:"Custom · Scout", glyph:"+", cls:"Scout", role:"Recon / overwatch", tier:"B",
-    sig:"Reveal hidden enemies and set efficient overwatch lanes.", vec:[50,54,56,76,78] },
-  custom_astro:{ name:"Custom · Astromech", glyph:"+", cls:"Astromech · exotic", role:"Support / explosives", tier:"B",
-    sig:"Support utility plus fitted grenades or a flamethrower.", vec:[52,58,80,48,66] },
-};
-
-const ALL = Object.assign({}, OPS, CUSTOM);
-
-const CLASSES = [
-  {id:"assault",n:"Assault",role:"Frontline fighter",range:"Medium to close range",note:"Maneuvers to defeat targets hiding in cover."},
-  {id:"gunslinger",n:"Gunslinger",role:"Multi-target attacker",range:"Flexible blaster range",note:"Spreads offense across numerous targets with fast strikes."},
-  {id:"heavy",n:"Heavy",role:"Durable frontline combatant",range:"Frontline / exposed positions",note:"Uses armor and survivability to soak up enemy pressure."},
-  {id:"medic",n:"Medic",role:"Healing and Injury prevention",range:"Squad support",note:"Heals, helps prevent Injuries and boosts teammates."},
-  {id:"scoundrel",n:"Scoundrel",role:"Opportunistic wildcard",range:"Situation dependent",note:"Makes the most of combat opportunities with little preparation."},
-  {id:"scout",n:"Scout",role:"Reconnaissance and setup",range:"Team-wide support",note:"Uses planning and timing to create opportunities for the team."},
-  {id:"sharpshooter",n:"Sharpshooter",role:"Long-range marksman",range:"Long range",note:"Singles out and defeats chosen enemies from distance."},
-  {id:"soldier",n:"Soldier",role:"Mainstay offensive unit",range:"Close to medium range",note:"Uses melee, grenades, heavy blaster fire and a rocket launcher."},
+const roster = [
+  {"id": "hawks", "name": "Hawks", "label": "Company leader", "role": "Command"},
+  {"id": "trick", "name": "Trick", "label": "Clone Trooper", "role": "Clone veteran"},
+  {"id": "cly", "name": "Cly Kullervo", "label": "Mandalorian warrior", "role": "Repositioning"},
+  {"id": "telrea", "name": "Tel-Rea Vokoss", "label": "Jedi Padawan", "role": "Displacement"},
+  {"id": "luco", "name": "Luco Bronc", "label": "Umbaran sniper", "role": "Long range"},
+  {"id": "jae", "name": "Jae Mordant", "label": "Former Ore-Baroness", "role": "Authored recruit"},
+  {"id": "kabb", "name": "Kabb Uppercut", "label": "Former prizefighter", "role": "Displacement"},
+  {"id": "assault", "name": "Custom Assault", "label": "Custom recruit", "role": "Close-range offense", "custom": true},
+  {"id": "gunslinger", "name": "Custom Gunslinger", "label": "Custom recruit", "role": "Multiple targets", "custom": true},
+  {"id": "heavy", "name": "Custom Heavy", "label": "Custom recruit", "role": "Frontline defense", "custom": true},
+  {"id": "medic", "name": "Custom Medic", "label": "Custom recruit", "role": "Healing and injury prevention", "custom": true},
+  {"id": "scoundrel", "name": "Custom Scoundrel", "label": "Custom recruit", "role": "Opportunistic attacks", "custom": true},
+  {"id": "scout", "name": "Custom Scout", "label": "Custom recruit", "role": "Reconnaissance", "custom": true},
+  {"id": "sharpshooter", "name": "Custom Sharpshooter", "label": "Custom recruit", "role": "Long range", "custom": true},
+  {"id": "soldier", "name": "Custom Soldier", "label": "Custom recruit", "role": "Close- and mid-range offense", "custom": true},
+  {"id": "astromech", "name": "Custom Astromech", "label": "Custom recruit", "role": "Droid utility", "custom": true}
 ];
-
-const BUILDS = {
-  vantage:{ name:"Vantage Overwatch", for:"Sharpshooter (Luco / Cly-respec)", tier:"S", rating:"S", line:"Long-range control",
-    overview:"A patient elimination build: hold high ground, delete one priority target per turn, and let overwatch punish anything that moves. The squad exists to expose targets so the marksman lands kills.",
-    focus:["<b>Steady</b> →<b>Headhunter</b> →<b>Kill Chain</b>: remove range penalties first, then convert exposed targets into crits and AP refunds."],
-    weapon:"Longarm —maximum single-target damage and range.",
-    secondary:"Scout —adds reveal and stronger overwatch lanes once the secondary spec unlocks.",
-    synergy:"Bring an <b>Assault</b> to strip cover and a <b>Scoundrel</b> (Identify Weakness) to guarantee the crit. Cly on jetpack secures the vantage point turn one.",
-    strengths:["Highest reliable single-target damage","Punishes enemy movement through overwatch","Scales with elevation-heavy maps"],
-    weaknesses:["Weak once enemies close the distance","Low personal durability","Dead turns if no clean line of sight"] },
-
-  command:{ name:"Command Multiplier", for:"Hawks (Soldier base)", tier:"S", rating:"S", line:"Action-economy engine",
-    overview:"Hawks doesn't out-damage the squad —he doubles its best member. Build around feeding AP refreshes to your highest-output operative and keeping Hawks safe enough to do it every turn.",
-    focus:["<b>Field Command</b> →<b>Press the Advantage</b> →<b>No One Left</b>: cheaper, longer-range refreshes that also buff damage, with a free Rally as insurance."],
-    weapon:"Rifle —flexible mid-range so Hawks contributes between refreshes.",
-    secondary:"Scout or Medic —utility that keeps him useful when Advantage is dry.",
-    synergy:"Pair with a <b>Gunslinger</b> or <b>Sharpshooter</b>: refresh their AP after a kill and chain a second elimination. The single strongest tempo play in the game.",
-    strengths:["Turns one carry into two turns of output","Flexible —fits any composition","Free Rally mitigates permadeath risk"],
-    weaknesses:["Advantage-hungry; competes with ultimates","Low solo damage ceiling","Mandatory in story missions —can't bench him"] },
-
-  saber:{ name:"Saber Control", for:"Tel'Rea Vokoss (Jedi Padawan)", tier:"S", rating:"A+", line:"Disruption / melee",
-    overview:"A reset button on a clustered enemy line. Dive in, Shockwave the cluster to scatter and damage it, then clean up with deflection keeping her alive in the open.",
-    focus:["<b>Saber Throw</b> →<b>Deflection</b> →<b>Force Surge</b>: ranged opener, survivability while she has AP, then Shockwave that also strips enemy AP."],
-    weapon:"Lightsaber —melee; she's an entry tool, not a sniper.",
-    secondary:"Locked exotic kit; lean into mobility talents.",
-    synergy:"Best with a <b>Sharpshooter</b> to delete the scattered survivors and a <b>Medic</b> to top her up after the dive.",
-    strengths:["Best AoE crowd control in the game","High mobility entry","Shockwave denies enemy actions"],
-    weaknesses:["Fragile in the open without Deflection up","Advantage-hungry ultimate","Single operative —not a repeatable archetype"] },
-
-  anvil:{ name:"Anvil Heavy", for:'Kabb / custom Heavy', tier:"A", rating:"A", line:"Frontline tank",
-    overview:"The wall the rest of the squad hides behind. Taunt enemies onto Kabb, eat the damage with plating, and let your damage dealers work from safety. Melee finishers refund AP for repeat swings.",
-    focus:["<b>Plating</b> →<b>Bulwark</b> →<b>Knockout</b>: stack damage reduction, force enemies to attack you, then snowball melee kills."],
-    weapon:"Repeater —area suppression between melee engages.",
-    secondary:"Soldier —extra durability and flexible mid-range tools.",
-    synergy:"Requires a <b>Medic</b> behind him (sustained anvil) and pairs with <b>Gunslinger</b> finishers on the enemies he's pinned.",
-    strengths:["Soaks enemy focus, protects the squad","Controls enemy targeting via taunt","Strong melee burst on staggered targets"],
-    weaknesses:["Low mobility —slow to reposition","Limited range output","Falls behind without healing support"] },
-};
-
-const MISSIONS = {
-  kafrene:{ name:"Operation Kafrene", crit:true, planet:"Ring of Kafrene", diff:"Introductory",
-    overview:"Your first true field deployment out of the Den. A tutorialized op that teaches cover, flanking, Overwatch and the AP economy against light droid resistance.",
-    objectives:[{t:"Secure the docking ring",crit:true},{t:"Eliminate all hostiles",crit:true},{t:"Reach the extraction point within the turn limit",crit:false}],
-    hostiles:["b1","b2"],
-    squad:["hawks","trick","kabb","luco"],
-    walk:["<b>Advance in cover.</b> Move along the left containers —never end a turn in the open against the B1 line.","<b>Bait the Overwatch.</b> Send Kabb forward to draw fire, then flank with Trick for guaranteed hits.","<b>Hold the choke.</b> Set Luco on the gantry for a long sightline and let Overwatch thin reinforcements.","<b>Clear and extract.</b> Mop up stragglers, then move the full squad to extraction before the timer expires."],
-    rewards:["Credits","First squad Bond progress","Tutorial Focus Points"] },
-
-  umbara:{ name:"Shadow Over Umbara", crit:true, planet:"Umbara", diff:"Mid-campaign",
-    overview:"A low-visibility op on the shadow planet where Trick and Luco's history comes to a head. Tight sightlines reward control and punish overextension —manage the friction or it costs you mid-fight.",
-    objectives:[{t:"Disable the Umbaran sensor array",crit:true},{t:"Extract the informant alive",crit:true},{t:"Resolve the Trick / Luco confrontation",crit:false}],
-    hostiles:["b2","droideka","commando"],
-    squad:["hawks","telrea","luco","custom_medic"],
-    walk:["<b>Lead with control.</b> Open with Tel'Rea's Shockwave to scatter the first entrenched cluster.","<b>Mind the grudge.</b> Deploying Trick and Luco together risks a friction penalty —bring one, or accept the trade and keep them apart on the map.","<b>Drop the Droideka shields.</b> Hit destroyers with ion / sustained fire to collapse the shield, then focus them down before they redeploy.","<b>Cover the informant.</b> Escort to extraction under smoke; never leave them adjacent to a Commando Droid."],
-    rewards:["High Credits","Major Bond / Dilemma outcome","Rare equipment"] },
-
-  ryloth:{ name:"Ryloth Extraction", crit:false, planet:"Ryloth", diff:"Side op · time-limited",
-    overview:"An optional smash-and-grab on Ryloth. Generous Advantage economy makes it a clean playground for an aggressive, mobility-first squad —but it vanishes from the galaxy map if you wait too long.",
-    objectives:[{t:"Raid the supply cache",crit:false},{t:"Exfiltrate before reinforcements arrive",crit:false}],
-    hostiles:["b1","commando"],
-    squad:["cly","jae","luco","custom_gun"],
-    walk:["<b>Hit fast.</b> Jetpack Cly onto the cache roof turn one for an immediate flank.","<b>Snowball with Jae.</b> Identify Weakness into a Gunslinger chain clears the courtyard quickly.","<b>Don't linger.</b> Grab the cache and exfil —reinforcements scale the longer you stay."],
-    rewards:["Bonus Credits","Advantage-boosting gear","Cosmetic recolor"] },
-};
-
-const HOSTILES = {
-  b1:{ name:"B1 Battle Droid", threat:"C", hp:30, role:"Line infantry / fodder",
-    weak:"Everything —minimal armor; dies to a single solid hit.", resist:"None.",
-    counter:"Don't overspend. Clear with cheap attacks or Overwatch and save ultimates/Advantage for real threats. Numbers are the only danger." },
-  b2:{ name:"B2 Super Battle Droid", threat:"B", hp:65, role:"Armored assault droid",
-    weak:"Flanking, explosives, Heavy fire —armor falls off fast once exposed.", resist:"Light blaster fire from the front (chip damage).",
-    counter:"Strip its cover or flank it, then commit Assault/Heavy damage. Don't trade pistol shots into its front plate." },
-  droideka:{ name:"Droideka (Destroyer Droid)", threat:"S", hp:90, role:"Shielded heavy",
-    weak:"Ion effects and sustained fire collapse the deflector shield; it's fragile underneath.", resist:"Ranged damage while shielded —most shots are wasted on a full shield.",
-    counter:"Phase one: drop the shield with ion / concentrated fire (or hit it before it deploys). Phase two: flank and burst it down immediately —it re-shields if given a turn. A classic Sharpshooter + Assault setup." },
-  commando:{ name:"Commando Droid", threat:"A", hp:55, role:"Agile skirmisher / melee",
-    weak:"Crowd control and Overwatch —it wants to close distance; deny the approach.", resist:"Evasive against single long-range shots while moving.",
-    counter:"Lock it down with control (Shockwave / stagger) or wall it off with Overwatch, then focus fire before it reaches your backline." },
-};
-
-/* ===========================================================
-   RENDERING
-   =========================================================== */
-const $ = (id)=>document.getElementById(id);
-function sigil(o){ return `<div class="sigil ${o.gold?'gold':''}">${o.glyph}</div>`; }
-
-// home + index
-function renderHome(){
-  const feat=["hawks","cly","telrea","luco"];
-  $("homeOps").innerHTML = feat.map(id=>{const o=OPS[id];return `
-    <div class="card op-card brk" onclick="openOp('${id}')">
-      <div class="op-top">${sigil(o)}<div><div class="tag">${o.tier==='S'?'S-TIER':o.classification.split('—')[0]}</div><h3 style="margin:4px 0 0">${o.name}</h3><div class="role">${o.role}</div></div></div>
-      <div class="meta"><span class="tierbadge t-${o.tier}">${o.tier}</span><span class="pill teal">${o.cls.split('·')[0].trim()}</span></div>
-    </div>`;}).join("");
-}
-function renderOpIndex(){
-  $("opIndex").innerHTML = Object.keys(OPS).map(id=>{const o=OPS[id];return `
-    <div class="card op-card brk" onclick="openOp('${id}')">
-      <div class="op-top">${sigil(o)}<div><h3 style="margin:0">${o.name}</h3><div class="role">${o.role}</div></div><span class="tierbadge t-${o.tier}" style="margin-left:auto">${o.tier}</span></div>
-      <p style="margin-top:12px">${o.blurb.slice(0,96)}...</p>
-      <div class="meta"><span class="pill">${o.species}</span><span class="pill">${o.weapon}</span></div>
-    </div>`;}).join("");
-}
-
-// dossier
-function openOp(id){
-  const o=OPS[id]; if(!o) return;
-  $("dCrumb").textContent=o.name.toUpperCase();
-  const bars=Object.entries(o.bars).map(([k,v])=>`
-    <div class="statrow"><div class="top"><span>${k}</span><b>${v}</b></div><div class="bar"><i style="width:${v}%"></i></div></div>`).join("");
-  const focus=o.focus.map(f=>`<div class="node ${f.rec?'rec':''}"><div class="tier">${f.t}</div><h4>${f.h}</h4><p>${f.p}</p></div>`).join("");
-  const squad=o.squad.map(s=>{const t=ALL[s];return `<span class="chip" onclick="event.stopPropagation();${OPS[s]?`openOp('${s}')`:`go('muster')`}">${t.name}<span class="ar">→</span></span>`;}).join("");
-  const ops=o.ops.map(m=>`<span class="chip" onclick="event.stopPropagation();openMission('${m}')">${MISSIONS[m].name}<span class="ar">→</span></span>`).join("");
-  const buildChip=o.build?`<div class="chip" onclick="openBuild('${o.build}')" style="border-color:var(--teal-dim)"><b style="font-family:var(--fd)">${BUILDS[o.build].name}</b><span class="ar">→open loadout</span></div>`:`<span class="muted mono" style="font-size:12px">Flexible —viable in most standard specs.</span>`;
-
-  $("dossierBody").innerHTML = `
-    <div class="dpanel brk">
-      <div class="dhead">${sigil(o)}<div><h1>${o.name}</h1><div class="role">${o.role}</div></div></div>
-      <span class="pill ${o.tier==='S'?'gold':'teal'}">CLASS TIER ${o.tier}</span>
-      <div style="margin-top:18px">${bars}</div>
-      <dl class="kv">
-        <dt>Class</dt><dd>${o.cls}</dd>
-        <dt>Status</dt><dd>${o.classification}</dd>
-        <dt>Species</dt><dd>${o.species}</dd>
-        <dt>Weapon</dt><dd>${o.weapon}</dd>
-      </dl>
-    </div>
-    <div>
-      <h1 class="page" style="font-size:30px">${o.name}</h1>
-      <p class="lead" style="margin-bottom:18px">${o.blurb}</p>
-      <div class="block" style="border-color:var(--gold-dim);background:linear-gradient(180deg,rgba(233,184,74,.07),transparent)">
-        <h3 style="color:var(--gold)">▲Signature ability</h3>
-        <p style="margin:0;font-size:15px">${o.sig}</p>
-      </div>
-      <h2 class="sec" style="font-size:18px">Focus tree —recommended path</h2>
-      <div class="focus">${focus}</div>
-      <h2 class="sec" style="font-size:18px">Recommended loadout</h2>
-      <div class="linkrow">${buildChip}</div>
-      <h2 class="sec" style="font-size:18px">Recommended squad</h2>
-      <div class="linkrow">${squad}</div>
-      <h2 class="sec" style="font-size:18px">Featured in operations</h2>
-      <div class="linkrow">${ops}</div>
-    </div>`;
-  go('dossier');
-}
-
-// tier list
-function renderTier(){
-  $("tierList").innerHTML = `<div class="grid g3">${CLASSES.map(c=>`
-    <div class="tier-chip" onclick="openClass('${c.id}')">
-      <div class="sigil">${c.n[0]}</div>
-      <div><b>${c.n}</b><small>${c.role}</small></div>
-    </div>`).join("")}</div>`;
-}
-function openClass(id){
-  const c=CLASSES.find(x=>x.id===id);
-  $("bCrumb").textContent=c.n.toUpperCase();
-  $("buildBody").innerHTML=`
-    <h1 class="page">${c.n}</h1>
-    <div class="linkrow" style="margin-bottom:18px"><span class="pill teal">${c.role}</span><span class="pill">${c.range}</span></div>
-    <p class="lead">${c.note}</p>
-    <div class="block"><h3>Official structure</h3><p>Every standard Specialization has one Ultimate, one Standard Ability and one Passive. Check the in-game profile for each ability's current values.</p></div>
-    <div class="block"><h3>Official role</h3><p style="margin:0">${c.note}</p></div>
-    <p><a href="/classes/${c.id}.html">Open the full verified ${c.n} guide →</a></p>`;
-  go('build');
-}
-
-// builds
-function renderBuildIndex(){
-  $("buildIndex").innerHTML = Object.keys(BUILDS).map(id=>{const b=BUILDS[id];return `
-    <div class="card brk" onclick="openBuild('${id}')">
-      <div class="tag">${b.line}</div>
-      <h3>${b.name}</h3>
-      <p style="margin:6px 0 12px">For: ${b.for}</p>
-      <div class="meta"><span class="tierbadge t-${b.tier}">${b.tier}</span><span class="pill gold">Endgame ${b.rating}</span></div>
-    </div>`;}).join("");
-}
-function openBuild(id){
-  const b=BUILDS[id];
-  $("bCrumb").textContent=b.name.toUpperCase();
-  $("buildBody").innerHTML=`
-    <h1 class="page">${b.name}</h1>
-    <p class="lead" style="margin-bottom:6px">For ${b.for}</p>
-    <div class="linkrow" style="margin-bottom:20px"><span class="tierbadge t-${b.tier}">${b.tier}</span><span class="pill teal">${b.line}</span></div>
-    <div class="block"><h3><span class="num">01</span> Overview</h3><p style="margin:0">${b.overview}</p></div>
-    <div class="block"><h3><span class="num">02</span> Focus-tree priority</h3><ul>${b.focus.map(f=>`<li>${f}</li>`).join("")}</ul></div>
-    <div class="split">
-      <div class="block"><h3><span class="num">03</span> Weapon spec</h3><p style="margin:0">${b.weapon}</p></div>
-      <div class="block"><h3><span class="num">04</span> Secondary spec</h3><p style="margin:0">${b.secondary}</p></div>
-    </div>
-    <div class="block"><h3><span class="num">05</span> Squad synergy</h3><p style="margin:0">${b.synergy}</p></div>
-    <div class="split">
-      <div class="block" style="border-color:var(--teal-dim)"><h3 style="color:var(--teal)">Strengths</h3><ul>${b.strengths.map(s=>`<li>${s}</li>`).join("")}</ul></div>
-      <div class="block" style="border-color:var(--red-dim)"><h3 style="color:var(--red)">Weaknesses</h3><ul>${b.weaknesses.map(s=>`<li>${s}</li>`).join("")}</ul></div>
-    </div>
-    <div class="rating"><div class="big">${b.rating}</div><div><div class="mono" style="font-size:11px;letter-spacing:.16em;color:var(--muted)">ENDGAME RATING</div><div style="font-size:14px">${b.line} —viability in the projected launch meta.</div></div></div>`;
-  go('build');
-}
-
-// operations
-function renderOpsIndex(){
-  $("opsIndex").innerHTML = Object.keys(MISSIONS).map(id=>{const m=MISSIONS[id];return `
-    <div class="card brk" onclick="openMission('${id}')">
-      <div class="tag">${m.planet} · ${m.diff}</div>
-      <h3 style="margin:8px 0 4px">${m.name}</h3>
-      <p>${m.overview.slice(0,110)}...</p>
-      <div class="meta">${m.crit?'<span class="pill red">CRITICAL</span>':'<span class="pill">SIDE OP</span>'}<span class="pill teal">${m.hostiles.length} hostile types</span></div>
-    </div>`;}).join("");
-}
-function openMission(id){
-  const m=MISSIONS[id];
-  $("oCrumb").textContent=m.name.toUpperCase();
-  const obj=m.objectives.map(o=>`<div class="objline ${o.crit?'crit':''}"><span class="mk">${o.crit?'!':'•'}</span><span>${o.t}${o.crit?' <span class="muted mono" style="font-size:11px">· required</span>':''}</span></div>`).join("");
-  const host=m.hostiles.map(h=>`<span class="chip" onclick="openHostile('${h}')">${HOSTILES[h].name}<span class="ar">→</span></span>`).join("");
-  const sq=m.squad.map(s=>{const t=ALL[s];return `<span class="chip" onclick="${OPS[s]?`openOp('${s}')`:`go('muster')`}">${t.name}<span class="ar">→</span></span>`;}).join("");
-  const walk=m.walk.map(w=>`<div class="step"><div class="n"></div><p>${w}</p></div>`).join("");
-  $("opBody").innerHTML=`
-    <h1 class="page">${m.name}</h1>
-    <div class="linkrow" style="margin-bottom:18px">${m.crit?'<span class="pill red">CRITICAL OP</span>':'<span class="pill">SIDE OP · TIME-LIMITED</span>'}<span class="pill teal">${m.planet}</span><span class="pill">${m.diff}</span></div>
-    <div class="block"><h3>Overview</h3><p style="margin:0">${m.overview}</p></div>
-    <div class="split">
-      <div class="block"><h3>Objectives</h3>${obj}</div>
-      <div class="block"><h3>Recommended squad</h3><div class="linkrow">${sq}</div><div style="margin-top:14px"><div class="mono" style="font-size:11px;color:var(--faint);letter-spacing:.12em">HOSTILE ROSTER</div><div class="linkrow" style="margin-top:8px">${host}</div></div></div>
-    </div>
-    <div class="block"><h3>Walkthrough</h3><div class="walk">${walk}</div></div>
-    <div class="block" style="border-color:var(--gold-dim)"><h3 style="color:var(--gold)">Rewards</h3><div class="linkrow">${m.rewards.map(r=>`<span class="pill gold">${r}</span>`).join("")}</div></div>`;
-  go('op');
-}
-
-// hostiles
-function renderHostIndex(){
-  $("hostIndex").innerHTML = Object.keys(HOSTILES).map(id=>{const h=HOSTILES[id];return `
-    <div class="card brk" onclick="openHostile('${id}')">
-      <div style="display:flex;align-items:center;gap:12px"><span class="tierbadge t-${h.threat==='?'?'C':h.threat}">${h.threat}</span><div><h3 style="margin:0">${h.name}</h3><div class="role mono" style="font-size:11px;color:var(--muted)">${h.role}</div></div></div>
-      <p style="margin-top:12px"><b style="color:var(--text)">HP ${h.hp}</b> · ${h.weak.slice(0,60)}...</p>
-    </div>`;}).join("");
-}
-function openHostile(id){
-  const h=HOSTILES[id];
-  $("hCrumb").textContent=h.name.toUpperCase();
-  $("hostBody").innerHTML=`
-    <h1 class="page">${h.name}</h1>
-    <div class="linkrow" style="margin-bottom:18px"><span class="tierbadge t-${h.threat==='?'?'C':h.threat}">${h.threat}</span><span class="pill red">THREAT ${h.threat}</span><span class="pill">${h.role}</span><span class="pill teal">HP ${h.hp}</span></div>
-    <div class="split">
-      <div class="block" style="border-color:var(--red-dim)"><h3 style="color:var(--red)">Weak point</h3><p style="margin:0">${h.weak}</p></div>
-      <div class="block"><h3>Resistance</h3><p style="margin:0">${h.resist}</p></div>
-    </div>
-    <div class="block" style="border-color:var(--teal-dim)"><h3 style="color:var(--teal)">Counter strategy</h3><p style="margin:0;font-size:15px">${h.counter}</p></div>`;
-  go('hostile');
-}
-
-/* ===========================================================
-   MUSTER BOARD —squad builder (the differentiating tool)
-   =========================================================== */
-let squad=[null,null,null,null];
-const AXES=["ATK","DEF","SUP","MOB","CTL"];
-const AXES_FULL=["Attack","Defense","Support","Mobility","Control"];
-
-// bond pairs (good), friction pairs (bad), class combos (good)
-const BONDS=[
-  {a:"hawks",b:"trick",label:"Old War Buddies",txt:"shared cover bonus and faster bond growth."},
-  {a:"cly",b:"telrea",label:"Honor & the Force",txt:"complementary entry tools open the enemy line."},
+const searchIndex = [
+  ["Operative", "Hawks", "/operatives/hawks.html", "Company leader"],
+  ["Operative", "Trick", "/operatives/trick.html", "Clone Trooper"],
+  ["Operative", "Cly Kullervo", "/operatives/cly.html", "Mandalorian warrior"],
+  ["Operative", "Tel-Rea Vokoss", "/operatives/telrea.html", "Jedi Padawan"],
+  ["Operative", "Luco Bronc", "/operatives/luco.html", "Umbaran sniper"],
+  ["Operative", "Jae Mordant", "/operatives/jae.html", "Former Ore-Baroness"],
+  ["Operative", "Kabb Uppercut", "/operatives/kabb.html", "Former prizefighter"],
+  ["Specialization", "Assault", "/classes/assault.html", "Close-range offense"],
+  ["Specialization", "Gunslinger", "/classes/gunslinger.html", "Multiple targets"],
+  ["Specialization", "Heavy", "/classes/heavy.html", "Frontline defense"],
+  ["Specialization", "Medic", "/classes/medic.html", "Healing and injury prevention"],
+  ["Specialization", "Scoundrel", "/classes/scoundrel.html", "Opportunistic attacks"],
+  ["Specialization", "Scout", "/classes/scout.html", "Reconnaissance"],
+  ["Specialization", "Sharpshooter", "/classes/sharpshooter.html", "Long range"],
+  ["Specialization", "Soldier", "/classes/soldier.html", "Close- and mid-range offense"],
+  ["Enemy", "B1 Battle Droid", "/hostiles/b1.html", "hostile separatist droid"],
+  ["Enemy", "B2 Super Battle Droid", "/hostiles/b2.html", "hostile separatist droid"],
+  ["Enemy", "Droideka (Destroyer Droid)", "/hostiles/droideka.html", "hostile separatist droid"],
+  ["Enemy", "Commando Droid", "/hostiles/commando.html", "hostile separatist droid"],
+  ["Updates", "Patch notes and hotfixes", "/news/#patch-notes", "The November 10 hotfix addresses console loading crashes, saves after Concussion Grenades, and effects missing after a reload."],
+  ["First campaign", "Choose your first squad", "/guides/beginner-first-squad.html", "Plan around Hawks, your mission objective, and the Operators available at The Den."],
+  ["Troubleshooting", "Game crashes on startup or load", "/guides/crashing-on-startup-or-load.html", "Start with the steps for your platform and the point where the game stops."],
+  ["Campaign settings", "Injuries and permanent death", "/guides/permadeath-injury-prevention.html", "Find out what happens when an Operator goes down and which difficulty settings affect the consequences."],
+  ["Specializations", "Standard Specializations", "/classes/", "Compare the eight standard combat roles before assigning a new recruit."],
+  ["Squad planner", "Muster Board", "#muster", "Choose up to four Operators and review the roles on your board."],
+  ["Loadouts", "Weapons and armor", "/official-systems/armory-weapons-guide.html", "Find out what the Armory lets you equip before a mission."],
+  ["Objectives", "Mission types", "/missions/", "Compare strategic Operations with tactical combat, rescue, retrieval and sabotage missions."],
+  ["Enemies", "Separatist droids", "/hostiles/", "Identify B1s, B2s, droidekas and commando droids."],
+  ["Characters", "Operative dossiers", "/operatives/", "Read the backgrounds of Hawks and the authored squad members."],
+  ["Campaign", "Guide index", "/guides/", "Browse difficulty, settings, squad and system guides."],
+  ["Characters", "Voice cast", "/cast/", "Look up the actors behind Hawks, the Operators and their allies."],
+  ["Headquarters", "The Den", "/facilities/", "Find recruitment, equipment, training and recovery facilities."],
+  ["FAQ", "Player questions", "/questions/", "Look up questions about squad building, combat and campaign rules."],
+  ["Guide", "Action Points", "/guides/action-points.html", "AP economy turns"],
+  ["Guide", "Platform and PC requirements", "/guides/platforms-pc-ps5-xbox.html", "specs Steam PS5 Xbox"],
+  ["Guide", "The Den upgrades", "/guides/the-den-base-upgrades.html", "facilities upgrades"],
+  ["Missions", "Rescue missions", "/missions/rescue-missions.html", "objectives hostages"],
+  ["Missions", "Sabotage missions", "/missions/sabotage-missions.html", "objectives explosives"],
+  ["Guide", "The Advantage meter", "/guides/advantage-meter.html", "combat resource"]
 ];
-const FRICTION=[
-  {a:"trick",b:"luco",label:"Umbara Grudge",txt:"unresolved history —cohesion penalty until the Dilemma is settled."},
-];
-const COMBOS=[ // by class
-  {a:"Assault",b:"Sharpshooter",label:"Cover Strip →Headshot",txt:"Assault breaks cover so the marksman lands the kill."},
-  {a:"Scoundrel",b:"Sharpshooter",label:"Identify Weakness →Crit",txt:"flag a target, then guarantee a critical hit."},
-  {a:"Medic",b:"Heavy",label:"Sustained Anvil",txt:"healing keeps the tank holding the line indefinitely."},
-  {a:"Medic",b:"Gunslinger",label:"Combat Stim Spray",txt:"the damage buff turns many small shots into a spike."},
-  {a:"Commander · Soldier base",b:"Gunslinger",label:"Refresh the Chain",txt:"refresh AP after a kill to extend the finisher chain."},
-];
+const $ = id => document.getElementById(id);
+const squad = Array(4).fill(null);
 
-function renderRoster(){
-  $("roster").innerHTML = Object.keys(ALL).map(id=>{
-    const o=ALL[id]; const inSquad=squad.includes(id);
-    return `<div class="r-chip ${inSquad?'in':''}" onclick="addToSquad('${id}')">${sigil(o)}<div><b>${o.name}</b><small>${(o.cls||'').split('·')[0].trim()} · ${o.tier}</small></div></div>`;
-  }).join("");
-}
-function renderSlots(){
-  $("slots").innerHTML = squad.map((id,i)=>{
-    if(!id) return `<div class="slot"><div class="ph">SLOT ${i+1} · EMPTY</div></div>`;
-    const o=ALL[id];
-    return `<div class="slot filled brk"><span class="x" onclick="removeSlot(${i})" title="remove">×/span>${sigil(o)}<div class="info"><b>${o.name}</b><small>${(o.cls||'').split('·')[0].trim()}</small></div></div>`;
-  }).join("");
-}
-function addToSquad(id){
-  if(squad.includes(id)) return;
-  const i=squad.indexOf(null); if(i===-1) return;
-  squad[i]=id; updateMuster();
-}
-function removeSlot(i){ squad[i]=null; updateMuster(); }
-function clearSquad(){ squad=[null,null,null,null]; updateMuster(); }
-
-function squadVector(){
-  const filled=squad.filter(Boolean).map(id=>ALL[id].vec);
-  if(!filled.length) return [0,0,0,0,0];
-  // squad coverage = best contribution per axis, softened by average
-  return AXES.map((_,k)=>{
-    const vals=filled.map(v=>v[k]);
-    const max=Math.max(...vals); const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
-    return Math.round(max*0.6 + avg*0.4);
+function renderBoard() {
+  const chosen = squad.filter(Boolean);
+  $('slotCount').textContent = chosen.length + ' / ' + squad.length;
+  $('slots').innerHTML = squad.map((operator, index) => operator
+    ? `<div class="slot filled"><span class="sigil">${operator.name[0]}</span><div class="info"><b>${operator.name}</b><small>${operator.role}</small></div><button class="x" type="button" data-remove="${index}" aria-label="Remove ${operator.name} from slot ${index + 1}">×</button></div>`
+    : `<div class="slot"><span class="ph">Empty slot ${index + 1}</span></div>`).join('');
+  const covered = new Map();
+  chosen.forEach(operator => covered.set(operator.role, [...(covered.get(operator.role) || []), operator.name]));
+  $('coverage').innerHTML = chosen.length
+    ? [...covered].map(([role, names]) => `<p class="synline"><span><b>${role}</b><br>${names.join(', ')}</span></p>`).join('') +
+      (chosen.some(operator => operator.id === 'hawks') ? '' : '<p class="muted">Planning a story mission? Reserve a slot for Hawks.</p>')
+    : '<p class="muted">Add an Operator to see their role here.</p>';
+  [...$('roster').children].forEach((button, index) => {
+    const operator = roster[index];
+    button.disabled = chosen.length === squad.length || (!operator.custom && chosen.includes(operator));
   });
 }
 
-function radarPoint(cx,cy,r,i,val){
-  const ang=(-90 + i*72)*Math.PI/180;
-  const rad=r*val/100;
-  return [cx+rad*Math.cos(ang), cy+rad*Math.sin(ang)];
+$('roster').innerHTML = roster.map(operator =>
+  `<button class="r-chip" type="button" data-recruit="${operator.id}"><span><b>${operator.name}</b><small>${operator.label}</small></span></button>`
+).join('');
+$('roster').addEventListener('click', event => {
+  const button = event.target.closest('[data-recruit]');
+  const slot = squad.indexOf(null);
+  if (!button || button.disabled || slot < 0) return;
+  squad[slot] = roster.find(operator => operator.id === button.dataset.recruit);
+  renderBoard();
+});
+$('slots').addEventListener('click', event => {
+  const button = event.target.closest('[data-remove]');
+  if (!button) return;
+  squad[Number(button.dataset.remove)] = null;
+  renderBoard();
+});
+function clearSquad() {
+  squad.fill(null);
+  renderBoard();
 }
-let lastVec=[0,0,0,0,0];
-function drawRadar(target){
-  const svg=$("radar"), cx=140, cy=120, R=86;
-  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  // static grid + axes + labels (drawn once)
-  if(!svg.dataset.init){
-    let g="";
-    [25,50,75,100].forEach(p=>{
-      const pts=AXES.map((_,i)=>radarPoint(cx,cy,R,i,p).join(",")).join(" ");
-      g+=`<polygon points="${pts}" fill="none" stroke="var(--line)" stroke-width="1"/>`;
-    });
-    AXES.forEach((_,i)=>{
-      const [x,y]=radarPoint(cx,cy,R,i,100);
-      g+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="var(--line)" stroke-width="1"/>`;
-      const [lx,ly]=radarPoint(cx,cy,R+18,i,100);
-      g+=`<text x="${lx}" y="${ly+4}" fill="var(--muted)" font-family="var(--fm)" font-size="10" text-anchor="middle" letter-spacing="1">${AXES[i]}</text>`;
-    });
-    svg.innerHTML=g+`<polygon id="radarPoly" points="" fill="rgba(52,224,196,.18)" stroke="var(--teal)" stroke-width="2" stroke-linejoin="round"/><g id="radarDots"></g>`;
-    svg.dataset.init="1";
+renderBoard();
+
+function showResults(input, container, compact) {
+  const query = input.value.trim().toLowerCase();
+  container.replaceChildren();
+  if (compact) container.classList.toggle('show', Boolean(query));
+  if (!query) return;
+  const matches = searchIndex.filter(([type, title, href, keywords]) =>
+    (title + ' ' + type + ' ' + keywords).toLowerCase().includes(query)
+  ).sort((a, b) => Number(b[1].toLowerCase().includes(query)) - Number(a[1].toLowerCase().includes(query))).slice(0, compact ? 5 : 7);
+  if (!matches.length) {
+    const message = document.createElement('div');
+    message.className = compact ? 'nav-search-empty' : 'sr-item';
+    message.textContent = 'No match. Try Hawks, Medic, Droideka or patch notes.';
+    container.append(message);
+    return;
   }
-  const animate=(from,to,t)=>{
-    const cur=from.map((f,i)=>f+(to[i]-f)*t);
-    const pts=cur.map((v,i)=>radarPoint(cx,cy,R,i,v).join(",")).join(" ");
-    $("radarPoly").setAttribute("points",pts);
-    $("radarDots").innerHTML=cur.map((v,i)=>{const [x,y]=radarPoint(cx,cy,R,i,v);return `<circle cx="${x}" cy="${y}" r="3" fill="var(--teal)"/>`;}).join("");
-  };
-  if(reduce){ animate(target,target,1); lastVec=target; return; }
-  const from=lastVec.slice(), start=performance.now(), dur=420;
-  function step(now){
-    const t=Math.min(1,(now-start)/dur), e=1-Math.pow(1-t,3);
-    animate(from,target,e);
-    if(t<1) requestAnimationFrame(step); else lastVec=target;
-  }
-  requestAnimationFrame(step);
+  matches.forEach(([type, title, href]) => {
+    const link = document.createElement('a');
+    link.className = compact ? 'nav-search-hit' : 'sr-item';
+    link.href = href;
+    const category = document.createElement('span');
+    category.className = 'k';
+    category.textContent = type;
+    const name = document.createElement('strong');
+    name.className = 'n';
+    name.textContent = title;
+    link.append(category, name);
+    container.append(link);
+  });
 }
-
-function updateMuster(){
-  renderSlots(); renderRoster();
-  const filled=squad.filter(Boolean);
-  const vec=squadVector();
-  drawRadar(vec);
-
-  let lines="", score=0;
-  const classesIn=filled.map(id=>ALL[id].cls);
-
-  if(!filled.length){
-    lines=`<div class="synline warn"><span class="ic">!</span><span>Empty board. Add operatives to read coverage.</span></div>`;
-    $("squadGrade").textContent="—"; $("squadGrade").style.color="var(--faint)";
-    $("synergies").innerHTML=lines; return;
-  }
-
-  // detected bonds
-  BONDS.forEach(p=>{ if(filled.includes(p.a)&&filled.includes(p.b)){ score+=12; lines+=`<div class="synline good"><span class="ic">+</span><span><b>${p.label}</b> —${p.txt}</span></div>`; }});
-  // detected class combos
-  COMBOS.forEach(c=>{ if(classesIn.includes(c.a)&&classesIn.includes(c.b)){ score+=10; lines+=`<div class="synline good"><span class="ic">▲/span><span><b>${c.label}</b> —${c.txt}</span></div>`; }});
-  // frictions
-  FRICTION.forEach(p=>{ if(filled.includes(p.a)&&filled.includes(p.b)){ score-=14; lines+=`<div class="synline bad"><span class="ic">×/span><span><b>${p.label}</b> —${p.txt}</span></div>`; }});
-
-  // coverage warnings
-  const hasSustain=filled.some(id=>/Medic|Astromech/.test(ALL[id].cls));
-  const hasFront=filled.some(id=>/Heavy|Assault|Mandalorian|brawler|Soldier/.test(ALL[id].cls));
-  const hasDPS=filled.some(id=>/Sharpshooter|Gunslinger/.test(ALL[id].cls));
-  if(!hasSustain) lines+=`<div class="synline warn"><span class="ic">!</span><span><b>No sustain.</b> Without a Medic or Astromech, Injuries stack toward permadeath. Add one.</span></div>`;
-  if(!hasFront) lines+=`<div class="synline warn"><span class="ic">!</span><span><b>No frontline.</b> Squishy specialists will get focused down —add a Heavy or Assault.</span></div>`;
-  if(!hasDPS) lines+=`<div class="synline warn"><span class="ic">!</span><span><b>Low kill power.</b> Consider a Sharpshooter or Gunslinger to close out targets.</span></div>`;
-  if(hasSustain&&hasFront&&hasDPS&&filled.length===4) lines+=`<div class="synline good"><span class="ic">×/span><span><b>Balanced core.</b> Frontline, sustain and kill power all covered.</span></div>`;
-
-  // grade from average attribute + synergy score
-  const avg=vec.reduce((a,b)=>a+b,0)/5;
-  const total=avg + score + (filled.length===4?6:0);
-  let grade,gc;
-  if(total>=88){grade="S";gc="var(--gold)";}
-  else if(total>=74){grade="A";gc="var(--teal)";}
-  else if(total>=58){grade="B";gc="var(--tier-b)";}
-  else {grade="C";gc="var(--tier-c)";}
-  $("squadGrade").textContent=grade; $("squadGrade").style.color=gc;
-  $("synergies").innerHTML=lines;
+function runSearch() {
+  showResults($('search'), $('searchResults'), false);
 }
-
-/* ===========================================================
-   SEARCH (across all entities)
-   =========================================================== */
-function buildIndex(){
-  const idx=[];
-  Object.keys(OPS).forEach(id=>idx.push({k:"Operative",n:OPS[id].name,go:()=>openOp(id)}));
-  CLASSES.forEach(c=>idx.push({k:"Class",n:c.n,go:()=>openClass(c.id)}));
-  Object.keys(BUILDS).forEach(id=>idx.push({k:"Loadout",n:BUILDS[id].name,go:()=>openBuild(id)}));
-  Object.keys(MISSIONS).forEach(id=>idx.push({k:"Operation",n:MISSIONS[id].name,go:()=>openMission(id)}));
-  Object.keys(HOSTILES).forEach(id=>idx.push({k:"Hostile",n:HOSTILES[id].name,go:()=>openHostile(id)}));
-  return idx;
-}
-const SEARCH_IDX=buildIndex();
-function runSearch(){
-  const q=$("search").value.trim().toLowerCase();
-  const box=$("searchResults");
-  if(!q){box.innerHTML="";return;}
-  const hits=SEARCH_IDX.filter(x=>x.n.toLowerCase().includes(q)||x.k.toLowerCase().includes(q)).slice(0,7);
-  box.innerHTML = hits.length ? hits.map((h,i)=>`<div class="sr-item" data-i="${i}"><span class="k">${h.k}</span><span class="n">${h.n}</span><span class="ar mono" style="margin-left:auto;color:var(--teal)">→</span></div>`).join("")
-    : `<div class="sr-item" style="cursor:default"><span class="muted mono" style="font-size:13px">No match for "${q}". Try: hawks, droideka, sharpshooter, kafrene.</span></div>`;
-  box.querySelectorAll('.sr-item[data-i]').forEach(el=>el.onclick=()=>{hits[el.dataset.i].go();box.innerHTML="";$("search").value="";});
-}
-$("search").addEventListener("keydown",e=>{if(e.key==="Enter")runSearch();});
-$("search").addEventListener("input",runSearch);
-
-function navSearchHits(query){
-  const q=query.trim().toLowerCase();
-  if(!q)return [];
-  return SEARCH_IDX.filter(x=>x.n.toLowerCase().includes(q)||x.k.toLowerCase().includes(q)).slice(0,5);
-}
-function renderNavSearch(){
-  const input=$("navSearch");
-  const box=$("navSearchResults");
-  const q=input.value.trim();
-  if(!q){box.innerHTML="";box.classList.remove("show");return;}
-  const hits=navSearchHits(q);
-  box.innerHTML=hits.length
-    ? hits.map((h,i)=>`<button type="button" class="nav-search-hit" data-i="${i}" role="option"><span>${h.k}</span><strong>${h.n}</strong></button>`).join("")
-    : `<div class="nav-search-empty">No match. Try Hawks, Medic or Droideka.</div>`;
-  box.classList.add("show");
-  box.querySelectorAll(".nav-search-hit").forEach(el=>el.addEventListener("click",()=>{
-    hits[Number(el.dataset.i)].go();
-    input.value="";
-    box.innerHTML="";
-    box.classList.remove("show");
-  }));
-}
-function runNavSearch(event){
+function runNavSearch(event) {
   event.preventDefault();
-  const hits=navSearchHits($("navSearch").value);
-  if(hits.length){
-    hits[0].go();
-    $("navSearch").value="";
-    $("navSearchResults").innerHTML="";
-    $("navSearchResults").classList.remove("show");
-  }else{
-    renderNavSearch();
-  }
+  showResults($('navSearch'), $('navSearchResults'), true);
+  $('navSearchResults').querySelector('a')?.click();
   return false;
 }
-$("navSearch").addEventListener("input",renderNavSearch);
-$("navSearch").addEventListener("keydown",event=>{
-  if(event.key==="Escape"){
-    event.currentTarget.value="";
-    $("navSearchResults").innerHTML="";
-    $("navSearchResults").classList.remove("show");
-    event.currentTarget.blur();
+$('search').addEventListener('input', runSearch);
+$('search').addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    runSearch();
+    $('searchResults').querySelector('a')?.click();
   }
 });
-document.addEventListener("click",event=>{
-  if(!event.target.closest(".nav-search"))$("navSearchResults").classList.remove("show");
+$('navSearch').addEventListener('input', () => showResults($('navSearch'), $('navSearchResults'), true));
+$('navSearch').addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    event.currentTarget.value = '';
+    $('navSearchResults').replaceChildren();
+    $('navSearchResults').classList.remove('show');
+  }
+});
+document.addEventListener('click', event => {
+  if (!event.target.closest('.nav-search')) $('navSearchResults').classList.remove('show');
 });
 
-/* ===========================================================
-   ROUTER
-   =========================================================== */
-const VIEWS=["home","operatives","dossier","tier","builds","build","ops","op","hostiles","hostile","muster"];
-function go(route){
-  VIEWS.forEach(v=>$("view-"+v).classList.toggle("show",v===route));
-  document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('active',a.dataset.route===route));
-  document.getElementById('topbar').classList.remove('open');
-  window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
-  if(history.replaceState) history.replaceState(null,"","#"+route);
+const legacyViews = {
+  operatives: '/operatives/', dossier: '/operatives/', tier: '/classes/',
+  builds: '/official-systems/armory-weapons-guide.html', build: '/official-systems/armory-weapons-guide.html',
+  ops: '/missions/', op: '/missions/', hostiles: '/hostiles/', hostile: '/hostiles/'
+};
+function applyView() {
+  const view = location.hash.slice(1);
+  if (Object.hasOwn(legacyViews, view)) {
+    location.replace(legacyViews[view]);
+    return;
+  }
+  const onBoard = view === 'muster';
+  $('view-home').classList.toggle('show', !onBoard);
+  $('view-muster').classList.toggle('show', onBoard);
+  document.querySelectorAll('[data-route]').forEach(link => link.classList.toggle('active', link.dataset.route === (onBoard ? 'muster' : 'home')));
+  $('topbar').classList.remove('open');
+  document.querySelectorAll('.site-menu[open]').forEach(menu => menu.removeAttribute('open'));
+  $('navSearchResults').classList.remove('show');
+  window.scrollTo(0, 0);
 }
-
-/* init */
-renderHome(); renderOpIndex(); renderTier(); renderBuildIndex(); renderOpsIndex(); renderHostIndex();
-renderSlots(); renderRoster(); updateMuster();
-// Keep the in-page view on an ordinary activation. The href also works independently.
-document.querySelectorAll(".home-system-link").forEach(link => {
-  link.addEventListener("click", event => {
-    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    go(link.dataset.view);
-  });
-});
-// open from hash if present
-const h=location.hash.replace("#","");
-if(h&&VIEWS.includes(h)) go(h);
+window.addEventListener('hashchange', applyView);
+applyView();
 
 // ROUND 18: keep only one click-open navigation group at a time.
 document.querySelectorAll('.site-menu').forEach(menu=>{

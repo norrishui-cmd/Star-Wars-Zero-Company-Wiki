@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Install an accessible dropdown for every officially supported game language."""
 
+import argparse
 from pathlib import Path
 import re
 
@@ -50,19 +51,44 @@ def route_for(path: Path):
 
 
 def href_for(locale, route):
-    if locale == "en":
-        path = ROOT / (route or "index.html")
-        if not path.exists():
-            return "/"
-        if route == "":
-            return "/"
-        return "/" + (route[:-10] if route.endswith("index.html") else route)
-    path = ROOT / locale / (route or "index.html")
-    if not path.exists():
-        return f"/{locale}/"
-    if route == "":
-        return f"/{locale}/"
-    return f"/{locale}/" + (route[:-10] if route.endswith("index.html") else route)
+    prefix = "/" if locale == "en" else f"/{locale}/"
+    target = ROOT / prefix.strip("/") / (route or "index.html")
+    if not target.is_file():
+        return prefix
+    return prefix + route.removesuffix("index.html")
+
+
+def refresh_topic_links(text, route):
+    """Update existing language menu targets when a counterpart has been published."""
+    language_codes = {tag: code for code, tag, _ in LOCALES}
+
+    def update_link(match):
+        locale = language_codes.get(match.group("lang"))
+        if locale is None:
+            return match[0]
+        href = href_for(locale, route)
+        fallback = "/" if locale == "en" else f"/{locale}/"
+        if route and href == fallback:
+            return match[0]
+        return match[0].replace(match.group("href_attr"), f'href="{href}"', 1)
+
+    def update_menu(match):
+        anchor = r'<a\b[^>]*?(?P<href_attr>href="[^"]*")[^>]*?\slang="(?P<lang>[^"]+)"[^>]*>'
+        return re.sub(anchor, update_link, match[0], flags=re.I)
+
+    return re.sub(r'<details class="lang-menu">.*?</details>', update_menu, text, flags=re.S)
+
+
+def refresh_existing(paths):
+    changes = 0
+    for path in paths:
+        _, route = route_for(path.resolve())
+        original = path.read_text(encoding="utf-8")
+        updated = refresh_topic_links(original, route)
+        if updated != original:
+            path.write_text(updated, encoding="utf-8")
+            changes += 1
+    return changes
 
 
 def menu(current, route):
@@ -105,4 +131,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--refresh-existing", nargs="+", type=Path, metavar="HTML",
+                        help="Update only existing language-menu URLs in these HTML files.")
+    args = parser.parse_args()
+    if args.refresh_existing:
+        print(f"Updated language menus on {refresh_existing(args.refresh_existing)} pages")
+    else:
+        main()

@@ -123,7 +123,7 @@ def build_faqs(locale):
                 f'<section class="block"><h2>{"Was Spieler daraus ableiten können" if locale == "de" else "プレイヤー向けの要点"}</h2><p>'
                 + ("Die Antwort basiert auf dem aktuell veröffentlichten Funktionsumfang. Unangekündigte Modi, Werte oder spätere Änderungen werden nicht als bestätigt behandelt. Nutze die verlinkten Release-, Gameplay- und Datenbankseiten für den größeren Zusammenhang und prüfe kurz vor dem Start zusätzlich den Plattform-Store."
                    if locale == "de" else "この回答は現時点で公開されている機能とストア情報に基づきます。未発表のモード、数値、将来の変更を確定情報として扱いません。関連する発売情報、ゲームシステム、データベースも確認し、発売直前には利用するプラットフォームのストア表示も確認してください。")
-                + f'</p><div class="grid"><a class="card" href="/{locale}/questions/">FAQ一覧</a><a class="card" href="/{locale}/database/">{"Spieldatenbank" if locale == "de" else "ゲームデータベース"}</a></div></section>{source_block(locale, (EA_GAMEPLAY, EA_BUY))}')
+                + f'</p><div class="grid"><a class="card" href="/{locale}/questions/">{"Alle FAQs" if locale == "de" else "FAQ一覧"}</a><a class="card" href="/{locale}/database/">{"Spieldatenbank" if locale == "de" else "ゲームデータベース"}</a></div></section>{source_block(locale, (EA_GAMEPLAY, EA_BUY))}')
         faq_schema = {"mainEntity": {"@type": "Question", "name": question, "acceptedAnswer": {"@type": "Answer", "text": answer + " " + detail}}}
         write(locale, f'questions/{filename}', title, desc, body, "FAQPage", faq_schema)
     heading = "50 FAQ-Antworten – deutscher Einstieg" if locale == "de" else "よくある質問・日本語ガイド"

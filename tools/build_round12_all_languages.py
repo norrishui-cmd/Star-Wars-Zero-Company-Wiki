@@ -463,6 +463,33 @@ def nav(locale: str, data: dict) -> str:
     return "".join(f'<a href="{href}">{escape(label)}</a>' for href, label in zip(hrefs, labels))
 
 
+DIRECTORY_CARDS = {
+    "es": (("Reparto de voces", "Quién da voz a cada personaje en inglés."),
+           ("Especializaciones", "Los ocho roles de combate y su función en el escuadrón.")),
+    "fr": (("Distribution des voix", "Les personnages et leurs interprètes en version originale."),
+           ("Spécialisations", "Les huit rôles de combat et leur place dans l’escouade.")),
+    "it": (("Cast vocale", "Chi dà voce ai personaggi nella versione originale inglese."),
+           ("Specializzazioni", "Gli otto ruoli di combattimento e il loro impiego in squadra.")),
+    "ko": (("영어 성우진", "캐릭터별 영어판 담당 성우를 확인하세요."),
+           ("병과", "여덟 가지 병과가 전투에서 맡는 역할을 살펴보세요.")),
+    "pl": (("Obsada głosowa", "Kto użycza głosu postaciom w angielskiej wersji gry."),
+           ("Specjalizacje", "Osiem specjalizacji i ich zadania w oddziale.")),
+    "pt-br": (("Elenco de vozes", "Quem dá voz a cada personagem na versão original em inglês."),
+              ("Especializações", "As oito funções de combate e o papel de cada uma no esquadrão.")),
+    "zh-cn": (("英语配音阵容", "按角色查找英文版配音演员。"), ("战斗专精", "查看八种专精在小队中的战术职责。")),
+    "zh-tw": (("英語配音陣容", "依角色查找英文版配音員。"), ("戰鬥專精", "查看八種專精在小隊中的戰術職責。")),
+}
+
+
+def directory_cards(locale: str) -> str:
+    cards = []
+    for section, (label, summary) in zip(("cast", "classes"), DIRECTORY_CARDS[locale]):
+        if (ROOT / locale / section / "index.html").is_file():
+            cards.append(f'<a class="card" href="/{locale}/{section}/"><strong>{escape(label)}</strong>'
+                         f'<br><span class="muted">{escape(summary)}</span></a>')
+    return "".join(cards)
+
+
 def body_for(locale: str, topic: str, data: dict) -> str:
     title, _, lead, paragraphs = data[topic]
     paras = "".join(f"<p>{escape(p)}</p>" for p in paragraphs)
@@ -474,6 +501,7 @@ def body_for(locale: str, topic: str, data: dict) -> str:
                                ("platforms", "official/platforms.html"),
                                ("languages", "official/languages.html"),
                                ("gameplay", "confirmed/overview.html")))
+        cards += directory_cards(locale)
         return f'<section class="block"><h2>{escape(labels_for(locale)[0])}</h2>{paras}</section><section><h2>{escape(labels_for(locale)[1])}</h2><div class="grid">{cards}</div></section>'
     if topic == "release":
         return f'<section class="block"><h2>{escape(labels_for(locale)[2])}</h2>{paras}</section><section><h2>UTC</h2><table><tr><th>UTC</th><th>{escape(data["label"])}</th></tr><tr><td>2026-08-27 15:00</td><td>{escape(local_time(locale))}</td></tr></table></section>'

@@ -7,6 +7,8 @@ import json
 from pathlib import Path
 import re
 
+from configure_language_dropdown import refresh_topic_links, route_for
+
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://starwarszerocompany.cc"
 TODAY = date.today().isoformat()
@@ -402,7 +404,8 @@ def replace_alternates(path, family, slug=None):
     text = re.sub(r'(<link rel="canonical"[^>]+>)',
                   lambda m: m.group(1) + alternates(family, slug),
                   text, count=1)
-    path.write_text(text, encoding="utf-8")
+    _, route = route_for(path)
+    path.write_text(refresh_topic_links(text, route), encoding="utf-8")
 
 
 def main():
